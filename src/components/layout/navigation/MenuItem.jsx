@@ -11,7 +11,7 @@ const MenuItem = ({ icon, title }) => {
         to={"/"}
       >
         <Icon w={7} h={7} color={"white"} as={icon} />
-        <div className={"text-white"}>{title}</div>
+        <div>{title}</div>
       </NavLink>
     </li>
   );

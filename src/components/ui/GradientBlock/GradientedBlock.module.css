@@ -5,11 +5,11 @@
             #e3e5e8 0%,
             #ebe4e3 10%,
             #e4e1e0 25%,
-            #e5cee9 45%,
-            #e1b2db 60%,
-            #e5a2d4 75%,
-            #e282bb 85%,
-            #e8398e 100%
+            #ced9e9 45%,
+            #adb7d2 60%,
+            #a2b9e5 75%,
+            #86acea 85%,
+            #44a6e5 100%
     );
 }
 
@@ -31,7 +31,7 @@
 }
 
 .canvas::before {
-    background: #ffecf5;
+    background: #83c2ba;
     top: -195px;
     left: -195px;
 }
@@ -62,17 +62,17 @@
 .canvas > .circles {
     width: 230px;
     height: 230px;
-    background: #ffc285;
+    background: #1c83af;
     bottom: -60px;
     left: 75px;
 }
 
 .canvas > .circles::before {
-    background: #8600ff;
+    background: #839bfa;
     left: -40%;
 }
 
 .canvas > .circles::after {
-    background: #ff0000;
+    background: #0090ff;
     right: -20%;
 }
