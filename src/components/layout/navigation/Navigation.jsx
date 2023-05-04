@@ -1,12 +1,13 @@
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import Menu from "./Menu";
+import { Flex } from "@chakra-ui/react";
 
 const Navigation = () => {
   return (
-    <GradientBlock withoutPaddings={true} className={"my-3 ml-3"}>
-      <div className={"flex flex-col items-center basis-10 py-6"}>
+    <GradientBlock withoutPaddings={true} my={3} ml={3}>
+      <Flex flexDirection={"column"} alignItems={"center"} flexBasis={10} py={6}>
         <Menu />
-      </div>
+      </Flex>
     </GradientBlock>
   );
 };

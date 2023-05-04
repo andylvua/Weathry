@@ -1,35 +1,40 @@
 import GradientBlock from "../ui/GradientBlock/GradientBlock";
 import Layout from "../layout/Layout";
+import { Button, Flex, useColorMode } from "@chakra-ui/react";
+import { Text } from "../ui/Text/Text";
+import { Heading } from "../ui/Text/Heading";
 
 const HomePage = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Layout>
-      <GradientBlock className={"text-white"}>
-        <h1 className={"text-2xl"}>Some title</h1>
-        <div>
+      <GradientBlock>
+        <Heading>Some title</Heading>
+        <Text>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet atque debitis
           dolorum facere fugiat inventore labore modi obcaecati quaerat quas quisquam quod, ratione
           sed suscipit! Exercitationem nihil odio perspiciatis.
-        </div>
+        </Text>
       </GradientBlock>
-      <div className={"flex gap-3 mt-3"}>
-        <GradientBlock className={"text-white"}>
-          <h1 className={"text-2xl"}>Some title</h1>
-          <div>
+      <Flex gap={3} mt={3}>
+        <GradientBlock>
+          <Heading>Some title</Heading>
+          <Text>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet atque debitis
             dolorum facere fugiat inventore labore modi obcaecati quaerat quas quisquam quod,
             ratione sed suscipit! Exercitationem nihil odio perspiciatis.
-          </div>
+          </Text>
         </GradientBlock>
-        <GradientBlock className={"text-white"}>
-          <h1 className={"text-2xl"}>Some title</h1>
-          <div>
+        <GradientBlock>
+          <Heading>Some title</Heading>
+          <Text>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus amet atque debitis
             dolorum facere fugiat inventore labore modi obcaecati quaerat quas quisquam quod,
             ratione sed suscipit! Exercitationem nihil odio perspiciatis.
-          </div>
+          </Text>
         </GradientBlock>
-      </div>
+      </Flex>
+      <Button onClick={toggleColorMode}>Toggle {colorMode === "light" ? "Dark" : "Light"}</Button>
     </Layout>
   );
 };

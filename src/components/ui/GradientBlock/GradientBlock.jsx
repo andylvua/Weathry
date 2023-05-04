@@ -1,19 +1,29 @@
 import styles from "./GradientedBlock.module.css";
-import classNames from "classnames";
+import { Box, useColorMode, useColorModeValue } from "@chakra-ui/react";
 
-const GradientBlock = ({ children, className, withoutPaddings }) => {
+const GradientBlock = ({ children, withoutPaddings, ...rest }) => {
+  const bg = useColorModeValue("blackAlpha.200", "none");
+  const { colorMode } = useColorMode();
   return (
-    <div className={classNames("relative rounded-3xl", { "p-8": !withoutPaddings }, className)}>
-      <div className={classNames("relative z-10")}>{children}</div>
-      <div
-        className={classNames(
-          "rounded-3xl absolute w-full h-full top-0 left-0 opacity-20",
-          styles.canvas
-        )}
-      >
-        <div className={styles.circles}></div>
-      </div>
-    </div>
+    <Box position={"relative"} borderRadius={20} p={!withoutPaddings ? 8 : 0} bg={bg} {...rest}>
+      <Box position={"relative"} zIndex={10}>
+        {children}
+      </Box>
+      {colorMode === "dark" && (
+        <Box
+          borderRadius={20}
+          position={"absolute"}
+          w={"full"}
+          h={"full"}
+          top={0}
+          left={0}
+          opacity={0.2}
+          className={styles.canvas}
+        >
+          <div className={styles.circles}></div>
+        </Box>
+      )}
+    </Box>
   );
 };
 

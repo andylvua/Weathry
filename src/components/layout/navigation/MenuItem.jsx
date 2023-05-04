@@ -1,19 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { Icon } from "@chakra-ui/react";
+import { Flex, Icon, ListItem } from "@chakra-ui/react";
 
-const MenuItem = ({ icon, title }) => {
+const MenuItem = ({ icon, direction }) => {
   return (
-    <li>
-      <NavLink
-        className={
-          "flex gap-1 relative flex-col items-center px-4 before:h-full before:w-0 hover:before:w-0.5 before:transition-all before:bg-white before:block before:absolute before:left-0 before:rounded-2xl before:opacity-60"
-        }
-        to={"/"}
-      >
-        <Icon w={7} h={7} color={"white"} as={icon} />
-        <div>{title}</div>
+    <ListItem>
+      <NavLink to={direction}>
+        <Flex gap={1} position={"relative"} flexDirection={"column"} px={4}>
+          <Icon w={7} h={7} color={"white"} as={icon} />
+        </Flex>
       </NavLink>
-    </li>
+    </ListItem>
   );
 };
 
