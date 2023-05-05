@@ -1,0 +1,47 @@
+.menuItem:hover svg,
+.active svg {
+    color: white;
+    stroke: white;
+    fill: white;
+}
+
+.menuItem {
+    position: relative;
+}
+
+.menuItem:before {
+    content: '';
+    transition: all .2s ease;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    opacity: 0;
+    background-color: #fff;
+    border-radius: 1px;
+}
+
+.menuItem::after {
+    content: '';
+    transition: all .2s ease;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    left: 2px;
+    top: 0;
+    height:100%;
+    width: 80%;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0.3226540616246498) 0%, rgba(255,255,255,0.07335434173669464) 84%, rgba(255,255,255,0) 100%);
+}
+
+.active>.menuItem::before,
+.menuItem:hover::before {
+    opacity: 1;
+}
+.active>.menuItem::after,
+.menuItem:hover::after {
+    opacity: 1;
+}

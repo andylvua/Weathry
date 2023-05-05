@@ -3,9 +3,12 @@ import MenuItem from "./MenuItem";
 import { List } from "@chakra-ui/react";
 
 const Menu = () => {
-  const menuItems = [{ icon: MdThermostat, direction: "/" }];
+  const menuItems = [
+    { icon: MdThermostat, direction: "/" },
+    { icon: MdThermostat, direction: "/weather" }
+  ];
   return (
-    <List gap={6}>
+    <List display={"flex"} gap={8} flexDirection={"column"}>
       {menuItems.map((menuItem) => (
         <MenuItem icon={menuItem.icon} direction={menuItem.direction} />
       ))}

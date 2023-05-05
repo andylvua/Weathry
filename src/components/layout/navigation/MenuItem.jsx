@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { Flex, Icon, ListItem } from "@chakra-ui/react";
+import { Center, Icon, ListItem, useColorModeValue } from "@chakra-ui/react";
+import styles from "./Navitgation.module.css";
 
 const MenuItem = ({ icon, direction }) => {
+  const color = useColorModeValue("black", "text.100");
   return (
     <ListItem>
-      <NavLink to={direction}>
-        <Flex gap={1} position={"relative"} flexDirection={"column"} px={4}>
-          <Icon w={7} h={7} color={"white"} as={icon} />
-        </Flex>
+      <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to={direction}>
+        <Center className={styles.menuItem} px={5} py={1.5}>
+          <Icon w={7} h={7} color={color} as={icon} />
+        </Center>
       </NavLink>
     </ListItem>
   );
