@@ -4,8 +4,11 @@ import React from "react";
 
 const CityList = (data, isLoading) => {
   const cities = data?.cities?.results;
-  if (!cities || isLoading) {
+  if (!isLoading) {
     return <Text>Loading...</Text>;
+  }
+  if (!cities) {
+    return <Text>No data...</Text>;
   }
 
   return (
