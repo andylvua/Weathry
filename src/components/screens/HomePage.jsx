@@ -1,9 +1,15 @@
 import GradientBlock from "../ui/GradientBlock/GradientBlock";
 import Layout from "../layout/Layout";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Icon, IconButton, Text } from "@chakra-ui/react";
 import SearchModal from "../modals/search-modal/SearchModal";
+import { MdSearch } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { setIsOpen } from "../../store/search-modal/SearchModalSlice";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const onOpen = () => dispatch(setIsOpen(true));
+
   return (
     <Layout>
       <GradientBlock>
@@ -32,6 +38,9 @@ const HomePage = () => {
           </Text>
         </GradientBlock>
       </Flex>
+      <IconButton aria-label={"iconBase"} onClick={onOpen}>
+        <Icon w={30} h={30} as={MdSearch} />
+      </IconButton>
       <SearchModal />
     </Layout>
   );

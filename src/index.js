@@ -6,6 +6,8 @@ import { router } from "./routing";
 import { RouterProvider } from "react-router-dom";
 import { theme } from "./chakra/theme";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -14,7 +16,9 @@ root.render(
     <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}></RouterProvider>
+        <Provider store={store}>
+          <RouterProvider router={router}></RouterProvider>
+        </Provider>
       </QueryClientProvider>
     </ChakraProvider>
   </React.StrictMode>
