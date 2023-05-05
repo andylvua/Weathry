@@ -5,7 +5,7 @@ import "./index.css";
 import { router } from "./routing";
 import { RouterProvider } from "react-router-dom";
 import { theme } from "./chakra/theme";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
