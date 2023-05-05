@@ -10,7 +10,7 @@ const Menu = () => {
   return (
     <List display={"flex"} gap={8} flexDirection={"column"}>
       {menuItems.map((menuItem) => (
-        <MenuItem icon={menuItem.icon} direction={menuItem.direction} />
+        <MenuItem key={menuItem.direction} icon={menuItem.icon} direction={menuItem.direction} />
       ))}
     </List>
   );

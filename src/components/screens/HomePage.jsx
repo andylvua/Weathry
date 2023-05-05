@@ -1,11 +1,9 @@
 import GradientBlock from "../ui/GradientBlock/GradientBlock";
 import Layout from "../layout/Layout";
-import { Button, Flex, useColorMode } from "@chakra-ui/react";
-import { Text } from "../ui/Text/Text";
-import { Heading } from "../ui/Text/Heading";
+import { Flex, Heading, Text } from "@chakra-ui/react";
+import SearchModal from "../modals/search-modal/SearchModal";
 
 const HomePage = () => {
-  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Layout>
       <GradientBlock>
@@ -34,7 +32,7 @@ const HomePage = () => {
           </Text>
         </GradientBlock>
       </Flex>
-      <Button onClick={toggleColorMode}>Toggle {colorMode === "light" ? "Dark" : "Light"}</Button>
+      <SearchModal />
     </Layout>
   );
 };

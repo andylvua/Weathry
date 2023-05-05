@@ -6,7 +6,9 @@ const Layout = ({ children }) => {
   return (
     <Flex bg={bg} w={"full"} h={"full"} gap={3}>
       <Navigation />
-      <Box mt={3}>{children}</Box>
+      <Box my={3} mr={3}>
+        {children}
+      </Box>
     </Flex>
   );
 };
