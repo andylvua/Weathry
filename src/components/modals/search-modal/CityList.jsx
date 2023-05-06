@@ -1,4 +1,4 @@
-import { Icon, List, ListItem, Spacer, Text } from "@chakra-ui/react";
+import { Icon, List, ListItem, Spacer, Text, Image } from "@chakra-ui/react";
 import { MdLocationCity } from "react-icons/md";
 import React from "react";
 import {
@@ -36,6 +36,7 @@ const CityList = (data, isLoading) => {
         <ListItem
           onClick={() => onChoseCity(city)}
           gap={3}
+          key={city.id}
           alignItems={"center"}
           cursor={"pointer"}
           px={4}
@@ -53,6 +54,7 @@ const CityList = (data, isLoading) => {
             {city.name}, {city.country}
           </Text>
           <Spacer />
+          <Image w={10} h={10} src={`https://flagsapi.com/${city.country_code}/flat/32.png`} />
         </ListItem>
       ))}
     </List>

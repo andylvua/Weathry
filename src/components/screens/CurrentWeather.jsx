@@ -7,10 +7,13 @@ import { useQuery } from "react-query";
 import { weatherApi } from "../../api/weatherApi";
 import { weatherCodes } from "../../utils/weatherCodes";
 import { getCurrentDate, getCurrentTime } from "../../utils/time";
+import React from "react";
 
 const CurrentWeather = () => {
   const dispatch = useDispatch();
-  const { latitude, longitude, cityName, countryName } = useSelector((state) => state.location);
+  const { latitude, longitude, cityName, countryName, countryCode } = useSelector(
+    (state) => state.location
+  );
   const onOpen = () => dispatch(setIsOpen(true));
   const { data } = useQuery(
     ["current weather", latitude, longitude],
@@ -61,9 +64,12 @@ const CurrentWeather = () => {
           <Divider mt={2} />
           <Flex mt={4} alignItems={"center"} gap={2}>
             <Icon color={"white"} w={6} h={6} as={MdLocationPin} />
-            <Text fontSize={"sm"} color={"white"}>
-              {cityName}, {countryName}
-            </Text>
+            <Flex gap={3} alignItems={"center"}>
+              <Text fontSize={"sm"} color={"white"}>
+                {cityName}, {countryName}
+              </Text>
+              <Image w={5} h={5} src={`https://flagsapi.com/${countryCode}/flat/32.png`} />
+            </Flex>
           </Flex>
           <Flex mt={4} alignItems={"center"} gap={2}>
             <Icon color={"white"} w={6} h={6} as={MdCalendarMonth} />

@@ -21,7 +21,7 @@ export const locationSlice = createSlice({
       state.countryName = action.payload;
     },
     setCountryCode(state, action) {
-      state.countryCode = action.countryCode;
+      state.countryCode = action.payload;
     },
     setLatitude(state, action) {
       state.latitude = action.payload;
