@@ -9,7 +9,7 @@ export const theme = extendTheme({
   initialColorMode: "dark",
   useSystemColorMode: false,
   fonts: {
-    body: `'Open Sans', sans-serif`
+    body: `'SF Pro Display', sans-serif`
   },
   styles: {
     global: () => ({})
