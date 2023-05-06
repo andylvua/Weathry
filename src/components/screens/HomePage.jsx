@@ -7,7 +7,7 @@ import CurrentWeather from "./CurrentWeather";
 const HomePage = () => {
   return (
     <Layout>
-      <Grid w={"full"} templateColumns="1fr 2fr">
+      <Grid gap={4} w={"full"} templateColumns="1fr 2fr">
         <GridItem>
           <CurrentWeather />
         </GridItem>

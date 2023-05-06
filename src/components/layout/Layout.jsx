@@ -4,7 +4,7 @@ import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 const Layout = ({ children }) => {
   const bg = useColorModeValue("white", "black");
   return (
-    <Flex bg={bg} w={"full"} h={"full"} gap={3}>
+    <Flex bg={bg} w={"full"} h={"full"} gap={6}>
       <Navigation />
       <Box my={3} mr={3}>
         {children}
