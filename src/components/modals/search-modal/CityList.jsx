@@ -1,4 +1,4 @@
-import { Icon, List, ListItem, Spacer, Text, Image } from "@chakra-ui/react";
+import { Icon, List, ListItem, Spacer, Text, Image, Stack, Skeleton } from "@chakra-ui/react";
 import { MdLocationCity } from "react-icons/md";
 import React from "react";
 import {
@@ -24,10 +24,22 @@ const CityList = (data, isLoading) => {
     dispatch(setIsOpen(false));
   };
   if (!isLoading) {
-    return <Text>Loading...</Text>;
+    return (
+      <Stack mt={5}>
+        <Skeleton height={10} />
+        <Skeleton height={10} />
+        <Skeleton height={10} />
+        <Skeleton height={10} />
+        <Skeleton height={10} />
+      </Stack>
+    );
   }
   if (!cities) {
-    return <Text>No data...</Text>;
+    return (
+      <Text mt={5} fontSize={"2xl"} textAlign={"center"}>
+        No data...
+      </Text>
+    );
   }
 
   return (
