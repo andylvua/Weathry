@@ -2,7 +2,7 @@ import { Divider, Flex, Icon, IconButton, Image, Text } from "@chakra-ui/react";
 import GradientBlock from "../ui/GradientBlock/GradientBlock";
 import { MdCalendarMonth, MdLocationPin, MdSearch } from "react-icons/md";
 import { setIsOpen } from "../../store/search-modal/SearchModalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../api/weatherApi";
 import { weatherCodes } from "../../utils/weatherCodes";
@@ -10,12 +10,17 @@ import { getCurrentDate, getCurrentTime } from "../../utils/time";
 
 const CurrentWeather = () => {
   const dispatch = useDispatch();
+  const { latitude, longitude, cityName, countryName } = useSelector((state) => state.location);
   const onOpen = () => dispatch(setIsOpen(true));
-  const { data } = useQuery(["current weather"], () => weatherApi.currentWeather(47.49, 14.99), {
-    select({ data }) {
-      return data.current_weather;
+  const { data } = useQuery(
+    ["current weather", latitude, longitude],
+    () => weatherApi.currentWeather(latitude, longitude),
+    {
+      select({ data }) {
+        return data.current_weather;
+      }
     }
-  });
+  );
   if (!data) {
     return null;
   }
@@ -57,7 +62,7 @@ const CurrentWeather = () => {
           <Flex mt={4} alignItems={"center"} gap={2}>
             <Icon color={"white"} w={6} h={6} as={MdLocationPin} />
             <Text fontSize={"sm"} color={"white"}>
-              Vordernberg, Austria
+              {cityName}, {countryName}
             </Text>
           </Flex>
           <Flex mt={4} alignItems={"center"} gap={2}>
