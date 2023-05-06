@@ -17,15 +17,17 @@ import CityList from "./CityList";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
+import { useDebounce } from "../../../hooks/useDebounce";
 
 const SearchModal = () => {
   const focusRef = useRef();
   const [city, setCity] = useState("");
+  const debouncedCity = useDebounce(city, 300);
   const dispatch = useDispatch();
   const onClose = () => dispatch(setIsOpen(false));
   const isOpen = useSelector((state) => state.searchModal.isOpen);
   const { data, isLoading } = useQuery(
-    ["search city", city],
+    ["search city", debouncedCity],
     () => weatherApi.searchCity(city, 5),
     {
       select({ data }) {
