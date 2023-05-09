@@ -6,7 +6,8 @@ import {
   setCountryCode,
   setCountryName,
   setLatitude,
-  setLongitude
+  setLongitude,
+  setTimezone
 } from "../../../store/location/LocationSlice";
 import { useDispatch } from "react-redux";
 import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
@@ -20,6 +21,7 @@ const CityList = (data, isLoading) => {
     dispatch(setCountryCode(city.country_code));
     dispatch(setLatitude(city.latitude));
     dispatch(setLongitude(city.longitude));
+    dispatch(setTimezone(city.timezone));
 
     dispatch(setIsOpen(false));
   };

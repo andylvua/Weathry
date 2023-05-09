@@ -6,7 +6,8 @@ const initialState = {
   countryName: "Austria",
   countryCode: "AT",
   latitude: 47.49,
-  longitude: 14.99
+  longitude: 14.99,
+  timezone: "Europe/Vienna"
 };
 
 export const locationSlice = createSlice({
@@ -28,10 +29,19 @@ export const locationSlice = createSlice({
     },
     setLongitude(state, action) {
       state.longitude = action.payload;
+    },
+    setTimezone(state, action) {
+      state.timezone = action.payload;
     }
   }
 });
 
-export const { setCityName, setCountryName, setCountryCode, setLatitude, setLongitude } =
-  locationSlice.actions;
+export const {
+  setTimezone,
+  setCityName,
+  setCountryName,
+  setCountryCode,
+  setLatitude,
+  setLongitude
+} = locationSlice.actions;
 export const locationReducer = locationSlice.reducer;

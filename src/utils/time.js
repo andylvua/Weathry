@@ -14,7 +14,7 @@ export const getDateFromString = (timeString) => {
 
 export const getCurrentTime = () => {
   const date = new Date();
-  return date.toLocaleTimeString();
+  return date.toLocaleTimeString([], { hour: "numeric", minute: "numeric" });
 };
 
 export const getCurrentDate = () => {
@@ -24,4 +24,9 @@ export const getCurrentDate = () => {
     month: "long",
     year: "numeric"
   });
+};
+
+export const getCurrentHour = () => {
+  const now = new Date();
+  return now.getHours();
 };
