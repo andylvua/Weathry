@@ -1,7 +1,13 @@
 import Navigation from "./navigation/Navigation";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorMode } from "@chakra-ui/react";
 
 const Layout = ({ children }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  if (colorMode === "light") {
+    toggleColorMode();
+  }
+
   return (
     <Flex bg={"black"} w={"full"} h={"full"} gap={6}>
       <Navigation />

@@ -6,11 +6,10 @@ export const theme = extendTheme({
       100: "#989a9b"
     }
   },
+  initialColorMode: "dark",
+  useSystemColorMode: false,
   fonts: {
     body: `'SF Pro Display', sans-serif`
-  },
-  styles: {
-    global: () => ({})
   },
   components: {}
 });

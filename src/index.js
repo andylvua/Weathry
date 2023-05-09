@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import "./index.css";
 import { router } from "./routing";
 import { RouterProvider } from "react-router-dom";
@@ -18,6 +18,7 @@ root.render(
       <Fonts />
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <RouterProvider router={router}></RouterProvider>
         </Provider>
       </QueryClientProvider>
