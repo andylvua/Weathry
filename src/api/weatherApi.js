@@ -6,7 +6,9 @@ export const instanceGeocoding = axios.create({
 export const instanceOpenMeteo = axios.create({
   baseURL: "https://api.open-meteo.com/v1"
 });
-
+export const instanceReverseGeocoding = axios.create({
+  baseURL: "https://api.bigdatacloud.net/data/reverse-geocode-client"
+});
 export const weatherApi = {
   searchCity(cityName, count = 10) {
     return instanceGeocoding.get(`/search?name=${cityName}&count=${count}`);
@@ -25,5 +27,8 @@ export const weatherApi = {
     return instanceOpenMeteo.get(
       `/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,uv_index_max,windspeed_10m_max,weathercode&timezone=${timezone}`
     );
+  },
+  reverseGeocoding(latitude, longitude) {
+    return instanceReverseGeocoding.get(`?latitude=${latitude}&longitude=${longitude}`);
   }
 };
