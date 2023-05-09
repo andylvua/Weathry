@@ -1,11 +1,10 @@
 import styles from "./GradientedBlock.module.css";
-import { Box, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 
 const GradientBlock = ({ children, withoutPaddings, ...rest }) => {
-  const bg = useColorModeValue("blackAlpha.200", "none");
   const { colorMode } = useColorMode();
   return (
-    <Box position={"relative"} borderRadius={20} p={!withoutPaddings ? 8 : 0} bg={bg} {...rest}>
+    <Box position={"relative"} borderRadius={20} p={!withoutPaddings ? 8 : 0} {...rest}>
       <Box position={"relative"} zIndex={10}>
         {children}
       </Box>
