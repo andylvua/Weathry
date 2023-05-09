@@ -6,7 +6,6 @@ export const theme = extendTheme({
       100: "#989a9b"
     }
   },
-  useSystemColorMode: false,
   fonts: {
     body: `'SF Pro Display', sans-serif`
   },
