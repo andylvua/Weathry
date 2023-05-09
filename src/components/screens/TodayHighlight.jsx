@@ -3,8 +3,15 @@ import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../api/weatherApi";
 import { Box, Flex, Grid, GridItem, Icon, Spacer, Text } from "@chakra-ui/react";
-import { getCurrentHour, getCurrentTime } from "../../utils/time";
-import { MdCompress, MdLightMode, MdOpacity, MdThermostat, MdVisibility } from "react-icons/md";
+import { getCurrentHour } from "../../utils/time";
+import {
+  MdAir,
+  MdCompress,
+  MdLightMode,
+  MdOpacity,
+  MdThermostat,
+  MdVisibility
+} from "react-icons/md";
 
 const TodayHighlight = () => {
   const { latitude, longitude, timezone } = useSelector((state) => state.location);
@@ -55,7 +62,7 @@ const TodayHighlight = () => {
                 <Text>km/h</Text>
               </Flex>
               <Spacer />
-              <Text>{getCurrentTime()}</Text>
+              <Icon w={6} h={6} as={MdAir} />
             </Flex>
           </GridItem>
           <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
