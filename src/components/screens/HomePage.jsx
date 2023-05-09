@@ -3,6 +3,7 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import SearchModal from "../modals/search-modal/SearchModal";
 import CurrentWeather from "./CurrentWeather";
 import TodayHighlight from "./TodayHighlight";
+import Forecast from "./Forecast";
 
 const HomePage = () => {
   return (
@@ -15,7 +16,11 @@ const HomePage = () => {
           <TodayHighlight />
         </GridItem>
       </Grid>
-
+      <Grid mt={8} templateColumns="1fr 2fr">
+        <GridItem>
+          <Forecast />
+        </GridItem>
+      </Grid>
       <SearchModal />
     </Layout>
   );

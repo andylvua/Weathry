@@ -52,7 +52,7 @@ const TodayHighlight = () => {
           gridTemplateColumns={"1fr 1fr 1fr"}
           w={"full"}
         >
-          <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
+          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>Wind Status</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
@@ -65,7 +65,7 @@ const TodayHighlight = () => {
               <Icon w={6} h={6} as={MdAir} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
+          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>UV Index</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
@@ -78,7 +78,7 @@ const TodayHighlight = () => {
               <Icon w={6} h={6} as={MdLightMode} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
+          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>Humidity</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
@@ -91,7 +91,7 @@ const TodayHighlight = () => {
               <Icon w={6} h={6} as={MdOpacity} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
+          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>Visibility</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
@@ -104,7 +104,7 @@ const TodayHighlight = () => {
               <Icon w={6} h={6} as={MdVisibility} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
+          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>Feels like</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
@@ -116,7 +116,7 @@ const TodayHighlight = () => {
               <Icon w={6} h={6} as={MdThermostat} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"#1D1F20"} p={3}>
+          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>Pressure</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>

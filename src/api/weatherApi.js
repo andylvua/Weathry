@@ -23,7 +23,7 @@ export const weatherApi = {
   },
   dailyWeather(latitude, longitude, timezone) {
     return instanceOpenMeteo.get(
-      `/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,uv_index_max,windspeed_10m_max&timezone=${timezone}`
+      `/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,uv_index_max,windspeed_10m_max,weathercode&timezone=${timezone}`
     );
   }
 };
