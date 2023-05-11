@@ -52,15 +52,6 @@ const FeedbackPage = () => {
         console.log(error.text);
       }
     );
-
-    console.log(form.current);
-    console.log(`
-    ${feedbackForm.mailType}
-    
-    ${feedbackForm.email}
-    
-    ${feedbackForm.text}
-    `);
   };
 
   const handleInputEmailChange = (event) => {
