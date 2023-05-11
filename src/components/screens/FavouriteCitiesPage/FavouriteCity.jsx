@@ -16,10 +16,10 @@ import {
 } from "../../../store/location/LocationSlice";
 import { useNavigate } from "react-router-dom";
 
-const FavouriteCity = ({ favouriteCity }) => {
+const FavouriteCity = ({ favouriteCity: favoriteCity }) => {
   const { data: favouriteCityCurrentWeather } = useQuery(
-    ["current weather", favouriteCity.latitude, favouriteCity.longitude],
-    () => weatherApi.currentWeather(favouriteCity.latitude, favouriteCity.longitude),
+    ["current weather", favoriteCity.latitude, favoriteCity.longitude],
+    () => weatherApi.currentWeather(favoriteCity.latitude, favoriteCity.longitude),
     {
       select({ data }) {
         return data.current_weather;
@@ -29,12 +29,12 @@ const FavouriteCity = ({ favouriteCity }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(setCityName(favouriteCity.cityName));
-    dispatch(setCountryName(favouriteCity.countryName));
-    dispatch(setCountryCode(favouriteCity.countryCode));
-    dispatch(setLatitude(favouriteCity.latitude));
-    dispatch(setLongitude(favouriteCity.longitude));
-    dispatch(setTimezone(favouriteCity.timezone));
+    dispatch(setCityName(favoriteCity.cityName));
+    dispatch(setCountryName(favoriteCity.countryName));
+    dispatch(setCountryCode(favoriteCity.countryCode));
+    dispatch(setLatitude(favoriteCity.latitude));
+    dispatch(setLongitude(favoriteCity.longitude));
+    dispatch(setTimezone(favoriteCity.timezone));
 
     navigate("/");
   };
@@ -61,9 +61,9 @@ const FavouriteCity = ({ favouriteCity }) => {
         />
         <Box mt={4}>
           <Text color={"white"} fontSize={"3xl"}>
-            {favouriteCity.cityName}
+            {favoriteCity.cityName}
           </Text>
-          <Text>{getCurrentTime(favouriteCity.timezone)}</Text>
+          <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
         <Text color={"white"} fontSize={"3xl"} mt={4}>

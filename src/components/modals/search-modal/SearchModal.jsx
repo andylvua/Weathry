@@ -26,6 +26,7 @@ const SearchModal = () => {
   const dispatch = useDispatch();
   const onClose = () => dispatch(setIsOpen(false));
   const isOpen = useSelector((state) => state.searchModal.isOpen);
+
   const { data, isLoading } = useQuery(
     ["search city", debouncedCity],
     () => weatherApi.searchCity(city, 5),

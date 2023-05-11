@@ -1,6 +1,16 @@
-import { Icon, List, ListItem, Spacer, Text, Image, Stack, Skeleton } from "@chakra-ui/react";
-import { MdLocationCity } from "react-icons/md";
-import React from "react";
+import {
+  Icon,
+  List,
+  ListItem,
+  Spacer,
+  Text,
+  Image,
+  Stack,
+  Skeleton,
+  IconButton
+} from "@chakra-ui/react";
+import { MdFavorite, MdFavoriteBorder, MdLocationCity } from "react-icons/md";
+import React, { useEffect, useState } from "react";
 import {
   setCityName,
   setCountryCode,
@@ -25,6 +35,47 @@ const CityList = (data, isLoading) => {
 
     dispatch(setIsOpen(false));
   };
+  const [favoriteCities, setFavoriteCities] = useState(null);
+
+  const addToFavoriteList = (city) => {
+    const favoriteCity = {
+      cityName: city.name,
+      countryName: city.country,
+      countryCode: city.country_code,
+      latitude: city.latitude,
+      longitude: city.longitude,
+      timezone: city.timezone,
+      id: city.id
+    };
+
+    if (!checkIsAlreadyFavorite(city.id)) {
+      setFavoriteCities((prev) => [favoriteCity, ...prev]);
+    }
+  };
+
+  const deleteFromFavoriteList = (cityId) => {
+    setFavoriteCities((prev) => prev.filter((el) => el.id !== cityId));
+  };
+
+  const checkIsAlreadyFavorite = (cityId) => {
+    return !!favoriteCities.find((el) => el.id === cityId);
+  };
+
+  useEffect(() => {
+    const data = localStorage.getItem("favoriteCities");
+    if (data) {
+      setFavoriteCities(JSON.parse(data));
+    } else {
+      setFavoriteCities([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (favoriteCities) {
+      localStorage.setItem("favoriteCities", JSON.stringify(favoriteCities));
+    }
+  }, [favoriteCities]);
+
   if (!isLoading) {
     return (
       <Stack mt={5}>
@@ -68,6 +119,26 @@ const CityList = (data, isLoading) => {
             {city.name}, {city.country}
           </Text>
           <Spacer />
+          <IconButton
+            onClick={(event) => {
+              event.stopPropagation();
+              if (checkIsAlreadyFavorite(city.id)) {
+                deleteFromFavoriteList(city.id);
+              } else {
+                addToFavoriteList(city);
+              }
+            }}
+            position={"relative"}
+            zIndex={10}
+            aria-label={""}
+          >
+            <Icon
+              fill={"red.500"}
+              w={8}
+              h={8}
+              as={checkIsAlreadyFavorite(city.id) ? MdFavorite : MdFavoriteBorder}
+            />
+          </IconButton>
           <Image w={10} h={10} src={`https://flagsapi.com/${city.country_code}/flat/32.png`} />
         </ListItem>
       ))}
