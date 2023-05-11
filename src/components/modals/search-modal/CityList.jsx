@@ -37,6 +37,10 @@ const CityList = (data, isLoading) => {
   };
   const [favoriteCities, setFavoriteCities] = useState(null);
 
+  const checkIsAlreadyFavorite = (cityId) => {
+    return !!favoriteCities.find((el) => el.id === cityId);
+  };
+
   const addToFavoriteList = (city) => {
     const favoriteCity = {
       cityName: city.name,
@@ -55,10 +59,6 @@ const CityList = (data, isLoading) => {
 
   const deleteFromFavoriteList = (cityId) => {
     setFavoriteCities((prev) => prev.filter((el) => el.id !== cityId));
-  };
-
-  const checkIsAlreadyFavorite = (cityId) => {
-    return !!favoriteCities.find((el) => el.id === cityId);
   };
 
   useEffect(() => {
@@ -87,7 +87,7 @@ const CityList = (data, isLoading) => {
       </Stack>
     );
   }
-  if (!cities) {
+  if (!cities || !favoriteCities) {
     return (
       <Text mt={5} fontSize={"2xl"} textAlign={"center"}>
         No data...
