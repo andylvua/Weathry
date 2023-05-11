@@ -20,6 +20,7 @@ import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 
 const FeedbackPage = () => {
   const form = useRef();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedbackForm, setFeedbackForm] = useState({
     mailType: "Tell about the problem",
     email: "",
@@ -45,12 +46,16 @@ const FeedbackPage = () => {
       return;
     }
 
+    setIsSubmitting(true);
+
     emailjs.sendForm("service_fjgbi4e", "template_vgej6tc", form.current, "sGi4vSjMMbNXBNIpc").then(
-      (result) => {
-        console.log(result.text);
+      () => {
+        setIsSubmitting(false);
+        setFeedbackForm({ ...feedbackForm, email: "", text: "" });
       },
-      (error) => {
-        console.log(error.text);
+      () => {
+        setIsSubmitting(false);
+        setFeedbackForm({ ...feedbackForm, email: "", text: "" });
       }
     );
   };
@@ -144,7 +149,9 @@ const FeedbackPage = () => {
                 <FormErrorMessage>Text is required.</FormErrorMessage>
               )}
             </FormControl>
-            <Button type={"submit"}>Submit</Button>
+            <Button isLoading={isSubmitting} type={"submit"}>
+              Submit
+            </Button>
           </Flex>
         </GradientBlock>
       </form>
