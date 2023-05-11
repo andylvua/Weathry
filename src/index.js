@@ -9,6 +9,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import Fonts from "./components/Fonts";
+import GPSProvider from "./components/GPSProvider";
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,7 +20,9 @@ root.render(
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-          <RouterProvider router={router}></RouterProvider>
+          <GPSProvider>
+            <RouterProvider router={router}></RouterProvider>
+          </GPSProvider>
         </Provider>
       </QueryClientProvider>
     </ChakraProvider>
