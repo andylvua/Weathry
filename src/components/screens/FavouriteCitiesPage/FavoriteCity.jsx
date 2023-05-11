@@ -2,7 +2,7 @@ import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { weatherCodes } from "../../../utils/weatherCodes";
-import { Box, Flex, Image, Skeleton, Spacer, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Image, Skeleton, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import { getCurrentTime } from "../../../utils/time";
 import { useDispatch } from "react-redux";
@@ -16,8 +16,8 @@ import {
 } from "../../../store/location/LocationSlice";
 import { useNavigate } from "react-router-dom";
 
-const FavouriteCity = ({ favouriteCity: favoriteCity }) => {
-  const { data: favouriteCityCurrentWeather } = useQuery(
+const FavoriteCity = ({ favoriteCity }) => {
+  const { data: favoriteCityCurrentWeather } = useQuery(
     ["current weather", favoriteCity.latitude, favoriteCity.longitude],
     () => weatherApi.currentWeather(favoriteCity.latitude, favoriteCity.longitude),
     {
@@ -39,7 +39,7 @@ const FavouriteCity = ({ favouriteCity: favoriteCity }) => {
     navigate("/");
   };
 
-  if (!favouriteCityCurrentWeather) {
+  if (!favoriteCityCurrentWeather) {
     return <Skeleton height="80px" />;
   }
 
@@ -57,21 +57,28 @@ const FavouriteCity = ({ favouriteCity: favoriteCity }) => {
           display={"block"}
           w={28}
           h={28}
-          src={weatherCodes[favouriteCityCurrentWeather.weathercode].imgSrc}
+          src={weatherCodes[favoriteCityCurrentWeather.weathercode].imgSrc}
         />
         <Box mt={4}>
-          <Text color={"white"} fontSize={"3xl"}>
-            {favoriteCity.cityName}
-          </Text>
+          <HStack>
+            <Text color={"white"} fontSize={"3xl"}>
+              {favoriteCity.cityName}
+            </Text>
+            <Image
+              w={5}
+              h={5}
+              src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
+            />
+          </HStack>
           <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
         <Text color={"white"} fontSize={"3xl"} mt={4}>
-          {favouriteCityCurrentWeather.temperature}°С
+          {favoriteCityCurrentWeather.temperature}°С
         </Text>
       </Flex>
     </GradientBlock>
   );
 };
 
-export default FavouriteCity;
+export default FavoriteCity;
