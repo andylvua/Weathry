@@ -21,7 +21,7 @@ const HourlyForecast = () => {
             temperature: data.hourly["temperature_2m"][currentIndex],
             time: data.hourly["time"][currentIndex],
             weatherCode: data.hourly["weathercode"][currentIndex],
-            windSpeed: (data.hourly["windspeed_10m"][currentIndex] / 1000).toFixed(1)
+            windSpeed: data.hourly["windspeed_10m"][currentIndex].toFixed(1)
           });
         }
 
