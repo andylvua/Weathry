@@ -48,8 +48,23 @@ const GPSProvider = ({ children }) => {
           dispatch(setTimezone(infoBlock.name));
         }
       });
+      const GPSCity = {
+        cityName: data.locality,
+        countryCode: data.countryCode,
+        countryName: data.countryName,
+        latitude: data.latitude,
+        longitude: data.longitude,
+        timezone: ""
+      };
+      data.localityInfo.informative.forEach((infoBlock) => {
+        if (infoBlock.description === "time zone") {
+          GPSCity.timezone = infoBlock.name;
+        }
+      });
+      localStorage.setItem("GPSCity", JSON.stringify(GPSCity));
     }
   }, [data]);
+
   return <>{children}</>;
 };
 
