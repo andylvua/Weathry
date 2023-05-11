@@ -11,7 +11,7 @@ import React from "react";
 
 const CurrentWeather = () => {
   const dispatch = useDispatch();
-  const { latitude, longitude, cityName, countryName, countryCode } = useSelector(
+  const { latitude, longitude, cityName, countryName, countryCode, timezone } = useSelector(
     (state) => state.location
   );
   const onOpen = () => dispatch(setIsOpen(true));
@@ -74,7 +74,7 @@ const CurrentWeather = () => {
           <Flex mt={4} alignItems={"center"} gap={2}>
             <Icon color={"white"} w={6} h={6} as={MdCalendarMonth} />
             <Text fontSize={"sm"} color={"white"}>
-              {getCurrentDate(data.time)} | {getCurrentTime(data.time)}
+              {getCurrentDate()} | {getCurrentTime(timezone)}
             </Text>
           </Flex>
         </Flex>

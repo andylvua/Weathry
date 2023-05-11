@@ -1,6 +1,6 @@
-export const getCurrentTime = () => {
+export const getCurrentTime = (timezone = "") => {
   const date = new Date();
-  return date.toLocaleTimeString([], { hour: "numeric", minute: "numeric" });
+  return date.toLocaleTimeString([], { timeZone: timezone, hour: "numeric", minute: "numeric" });
 };
 
 export const getCurrentDate = () => {
