@@ -27,6 +27,11 @@ export const getDayNumberFromString = (dateString) => {
   return new Date(dateString).getDate();
 };
 
+export const getHourFromString = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleTimeString([], { hour: "numeric" });
+};
+
 export const getMonthNameFromString = (dateString) => {
   const date = new Date(dateString);
   const months = [

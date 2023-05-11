@@ -4,6 +4,7 @@ import SearchModal from "../../modals/search-modal/SearchModal";
 import CurrentWeather from "./CurrentWeather";
 import TodayHighlight from "./TodayHighlight";
 import Forecast from "./Forecast";
+import HourlyForecast from "./HourlyForecast";
 
 const HomePage = () => {
   return (
@@ -16,9 +17,12 @@ const HomePage = () => {
           <TodayHighlight />
         </GridItem>
       </Grid>
-      <Grid mt={8} templateColumns="1fr 2fr">
+      <Grid gap={4} mt={8} templateColumns="1fr 2fr">
         <GridItem>
           <Forecast />
+        </GridItem>
+        <GridItem>
+          <HourlyForecast />
         </GridItem>
       </Grid>
       <SearchModal />

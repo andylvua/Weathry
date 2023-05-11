@@ -20,7 +20,7 @@ export const weatherApi = {
   },
   hourlyWeather(latitude, longitude) {
     return instanceOpenMeteo.get(
-      `/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,visibility,apparent_temperature,windspeed_10m,pressure_msl`
+      `/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,visibility,apparent_temperature,windspeed_10m,pressure_msl,weathercode,windspeed_10m`
     );
   },
   dailyWeather(latitude, longitude, timezone) {
