@@ -14,9 +14,11 @@ import {
   Text,
   Textarea
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const FeedbackPage = () => {
+  const form = useRef();
   const [feedbackForm, setFeedbackForm] = useState({
     mailType: "Tell about the problem",
     email: "",
@@ -42,6 +44,16 @@ const FeedbackPage = () => {
       return;
     }
 
+    emailjs.sendForm("service_fjgbi4e", "template_vgej6tc", form.current, "sGi4vSjMMbNXBNIpc").then(
+      (result) => {
+        console.log(result.text);
+      },
+      (error) => {
+        console.log(error.text);
+      }
+    );
+
+    console.log(form.current);
     console.log(`
     ${feedbackForm.mailType}
     
@@ -62,7 +74,7 @@ const FeedbackPage = () => {
 
   return (
     <Layout>
-      <form onSubmit={handleSubmit}>
+      <form ref={form} onSubmit={handleSubmit}>
         <Flex gap={8} flexDirection={"column"} mx={"auto"} maxW={800}>
           <Heading mt={5} textAlign={"center"}>
             Feedback
@@ -79,6 +91,7 @@ const FeedbackPage = () => {
             <RadioGroup defaultValue={feedbackForm.mailType}>
               <HStack spacing="24px">
                 <Radio
+                  name={"mailType"}
                   onChange={onChangeValue}
                   checked={feedbackForm.mailType === "Tell about the problem"}
                   value="Tell about the problem"
@@ -86,6 +99,7 @@ const FeedbackPage = () => {
                   Tell about the problem
                 </Radio>
                 <Radio
+                  name={"mailType"}
                   onChange={onChangeValue}
                   checked={feedbackForm.mailType === "Suggest new features"}
                   value="Suggest new features"
@@ -106,6 +120,7 @@ const FeedbackPage = () => {
             </FormLabel>
             <Input
               type="email"
+              name={"email"}
               value={feedbackForm.email}
               onChange={handleInputEmailChange}
               placeholder={"email"}
@@ -126,6 +141,7 @@ const FeedbackPage = () => {
               </Flex>
             </FormLabel>
             <Textarea
+              name={"text"}
               type="text"
               value={feedbackForm.text}
               onChange={handleInputTextChange}
