@@ -51,9 +51,9 @@ const Forecast = () => {
   if (!days) {
     return null;
   }
-
+  const tomorrowDay = days[1];
   return (
-    <Box>
+    <Box position={"relative"} overflow={"hidden"}>
       <Flex>
         <Text fontSize={"xl"} color={"white"}>
           {daysCount === 5 ? "5 days Forecast" : "7 days Forecast"}
@@ -70,7 +70,7 @@ const Forecast = () => {
         </Menu>
       </Flex>
       <GradientBlock mt={4} withoutPaddings={true}>
-        <List display={"flex"} flexDirection={"column"} gap={5} p={3}>
+        <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={70}>
           {days.slice(0, daysCount).map((day) => (
             <ListItem
               key={day.time}
@@ -99,6 +99,28 @@ const Forecast = () => {
           ))}
         </List>
       </GradientBlock>
+      <Flex
+        w={"94%"}
+        zIndex={10}
+        position={"absolute"}
+        bottom={5}
+        left={"50%"}
+        borderRadius={20}
+        transform={"translateX(-50%)"}
+        bg={"#15161A"}
+        py={3}
+        px={2}
+        boxShadow={"-1px -1px 58px 0px rgba(255,255,255,0.3)"}
+      >
+        <Image mr={2} w={20} h={20} src={weatherCodes[tomorrowDay.weatherCode].imgSrc} />
+        <Box>
+          <Text>Tomorrow</Text>
+          <Text lineHeight={1.2} color={"white"} fontSize={"2xl"}>
+            {tomorrowDay.temperatureMax}°
+          </Text>
+          <Text>{weatherCodes[tomorrowDay.weatherCode].title}</Text>
+        </Box>
+      </Flex>
     </Box>
   );
 };
