@@ -1,9 +1,9 @@
-import GradientBlock from "../ui/GradientBlock/GradientBlock";
+import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
-import { weatherApi } from "../../api/weatherApi";
+import { weatherApi } from "../../../api/weatherApi";
 import { Box, Flex, Grid, GridItem, Icon, Spacer, Text } from "@chakra-ui/react";
-import { getCurrentHour } from "../../utils/time";
+import { getCurrentHour } from "../../../utils/time";
 import {
   MdAir,
   MdCompress,

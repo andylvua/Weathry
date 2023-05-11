@@ -14,16 +14,16 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useState } from "react";
-import GradientBlock from "../ui/GradientBlock/GradientBlock";
+import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { useQuery } from "react-query";
-import { weatherApi } from "../../api/weatherApi";
+import { weatherApi } from "../../../api/weatherApi";
 import { useSelector } from "react-redux";
 import {
   getDayNameFromString,
   getDayNumberFromString,
   getMonthNameFromString
-} from "../../utils/time";
-import { weatherCodes } from "../../utils/weatherCodes";
+} from "../../../utils/time";
+import { weatherCodes } from "../../../utils/weatherCodes";
 
 const Forecast = () => {
   const [daysCount, setDaysCount] = useState(5);

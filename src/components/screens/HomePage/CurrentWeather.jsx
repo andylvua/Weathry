@@ -1,12 +1,12 @@
 import { Divider, Flex, Icon, IconButton, Image, Text } from "@chakra-ui/react";
-import GradientBlock from "../ui/GradientBlock/GradientBlock";
+import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { MdCalendarMonth, MdLocationPin, MdSearch } from "react-icons/md";
-import { setIsOpen } from "../../store/search-modal/SearchModalSlice";
+import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
-import { weatherApi } from "../../api/weatherApi";
-import { weatherCodes } from "../../utils/weatherCodes";
-import { getCurrentDate, getCurrentTime } from "../../utils/time";
+import { weatherApi } from "../../../api/weatherApi";
+import { weatherCodes } from "../../../utils/weatherCodes";
+import { getCurrentDate, getCurrentTime } from "../../../utils/time";
 import React from "react";
 
 const CurrentWeather = () => {

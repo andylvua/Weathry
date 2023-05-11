@@ -1,11 +1,11 @@
-import { MdThermostat } from "react-icons/md";
+import { MdEmail, MdThermostat } from "react-icons/md";
 import MenuItem from "./MenuItem";
 import { List } from "@chakra-ui/react";
 
 const Menu = () => {
   const menuItems = [
     { icon: MdThermostat, direction: "/" },
-    { icon: MdThermostat, direction: "/weather" }
+    { icon: MdEmail, direction: "/feedback" }
   ];
   return (
     <List display={"flex"} gap={8} flexDirection={"column"}>

@@ -1,6 +1,6 @@
-import Layout from "../layout/Layout";
+import Layout from "../../layout/Layout";
 import { Grid, GridItem } from "@chakra-ui/react";
-import SearchModal from "../modals/search-modal/SearchModal";
+import SearchModal from "../../modals/search-modal/SearchModal";
 import CurrentWeather from "./CurrentWeather";
 import TodayHighlight from "./TodayHighlight";
 import Forecast from "./Forecast";
