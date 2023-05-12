@@ -1,4 +1,4 @@
-import { MdEmail, MdFavorite, MdThermostat } from "react-icons/md";
+import { MdEmail, MdFavorite, MdSettings, MdThermostat } from "react-icons/md";
 import MenuItem from "./MenuItem";
 import { List } from "@chakra-ui/react";
 
@@ -6,6 +6,7 @@ const Menu = () => {
   const menuItems = [
     { icon: MdThermostat, direction: "/" },
     { icon: MdFavorite, direction: "/favourite" },
+    { icon: MdSettings, direction: "/settings" },
     { icon: MdEmail, direction: "/feedback" }
   ];
   return (
