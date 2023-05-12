@@ -88,11 +88,7 @@ const CityList = (data, isLoading) => {
     );
   }
   if (!cities || !favoriteCities) {
-    return (
-      <Text mt={5} fontSize={"2xl"} textAlign={"center"}>
-        No data...
-      </Text>
-    );
+    return <Text mt={5} fontSize={"2xl"} textAlign={"center"}></Text>;
   }
 
   return (
