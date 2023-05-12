@@ -11,6 +11,11 @@ import { store } from "./store/store";
 import Fonts from "./components/Fonts";
 import GPSProvider from "./components/GPSProvider";
 
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

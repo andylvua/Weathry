@@ -21,7 +21,7 @@ const HomePage = () => {
         <GridItem>
           <Forecast />
         </GridItem>
-        <GridItem>
+        <GridItem minW={0}>
           <HourlyForecast />
         </GridItem>
       </Grid>
