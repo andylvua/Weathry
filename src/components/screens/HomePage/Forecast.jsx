@@ -72,8 +72,51 @@ const Forecast = () => {
         </Menu>
       </Flex>
       <GradientBlock mt={4} withoutPaddings={true}>
-        <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={140}>
-          {days.slice(0, daysCount).map((day) => (
+        <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={5}>
+          <ListItem
+            key={days[0].time}
+            pr={4}
+            gap={4}
+            display={"grid"}
+            gridTemplateColumns={"5fr 2fr 2fr"}
+            alignItems={"center"}
+          >
+            <Flex alignItems={"center"} gap={3}>
+              <Image w={12} h={12} src={weatherCodes[days[0].weatherCode].imgSrc} />
+              <Flex alignItems={"end"}>
+                <Text lineHeight={1} color={"white"} fontSize={"3xl"}>
+                  +{days[0].temperatureMax}°/
+                </Text>
+                <Text lineHeight={1.5} fontSize={"xl"}>
+                  +{days[0].temperatureMin}
+                </Text>
+              </Flex>
+            </Flex>
+            <Text>
+              {getDayNumberFromString(days[0].time)} {getMonthNameFromString(days[0].time)}
+            </Text>
+            <Text>{getDayNameFromString(days[0].time)}</Text>
+          </ListItem>
+          <ListItem>
+            <Flex
+              left={"50%"}
+              borderRadius={20}
+              bg={"#15161A"}
+              py={3}
+              px={2}
+              boxShadow={"-1px -1px 58px 0px rgba(255,255,255,0.3)"}
+            >
+              <Image mr={2} w={20} h={20} src={weatherCodes[tomorrowDay.weatherCode].imgSrc} />
+              <Box>
+                <Text>Tomorrow</Text>
+                <Text lineHeight={1.2} color={"white"} fontSize={"2xl"}>
+                  {tomorrowDay.temperatureMax}°
+                </Text>
+                <Text>{weatherCodes[tomorrowDay.weatherCode].title}</Text>
+              </Box>
+            </Flex>
+          </ListItem>
+          {days.slice(2, daysCount).map((day) => (
             <ListItem
               key={day.time}
               pr={4}
@@ -101,28 +144,6 @@ const Forecast = () => {
           ))}
         </List>
       </GradientBlock>
-      <Flex
-        w={"94%"}
-        zIndex={10}
-        position={"absolute"}
-        bottom={5}
-        left={"50%"}
-        borderRadius={20}
-        transform={"translateX(-50%)"}
-        bg={"#15161A"}
-        py={3}
-        px={2}
-        boxShadow={"-1px -1px 58px 0px rgba(255,255,255,0.3)"}
-      >
-        <Image mr={2} w={20} h={20} src={weatherCodes[tomorrowDay.weatherCode].imgSrc} />
-        <Box>
-          <Text>Tomorrow</Text>
-          <Text lineHeight={1.2} color={"white"} fontSize={"2xl"}>
-            {tomorrowDay.temperatureMax}°
-          </Text>
-          <Text>{weatherCodes[tomorrowDay.weatherCode].title}</Text>
-        </Box>
-      </Flex>
     </Box>
   );
 };
