@@ -65,6 +65,10 @@ const SettingsPage = () => {
     }
   }, [precipitationUnit]);
 
+  if (!temperatureUnit || !windSpeedUnit || !precipitationUnit) {
+    return <Layout></Layout>;
+  }
+
   return (
     <Layout>
       <GradientBlock mt={5} mx={"auto"} maxW={800}>
@@ -243,7 +247,7 @@ const SettingsPage = () => {
                 content: `""`,
                 position: "absolute",
                 transition: "all ease .3s",
-                left: precipitationUnit === "millimeter" ? 0 : "50%",
+                left: precipitationUnit !== "millimeter" ? "50%" : 0,
                 display: "block",
                 bg: "blue.800",
                 w: "49%",
