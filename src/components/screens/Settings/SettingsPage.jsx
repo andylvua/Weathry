@@ -1,27 +1,69 @@
 import Layout from "../../layout/Layout";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { Box, Center, Flex, Heading, Text, VStack } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const SettingsPage = () => {
-  const [temperature, setTemperature] = useState("celsius"); // fahrenheit
-  const [windSpeed, setWindSpeed] = useState("km"); // ms | mph | kn
-  const [precipitation, setPrecipitation] = useState("millimeter"); // inch
+  const [temperatureUnit, setTemperatureUnit] = useState(""); // celsius | fahrenheit
+  const [windSpeedUnit, setWindSpeedUnit] = useState(""); // km | ms | mph | kn
+  const [precipitationUnit, setPrecipitationUnit] = useState(""); // millimeter | inch
 
   const getWindSpeedPosition = () => {
-    if (windSpeed === "km") {
+    if (windSpeedUnit === "km") {
       return "0%";
     }
-    if (windSpeed === "ms") {
+    if (windSpeedUnit === "ms") {
       return "25%";
     }
-    if (windSpeed === "mph") {
+    if (windSpeedUnit === "mph") {
       return "50%";
     }
-    if (windSpeed === "kn") {
+    if (windSpeedUnit === "kn") {
       return "75%";
     }
   };
+
+  useEffect(() => {
+    const temperatureUnitData = localStorage.getItem("temperatureUnit");
+    const windSpeedUnitData = localStorage.getItem("windSpeedUnit");
+    const precipitationUnitData = localStorage.getItem("precipitationUnit");
+
+    if (temperatureUnitData) {
+      setTemperatureUnit(temperatureUnitData);
+    } else {
+      setTemperatureUnit("celsius");
+    }
+
+    if (windSpeedUnitData) {
+      setWindSpeedUnit(windSpeedUnitData);
+    } else {
+      setWindSpeedUnit("km");
+    }
+
+    if (precipitationUnitData) {
+      setPrecipitationUnit(precipitationUnitData);
+    } else {
+      setPrecipitationUnit("millimeter");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (temperatureUnit) {
+      localStorage.setItem("temperatureUnit", temperatureUnit);
+    }
+  }, [temperatureUnit]);
+
+  useEffect(() => {
+    if (temperatureUnit) {
+      localStorage.setItem("windSpeedUnit", windSpeedUnit);
+    }
+  }, [windSpeedUnit]);
+
+  useEffect(() => {
+    if (temperatureUnit) {
+      localStorage.setItem("precipitationUnit", precipitationUnit);
+    }
+  }, [precipitationUnit]);
 
   return (
     <Layout>
@@ -37,7 +79,7 @@ const SettingsPage = () => {
                 content: `""`,
                 position: "absolute",
                 transition: "all ease .3s",
-                left: temperature === "celsius" ? 0 : "50%",
+                left: temperatureUnit === "celsius" ? 0 : "50%",
                 display: "block",
                 bg: "blue.800",
                 w: "49%",
@@ -53,7 +95,7 @@ const SettingsPage = () => {
               bg={"rgba(29,31,32,1)"}
             >
               <Center
-                onClick={() => setTemperature("celsius")}
+                onClick={() => setTemperatureUnit("celsius")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -61,7 +103,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={temperature === "celsius" ? "white" : ""}
+                  color={temperatureUnit === "celsius" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -72,7 +114,7 @@ const SettingsPage = () => {
               </Center>
 
               <Center
-                onClick={() => setTemperature("fahrenheit")}
+                onClick={() => setTemperatureUnit("fahrenheit")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -80,7 +122,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={temperature === "fahrenheit" ? "white" : ""}
+                  color={temperatureUnit === "fahrenheit" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -116,7 +158,7 @@ const SettingsPage = () => {
               bg={"rgba(29,31,32,1)"}
             >
               <Center
-                onClick={() => setWindSpeed("km")}
+                onClick={() => setWindSpeedUnit("km")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -124,7 +166,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={windSpeed === "km" ? "white" : ""}
+                  color={windSpeedUnit === "km" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -135,7 +177,7 @@ const SettingsPage = () => {
               </Center>
 
               <Center
-                onClick={() => setWindSpeed("ms")}
+                onClick={() => setWindSpeedUnit("ms")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -143,7 +185,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={windSpeed === "ms" ? "white" : ""}
+                  color={windSpeedUnit === "ms" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -154,7 +196,7 @@ const SettingsPage = () => {
               </Center>
 
               <Center
-                onClick={() => setWindSpeed("mph")}
+                onClick={() => setWindSpeedUnit("mph")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -162,7 +204,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={windSpeed === "mph" ? "white" : ""}
+                  color={windSpeedUnit === "mph" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -173,7 +215,7 @@ const SettingsPage = () => {
               </Center>
 
               <Center
-                onClick={() => setWindSpeed("kn")}
+                onClick={() => setWindSpeedUnit("kn")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -181,7 +223,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={windSpeed === "kn" ? "white" : ""}
+                  color={windSpeedUnit === "kn" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -201,7 +243,7 @@ const SettingsPage = () => {
                 content: `""`,
                 position: "absolute",
                 transition: "all ease .3s",
-                left: precipitation === "millimeter" ? 0 : "50%",
+                left: precipitationUnit === "millimeter" ? 0 : "50%",
                 display: "block",
                 bg: "blue.800",
                 w: "49%",
@@ -217,7 +259,7 @@ const SettingsPage = () => {
               bg={"rgba(29,31,32,1)"}
             >
               <Center
-                onClick={() => setPrecipitation("millimeter")}
+                onClick={() => setPrecipitationUnit("millimeter")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -225,7 +267,7 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={precipitation === "millimeter" ? "white" : ""}
+                  color={precipitationUnit === "millimeter" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
@@ -236,7 +278,7 @@ const SettingsPage = () => {
               </Center>
 
               <Center
-                onClick={() => setPrecipitation("inch")}
+                onClick={() => setPrecipitationUnit("inch")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -244,13 +286,13 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={precipitation === "inch" ? "white" : ""}
+                  color={precipitationUnit === "inch" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
                   fontSize={"xl"}
                 >
-                  Fahrenheit
+                  Inch
                 </Text>
               </Center>
             </Flex>
