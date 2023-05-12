@@ -24,14 +24,14 @@ export const weatherCodes = {
 
   66: { title: "Freezing Rain light", imgSrc: "https://openweathermap.org/img/wn/13d@4x.png" },
   67: {
-    title: "Freezing Rain heavy intensity",
+    title: "Freezing Rain heavy",
     imgSrc: "https://openweathermap.org/img/wn/13d@4x.png"
   },
 
   71: { title: "Snow fall slight", imgSrc: "https://openweathermap.org/img/wn/13d@4x.png" },
   73: { title: "Snow fall moderate", imgSrc: "https://openweathermap.org/img/wn/13d@4x.png" },
   75: {
-    title: "Snow fall heavy intensity",
+    title: "Snow fall heavy",
     imgSrc: "https://openweathermap.org/img/wn/13d@4x.png"
   },
 

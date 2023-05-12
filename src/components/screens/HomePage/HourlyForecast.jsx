@@ -8,7 +8,7 @@ import { weatherCodes } from "../../../utils/weatherCodes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
-import { MdAir, MdCompress } from "react-icons/md";
+import { MdAir } from "react-icons/md";
 
 const HourlyForecast = () => {
   const { latitude, longitude } = useSelector((state) => state.location);
@@ -78,15 +78,9 @@ const HourlyForecast = () => {
                     <Text>{el.windSpeedUnit}</Text>
                   </Flex>
                 </Flex>
-                <Flex gap={2} mt={6} flexDirection={"column"} alignItems={"center"}>
-                  <Icon w={5} h={5} fill="white" as={MdCompress} />
-                  <Flex alignItems={"end"} gap={1}>
-                    <Text lineHeight={1} color={"white"} fontSize={"xl"}>
-                      {el.pressure}
-                    </Text>
-                    <Text>hPa</Text>
-                  </Flex>
-                </Flex>
+                <Text textAlign={"center"} fontSize={16} mt={5}>
+                  {weatherCodes[el.weatherCode].title}
+                </Text>
               </Flex>
             </SwiperSlide>
           ))}
