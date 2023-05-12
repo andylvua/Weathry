@@ -90,8 +90,8 @@ const HourlyForecast = () => {
               </Flex>
             </SwiperSlide>
           ))}
-          <span slot="container-end">
-            <Flex mt={8} mb={2} gap={5} justifyContent={"center"}>
+          <span slot="container-start">
+            <Flex mb={3} gap={5} justifyContent={"end"}>
               <SlideNavigationButton type={"prev"} />
               <SlideNavigationButton type={"next"} />
             </Flex>
