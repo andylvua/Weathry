@@ -24,6 +24,10 @@ const FavoriteCitiesPage = () => {
     }
   }, [favoriteCities]);
 
+  const deleteFromFavoriteList = (cityId) => {
+    setFavoriteCities((prev) => prev.filter((el) => el.id !== cityId));
+  };
+
   if (!favoriteCities) {
     return <Layout></Layout>;
   }
@@ -36,7 +40,11 @@ const FavoriteCitiesPage = () => {
             <Text fontSize={"2xl"} color={"white"}>
               Geo-located city
             </Text>
-            <FavoriteCity isGeolocated={true} favoriteCity={GPSCity} />
+            <FavoriteCity
+              deleteFromFavoriteList={deleteFromFavoriteList}
+              isGeolocated={true}
+              favoriteCity={GPSCity}
+            />
             <Divider bg={"white"} />
           </>
         )}
@@ -44,7 +52,11 @@ const FavoriteCitiesPage = () => {
           Favorite cities
         </Text>
         {favoriteCities.map((favoriteCity) => (
-          <FavoriteCity key={favoriteCity.id} favoriteCity={favoriteCity} />
+          <FavoriteCity
+            deleteFromFavoriteList={deleteFromFavoriteList}
+            key={favoriteCity.id}
+            favoriteCity={favoriteCity}
+          />
         ))}
       </VStack>
     </Layout>

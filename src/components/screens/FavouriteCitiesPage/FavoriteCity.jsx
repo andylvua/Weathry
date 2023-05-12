@@ -2,7 +2,17 @@ import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { weatherCodes } from "../../../utils/weatherCodes";
-import { Box, Flex, HStack, Icon, Image, Skeleton, Spacer, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  Icon,
+  IconButton,
+  Image,
+  Skeleton,
+  Spacer,
+  Text
+} from "@chakra-ui/react";
 import React from "react";
 import { getCurrentTime } from "../../../utils/time";
 import { useDispatch } from "react-redux";
@@ -15,9 +25,9 @@ import {
   setTimezone
 } from "../../../store/location/LocationSlice";
 import { useNavigate } from "react-router-dom";
-import { MdLocationOn } from "react-icons/md";
+import { MdClose, MdLocationOn } from "react-icons/md";
 
-const FavoriteCity = ({ favoriteCity, isGeolocated = false }) => {
+const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = false }) => {
   const { data: favoriteCityCurrentWeather } = useQuery(
     ["current weather", favoriteCity.latitude, favoriteCity.longitude],
     () => weatherApi.currentWeather(favoriteCity.latitude, favoriteCity.longitude),
@@ -78,6 +88,18 @@ const FavoriteCity = ({ favoriteCity, isGeolocated = false }) => {
         <Text color={"white"} fontSize={"3xl"} mt={4}>
           {favoriteCityCurrentWeather.temperature}°С
         </Text>
+        {!isGeolocated && (
+          <IconButton
+            onClick={(event) => {
+              event.stopPropagation();
+              deleteFromFavoriteList(favoriteCity.id);
+            }}
+            mt={4}
+            aria-label={""}
+          >
+            <Icon fill={"red.500"} as={MdClose} w={7} h={7} />
+          </IconButton>
+        )}
       </Flex>
     </GradientBlock>
   );
