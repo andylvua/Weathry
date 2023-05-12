@@ -47,7 +47,7 @@ export const weatherApi = {
   },
   dailyWeather(latitude, longitude, timezone, units = {}) {
     return instanceOpenMeteo.get(
-      `/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,uv_index_max,windspeed_10m_max,weathercode&timezone=${timezone}&${getUnitsString(
+      `/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,uv_index_max,windspeed_10m_max,weathercode&forecast_days=14&timezone=${timezone}&${getUnitsString(
         units.temperatureUnit,
         units.windSpeedUnit,
         units.precipitationUnit

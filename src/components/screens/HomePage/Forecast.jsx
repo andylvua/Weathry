@@ -36,7 +36,7 @@ const Forecast = () => {
     {
       select({ data }) {
         const days = [];
-        for (let index = 0; index < 7; index++) {
+        for (let index = 0; index < 8; index++) {
           days.push({
             temperatureMax: data.daily["temperature_2m_max"][index],
             temperatureMin: data.daily["temperature_2m_min"][index],
@@ -73,30 +73,6 @@ const Forecast = () => {
       </Flex>
       <GradientBlock mt={4} withoutPaddings={true}>
         <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={5}>
-          <ListItem
-            key={days[0].time}
-            pr={4}
-            gap={4}
-            display={"grid"}
-            gridTemplateColumns={"5fr 2fr 2fr"}
-            alignItems={"center"}
-          >
-            <Flex alignItems={"center"} gap={3}>
-              <Image w={12} h={12} src={weatherCodes[days[0].weatherCode].imgSrc} />
-              <Flex alignItems={"end"}>
-                <Text lineHeight={1} color={"white"} fontSize={"3xl"}>
-                  +{days[0].temperatureMax}°/
-                </Text>
-                <Text lineHeight={1.5} fontSize={"xl"}>
-                  +{days[0].temperatureMin}
-                </Text>
-              </Flex>
-            </Flex>
-            <Text>
-              {getDayNumberFromString(days[0].time)} {getMonthNameFromString(days[0].time)}
-            </Text>
-            <Text>{getDayNameFromString(days[0].time)}</Text>
-          </ListItem>
           <ListItem>
             <Flex
               left={"50%"}
@@ -116,7 +92,7 @@ const Forecast = () => {
               </Box>
             </Flex>
           </ListItem>
-          {days.slice(2, daysCount).map((day) => (
+          {days.slice(2, daysCount + 1).map((day) => (
             <ListItem
               key={day.time}
               pr={4}
