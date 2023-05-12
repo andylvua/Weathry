@@ -87,7 +87,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
           <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
-        <Text color={"white"} fontSize={"3xl"} mt={4}>
+        <Text mr={isGeolocated ? 14 : 0} color={"white"} fontSize={"3xl"} mt={4}>
           {favoriteCityCurrentWeather.temperature}
           {temperatureUnit === "celsius" ? "°С" : "°F"}
         </Text>
