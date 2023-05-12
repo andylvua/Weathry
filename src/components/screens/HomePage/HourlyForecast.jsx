@@ -1,5 +1,5 @@
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
-import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Divider, Flex, Icon, Image, Text } from "@chakra-ui/react";
 import { getHourFromString } from "../../../utils/time";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
@@ -8,6 +8,7 @@ import { weatherCodes } from "../../../utils/weatherCodes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
+import { MdAir, MdCompress } from "react-icons/md";
 
 const HourlyForecast = () => {
   const { latitude, longitude } = useSelector((state) => state.location);
@@ -23,7 +24,8 @@ const HourlyForecast = () => {
             temperature: data.hourly["temperature_2m"][index],
             time: data.hourly["time"][index],
             weatherCode: data.hourly["weathercode"][index],
-            windSpeed: data.hourly["windspeed_10m"][index].toFixed(1)
+            windSpeed: data.hourly["windspeed_10m"][index].toFixed(1),
+            pressure: data.hourly["pressure_msl"][index]
           });
         }
 
@@ -57,22 +59,35 @@ const HourlyForecast = () => {
               >
                 <Text>{getHourFromString(el.time)}</Text>
                 <Image mt={4} w={14} h={14} src={weatherCodes[el.weatherCode].imgSrc} />
-                <Flex mt={3} flexDirection={"column"} alignItems={"center"}>
+                <Flex gap={2} mt={3} flexDirection={"column"} alignItems={"center"}>
                   <Text lineHeight={1} color={"white"} fontSize={"2xl"}>
                     {el.temperature}°
                   </Text>
                 </Flex>
-                <Flex mt={5} alignItems={"end"} gap={1}>
-                  <Text lineHeight={1} color={"white"} fontSize={"xl"}>
-                    {el.windSpeed}
-                  </Text>
-                  <Text>km/h</Text>
+                <Divider bg={"white"} mt={5} />
+                <Flex gap={2} mt={8} flexDirection={"column"} alignItems={"center"}>
+                  <Icon w={5} h={5} fill="white" as={MdAir} />
+                  <Flex alignItems={"end"} gap={1}>
+                    <Text lineHeight={1} color={"white"} fontSize={"xl"}>
+                      {el.windSpeed}
+                    </Text>
+                    <Text>km/h</Text>
+                  </Flex>
+                </Flex>
+                <Flex gap={2} mt={6} flexDirection={"column"} alignItems={"center"}>
+                  <Icon w={5} h={5} fill="white" as={MdCompress} />
+                  <Flex alignItems={"end"} gap={1}>
+                    <Text lineHeight={1} color={"white"} fontSize={"xl"}>
+                      {el.pressure}
+                    </Text>
+                    <Text>hPa</Text>
+                  </Flex>
                 </Flex>
               </Flex>
             </SwiperSlide>
           ))}
           <span slot="container-end">
-            <Flex mt={5} mb={2} gap={5} justifyContent={"center"}>
+            <Flex mt={8} mb={2} gap={5} justifyContent={"center"}>
               <SlideNavigationButton type={"prev"} />
               <SlideNavigationButton type={"next"} />
             </Flex>
