@@ -53,7 +53,7 @@ const HourlyForecast = () => {
                 px={2}
                 bg={"rgba(29,31,32,0.44)"}
               >
-                <Text>{getHourFromString(el.time)}:00</Text>
+                <Text>{getHourFromString(el.time)}</Text>
                 <Image mt={4} w={14} h={14} src={weatherCodes[el.weatherCode].imgSrc} />
                 <Flex mt={3} flexDirection={"column"} alignItems={"center"}>
                   <Text lineHeight={1} color={"white"} fontSize={"2xl"}>
