@@ -1,5 +1,5 @@
 import Layout from "../../layout/Layout";
-import { Divider, VStack } from "@chakra-ui/react";
+import { Divider, VStack, Text } from "@chakra-ui/react";
 import FavoriteCity from "./FavoriteCity";
 import { useEffect, useState } from "react";
 
@@ -33,10 +33,16 @@ const FavoriteCitiesPage = () => {
       <VStack mt={5} spacing={7}>
         {GPSCity && (
           <>
-            <FavoriteCity favoriteCity={GPSCity} />
+            <Text fontSize={"2xl"} color={"white"}>
+              Geo-located city
+            </Text>
+            <FavoriteCity isGeolocated={true} favoriteCity={GPSCity} />
             <Divider bg={"white"} />
           </>
         )}
+        <Text fontSize={"2xl"} color={"white"}>
+          Favorite cities
+        </Text>
         {favoriteCities.map((favoriteCity) => (
           <FavoriteCity key={favoriteCity.id} favoriteCity={favoriteCity} />
         ))}
