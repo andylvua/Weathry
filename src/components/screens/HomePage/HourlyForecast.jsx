@@ -1,6 +1,6 @@
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { Box, Divider, Flex, Icon, Image, Text } from "@chakra-ui/react";
-import { getHourFromString } from "../../../utils/time";
+import { getCurrentHour, getHourFromString } from "../../../utils/time";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { useSelector } from "react-redux";
@@ -20,7 +20,7 @@ const HourlyForecast = () => {
       select({ data }) {
         const hourlyData = [];
 
-        for (let index = 0; index < 24; index++) {
+        for (let index = getCurrentHour(); index < getCurrentHour() + 24; index++) {
           hourlyData.push({
             temperature: data.hourly["temperature_2m"][index],
             time: data.hourly["time"][index],
