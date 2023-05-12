@@ -25,7 +25,9 @@ const HourlyForecast = () => {
             time: data.hourly["time"][index],
             weatherCode: data.hourly["weathercode"][index],
             windSpeed: data.hourly["windspeed_10m"][index].toFixed(1),
-            pressure: data.hourly["pressure_msl"][index]
+            pressure: data.hourly["pressure_msl"][index],
+            temperatureUnit: data["hourly_units"]["temperature_2m"],
+            windSpeedUnit: data["hourly_units"]["windspeed_10m"]
           });
         }
 
@@ -61,7 +63,8 @@ const HourlyForecast = () => {
                 <Image mt={4} w={14} h={14} src={weatherCodes[el.weatherCode].imgSrc} />
                 <Flex gap={2} mt={3} flexDirection={"column"} alignItems={"center"}>
                   <Text lineHeight={1} color={"white"} fontSize={"2xl"}>
-                    {el.temperature}°
+                    {el.temperature}
+                    {el.temperatureUnit}
                   </Text>
                 </Flex>
                 <Divider bg={"white"} mt={5} />
@@ -71,7 +74,7 @@ const HourlyForecast = () => {
                     <Text lineHeight={1} color={"white"} fontSize={"xl"}>
                       {el.windSpeed}
                     </Text>
-                    <Text>km/h</Text>
+                    <Text>{el.windSpeedUnit}</Text>
                   </Flex>
                 </Flex>
                 <Flex gap={2} mt={6} flexDirection={"column"} alignItems={"center"}>

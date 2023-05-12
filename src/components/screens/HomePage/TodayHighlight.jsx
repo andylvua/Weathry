@@ -59,7 +59,7 @@ const TodayHighlight = () => {
                 <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
                   {hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()]}
                 </Text>
-                <Text>km/h</Text>
+                <Text>{hourlyWeatherData["hourly_units"]["windspeed_10m"]}</Text>
               </Flex>
               <Spacer />
               <Icon w={6} h={6} as={MdAir} />
@@ -96,7 +96,7 @@ const TodayHighlight = () => {
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
                 <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
-                  {hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000}
+                  {(hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1)}
                 </Text>
                 <Text>km</Text>
               </Flex>
@@ -109,7 +109,8 @@ const TodayHighlight = () => {
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
                 <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
-                  {hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()]}°
+                  {hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()]}
+                  {hourlyWeatherData["hourly_units"]["apparent_temperature"]}
                 </Text>
               </Flex>
               <Spacer />

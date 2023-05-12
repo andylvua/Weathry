@@ -13,7 +13,7 @@ import {
   Spacer,
   Text
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { getCurrentTime } from "../../../utils/time";
 import { useDispatch } from "react-redux";
 import {
@@ -37,6 +37,14 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
       }
     }
   );
+  const [temperatureUnit, setTemperatureUnit] = useState("celsius"); // celsius | fahrenheit
+  useEffect(() => {
+    const temperatureUnitData = localStorage.getItem("temperatureUnit");
+
+    if (temperatureUnitData) {
+      setTemperatureUnit(temperatureUnitData);
+    }
+  }, []);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -86,7 +94,8 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
         </Box>
         <Spacer />
         <Text color={"white"} fontSize={"3xl"} mt={4}>
-          {favoriteCityCurrentWeather.temperature}°С
+          {favoriteCityCurrentWeather.temperature}
+          {temperatureUnit === "celsius" ? "°С" : "°F"}
         </Text>
         {!isGeolocated && (
           <IconButton

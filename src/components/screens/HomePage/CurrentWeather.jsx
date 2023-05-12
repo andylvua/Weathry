@@ -7,10 +7,11 @@ import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { weatherCodes } from "../../../utils/weatherCodes";
 import { getCurrentDate, getCurrentTime } from "../../../utils/time";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const CurrentWeather = () => {
   const dispatch = useDispatch();
+  const [temperatureUnit, setTemperatureUnit] = useState("celsius"); // celsius | fahrenheit
   const { latitude, longitude, cityName, countryName, countryCode, timezone } = useSelector(
     (state) => state.location
   );
@@ -24,6 +25,15 @@ const CurrentWeather = () => {
       }
     }
   );
+
+  useEffect(() => {
+    const temperatureUnitData = localStorage.getItem("temperatureUnit");
+
+    if (temperatureUnitData) {
+      setTemperatureUnit(temperatureUnitData);
+    }
+  }, []);
+
   if (!data) {
     return null;
   }
@@ -55,7 +65,8 @@ const CurrentWeather = () => {
         />
         <Flex mt={-4} pl={7} flexDirection={"column"}>
           <Text fontSize="5xl" color={"white"}>
-            {data.temperature}°С
+            {data.temperature}
+            {temperatureUnit === "celsius" ? "°С" : "°F"}
           </Text>
           <Flex ml={-2} alignItems={"center"} gap={1}>
             <Image display={"block"} w={10} h={10} src={weatherCodes[data.weathercode].imgSrc} />
