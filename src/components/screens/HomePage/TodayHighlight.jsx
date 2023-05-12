@@ -15,9 +15,11 @@ import {
 
 const TodayHighlight = () => {
   const { latitude, longitude, timezone } = useSelector((state) => state.location);
+  const { temperatureUnit, windSpeedUnit } = useSelector((state) => state.units);
+
   const { data: hourlyWeatherData } = useQuery(
     ["hourly weather", latitude, longitude],
-    () => weatherApi.hourlyWeather(latitude, longitude),
+    () => weatherApi.hourlyWeather(latitude, longitude, { temperatureUnit, windSpeedUnit }),
     {
       select({ data }) {
         return data;
@@ -27,7 +29,8 @@ const TodayHighlight = () => {
 
   const { data: dailyWeatherData } = useQuery(
     ["daily weather", latitude, longitude],
-    () => weatherApi.dailyWeather(latitude, longitude, timezone),
+    () =>
+      weatherApi.dailyWeather(latitude, longitude, timezone, { temperatureUnit, windSpeedUnit }),
     {
       select({ data }) {
         return data;

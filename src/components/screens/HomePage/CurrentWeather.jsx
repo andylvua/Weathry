@@ -7,32 +7,24 @@ import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { weatherCodes } from "../../../utils/weatherCodes";
 import { getCurrentDate, getCurrentTime } from "../../../utils/time";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 const CurrentWeather = () => {
   const dispatch = useDispatch();
-  const [temperatureUnit, setTemperatureUnit] = useState("celsius"); // celsius | fahrenheit
   const { latitude, longitude, cityName, countryName, countryCode, timezone } = useSelector(
     (state) => state.location
   );
+  const { temperatureUnit } = useSelector((state) => state.units);
   const onOpen = () => dispatch(setIsOpen(true));
   const { data } = useQuery(
-    ["current weather", latitude, longitude],
-    () => weatherApi.currentWeather(latitude, longitude),
+    ["current weather", latitude, longitude, temperatureUnit],
+    () => weatherApi.currentWeather(latitude, longitude, { temperatureUnit }),
     {
       select({ data }) {
         return data.current_weather;
       }
     }
   );
-
-  useEffect(() => {
-    const temperatureUnitData = localStorage.getItem("temperatureUnit");
-
-    if (temperatureUnitData) {
-      setTemperatureUnit(temperatureUnitData);
-    }
-  }, []);
 
   if (!data) {
     return null;

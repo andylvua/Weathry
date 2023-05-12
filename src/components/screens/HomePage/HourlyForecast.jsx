@@ -12,9 +12,10 @@ import { MdAir, MdCompress } from "react-icons/md";
 
 const HourlyForecast = () => {
   const { latitude, longitude } = useSelector((state) => state.location);
+  const { temperatureUnit, windSpeedUnit } = useSelector((state) => state.units);
   const { data: hourlyWeatherData } = useQuery(
     ["hourly weather", latitude, longitude],
-    () => weatherApi.hourlyWeather(latitude, longitude),
+    () => weatherApi.hourlyWeather(latitude, longitude, { temperatureUnit, windSpeedUnit }),
     {
       select({ data }) {
         const hourlyData = [];

@@ -28,9 +28,11 @@ import { weatherCodes } from "../../../utils/weatherCodes";
 const Forecast = () => {
   const [daysCount, setDaysCount] = useState(5);
   const { latitude, longitude, timezone } = useSelector((state) => state.location);
+  const { temperatureUnit, windSpeedUnit } = useSelector((state) => state.units);
   const { data: days } = useQuery(
     ["daily weather", latitude, longitude],
-    () => weatherApi.dailyWeather(latitude, longitude, timezone),
+    () =>
+      weatherApi.dailyWeather(latitude, longitude, timezone, { temperatureUnit, windSpeedUnit }),
     {
       select({ data }) {
         const days = [];

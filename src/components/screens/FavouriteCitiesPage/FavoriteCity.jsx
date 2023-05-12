@@ -13,9 +13,9 @@ import {
   Spacer,
   Text
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getCurrentTime } from "../../../utils/time";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setCityName,
   setCountryCode,
@@ -28,23 +28,17 @@ import { useNavigate } from "react-router-dom";
 import { MdClose, MdLocationOn } from "react-icons/md";
 
 const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = false }) => {
+  const { temperatureUnit } = useSelector((state) => state.units);
   const { data: favoriteCityCurrentWeather } = useQuery(
     ["current weather", favoriteCity.latitude, favoriteCity.longitude],
-    () => weatherApi.currentWeather(favoriteCity.latitude, favoriteCity.longitude),
+    () =>
+      weatherApi.currentWeather(favoriteCity.latitude, favoriteCity.longitude, { temperatureUnit }),
     {
       select({ data }) {
         return data.current_weather;
       }
     }
   );
-  const [temperatureUnit, setTemperatureUnit] = useState("celsius"); // celsius | fahrenheit
-  useEffect(() => {
-    const temperatureUnitData = localStorage.getItem("temperatureUnit");
-
-    if (temperatureUnitData) {
-      setTemperatureUnit(temperatureUnitData);
-    }
-  }, []);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {

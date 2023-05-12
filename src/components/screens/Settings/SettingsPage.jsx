@@ -2,11 +2,18 @@ import Layout from "../../layout/Layout";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { Box, Center, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import {
+  setTemperatureUnit as setTemperatureUnitRedux,
+  setWindSpeedUnit as setWindSpeedUnitRedux,
+  setPrecipitationUnit as setPrecipitationUnitRedux
+} from "../../../store/units/UnitsSlice";
 
 const SettingsPage = () => {
   const [temperatureUnit, setTemperatureUnit] = useState(""); // celsius | fahrenheit
   const [windSpeedUnit, setWindSpeedUnit] = useState(""); // km | ms | mph | kn
   const [precipitationUnit, setPrecipitationUnit] = useState(""); // millimeter | inch
+  const dispatch = useDispatch();
 
   const getWindSpeedPosition = () => {
     if (windSpeedUnit === "km") {
@@ -50,18 +57,21 @@ const SettingsPage = () => {
   useEffect(() => {
     if (temperatureUnit) {
       localStorage.setItem("temperatureUnit", temperatureUnit);
+      dispatch(setTemperatureUnitRedux(temperatureUnit));
     }
   }, [temperatureUnit]);
 
   useEffect(() => {
-    if (temperatureUnit) {
+    if (windSpeedUnit) {
       localStorage.setItem("windSpeedUnit", windSpeedUnit);
+      dispatch(setWindSpeedUnitRedux(windSpeedUnit));
     }
   }, [windSpeedUnit]);
 
   useEffect(() => {
-    if (temperatureUnit) {
+    if (precipitationUnit) {
       localStorage.setItem("precipitationUnit", precipitationUnit);
+      dispatch(setPrecipitationUnitRedux(precipitationUnit));
     }
   }, [precipitationUnit]);
 
