@@ -1,6 +1,6 @@
 import { Divider, Flex, Icon, IconButton, Image, Text } from "@chakra-ui/react";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
-import { MdCalendarMonth, MdLocationPin, MdSearch } from "react-icons/md";
+import { MdCalendarMonth, MdGrain, MdLocationPin, MdSearch } from "react-icons/md";
 import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
@@ -14,7 +14,7 @@ const CurrentWeather = () => {
   const { latitude, longitude, cityName, countryName, countryCode, timezone } = useSelector(
     (state) => state.location
   );
-  const { temperatureUnit } = useSelector((state) => state.units);
+  const { temperatureUnit, windSpeedUnit } = useSelector((state) => state.units);
   const onOpen = () => dispatch(setIsOpen(true));
   const { data } = useQuery(
     ["current weather", latitude, longitude, temperatureUnit],
@@ -25,8 +25,18 @@ const CurrentWeather = () => {
       }
     }
   );
+  const { data: dailyForecast } = useQuery(
+    ["daily weather", latitude, longitude],
+    () =>
+      weatherApi.dailyWeather(latitude, longitude, timezone, { temperatureUnit, windSpeedUnit }),
+    {
+      select({ data }) {
+        return data;
+      }
+    }
+  );
 
-  if (!data) {
+  if (!data || !dailyForecast) {
     return null;
   }
   return (
@@ -63,6 +73,9 @@ const CurrentWeather = () => {
           <Flex ml={-2} alignItems={"center"} gap={1}>
             <Image display={"block"} w={10} h={10} src={weatherCodes[data.weathercode].imgSrc} />
             <Text color={"white"}>{weatherCodes[data.weathercode].title}</Text>
+            |
+            <Icon w={5} h={5} as={MdGrain} />{" "}
+            <Text color={"white"}>{dailyForecast.daily["precipitation_probability_max"][0]}</Text>%
           </Flex>
           <Divider mt={2} />
           <Flex mt={4} alignItems={"center"} gap={2}>
