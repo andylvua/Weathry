@@ -51,8 +51,8 @@ const TodayHighlight = () => {
         <Grid
           mt={8}
           gridColumnGap={3}
-          gridRowGap={{ lg: 6, sm: 2 }}
-          gridTemplateColumns={{ lg: "1fr 1fr 1fr", sm: "1fr 1fr" }}
+          gridRowGap={{ lg: 6, usm: 2 }}
+          gridTemplateColumns={{ lg: "1fr 1fr 1fr", usm: "1fr 1fr" }}
           w={"full"}
         >
           <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
