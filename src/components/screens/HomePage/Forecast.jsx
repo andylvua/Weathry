@@ -71,7 +71,7 @@ const Forecast = () => {
           </MenuList>
         </Menu>
       </Flex>
-      <GradientBlock mt={4} withoutPaddings={true}>
+      <GradientBlock overflow={"hidden"} mt={4} withoutPaddings={true}>
         <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={5}>
           <ListItem>
             <Flex
