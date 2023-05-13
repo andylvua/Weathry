@@ -59,6 +59,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
   return (
     <GradientBlock
       onClick={handleClick}
+      position={"relative"}
       cursor={"pointer"}
       withoutPaddings={true}
       pr={10}
@@ -87,7 +88,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
           <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
-        <Text mr={isGeolocated ? 14 : 0} color={"white"} fontSize={"3xl"} mt={4}>
+        <Text mt={!isGeolocated ? 12 : 4} mr={-2} color={"white"} fontSize={"3xl"}>
           {favoriteCityCurrentWeather.temperature}
           {temperatureUnit === "celsius" ? "°С" : "°F"}
         </Text>
@@ -99,6 +100,9 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
             }}
             mt={4}
             aria-label={""}
+            position={"absolute"}
+            top={-4}
+            right={-4}
           >
             <Icon fill={"red.500"} as={MdClose} w={7} h={7} />
           </IconButton>
