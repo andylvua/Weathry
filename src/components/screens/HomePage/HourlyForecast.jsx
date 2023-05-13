@@ -8,7 +8,7 @@ import { weatherCodes } from "../../../utils/weatherCodes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
-import { MdAir } from "react-icons/md";
+import { MdAir, MdGrain } from "react-icons/md";
 import { useState } from "react";
 
 const HourlyForecast = () => {
@@ -30,7 +30,8 @@ const HourlyForecast = () => {
             windSpeed: data.hourly["windspeed_10m"][index].toFixed(1),
             pressure: data.hourly["pressure_msl"][index],
             temperatureUnit: data["hourly_units"]["temperature_2m"],
-            windSpeedUnit: data["hourly_units"]["windspeed_10m"]
+            windSpeedUnit: data["hourly_units"]["windspeed_10m"],
+            precipitationProbability: data.hourly["precipitation_probability"][index]
           });
         }
 
@@ -62,7 +63,7 @@ const HourlyForecast = () => {
           slidesPerView={8}
         >
           {hourlyWeatherData.map((el) => (
-            <SwiperSlide>
+            <SwiperSlide style={{ height: "auto" }}>
               <Flex
                 borderRadius={10}
                 flexDirection={"column"}
@@ -70,6 +71,7 @@ const HourlyForecast = () => {
                 py={5}
                 px={1}
                 bg={"rgba(29,31,32,0.44)"}
+                h={"full"}
               >
                 <Text>{getHourFromString(el.time)}</Text>
                 <Image mt={4} w={14} h={14} src={weatherCodes[el.weatherCode].imgSrc} />
@@ -87,6 +89,15 @@ const HourlyForecast = () => {
                       {el.windSpeed}
                     </Text>
                     <Text>{el.windSpeedUnit}</Text>
+                  </Flex>
+                </Flex>
+                <Flex gap={2} mt={5} flexDirection={"column"} alignItems={"center"}>
+                  <Icon w={5} h={5} fill="white" as={MdGrain} />
+                  <Flex alignItems={"end"} gap={1}>
+                    <Text lineHeight={1} color={"white"} fontSize={"xl"}>
+                      {el.precipitationProbability}
+                    </Text>
+                    <Text>%</Text>
                   </Flex>
                 </Flex>
                 <Text textAlign={"center"} fontSize={16} mt={5}>
