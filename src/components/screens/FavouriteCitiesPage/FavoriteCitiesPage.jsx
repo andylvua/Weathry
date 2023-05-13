@@ -54,13 +54,17 @@ const FavoriteCitiesPage = () => {
         <Text fontSize={"2xl"} color={"white"}>
           Favorite cities
         </Text>
-        {favoriteCities.map((favoriteCity) => (
-          <FavoriteCity
-            deleteFromFavoriteList={deleteFromFavoriteList}
-            key={favoriteCity.id}
-            favoriteCity={favoriteCity}
-          />
-        ))}
+        {favoriteCities.length > 0 ? (
+          favoriteCities.map((favoriteCity) => (
+            <FavoriteCity
+              deleteFromFavoriteList={deleteFromFavoriteList}
+              key={favoriteCity.id}
+              favoriteCity={favoriteCity}
+            />
+          ))
+        ) : (
+          <Text>No favourite cities</Text>
+        )}
       </VStack>
     </Layout>
   );
