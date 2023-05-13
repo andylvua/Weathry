@@ -81,10 +81,10 @@ const SettingsPage = () => {
 
   return (
     <Layout>
-      <GradientBlock mt={5} mx={"auto"} maxW={800}>
+      <GradientBlock withoutPaddings={true} p={2} mt={5} mx={"auto"} maxW={800}>
         <VStack w={"full"} spacing={5}>
           <Heading textAlign={"center"}>Settings</Heading>
-          <Box w={"full"}>
+          <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
             <Text fontSize={"2xl"} color={"white"}>
               Temperature
             </Text>
@@ -147,7 +147,7 @@ const SettingsPage = () => {
               </Center>
             </Flex>
           </Box>
-          <Box w={"full"}>
+          <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
             <Text fontSize={"2xl"} color={"white"}>
               Wind speed
             </Text>
@@ -248,7 +248,7 @@ const SettingsPage = () => {
               </Center>
             </Flex>
           </Box>
-          <Box w={"full"}>
+          <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
             <Text fontSize={"2xl"} color={"white"}>
               Precipitation
             </Text>
