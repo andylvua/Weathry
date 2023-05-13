@@ -2,6 +2,7 @@ import Layout from "../../layout/Layout";
 import { Divider, VStack, Text } from "@chakra-ui/react";
 import FavoriteCity from "./FavoriteCity";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const FavoriteCitiesPage = () => {
   const [favoriteCities, setFavoriteCities] = useState(null);
@@ -17,7 +18,7 @@ const FavoriteCitiesPage = () => {
       setFavoriteCities([]);
     }
   }, []);
-
+  const { autoGps } = useSelector((state) => state.units);
   useEffect(() => {
     if (favoriteCities) {
       localStorage.setItem("favoriteCities", JSON.stringify(favoriteCities));
@@ -35,7 +36,7 @@ const FavoriteCitiesPage = () => {
   return (
     <Layout>
       <VStack mt={5} spacing={7}>
-        {GPSCity && (
+        {GPSCity && autoGps === "on" ? (
           <>
             <Text fontSize={"2xl"} color={"white"}>
               Geo-located city
@@ -47,6 +48,8 @@ const FavoriteCitiesPage = () => {
             />
             <Divider bg={"white"} />
           </>
+        ) : (
+          <></>
         )}
         <Text fontSize={"2xl"} color={"white"}>
           Favorite cities
