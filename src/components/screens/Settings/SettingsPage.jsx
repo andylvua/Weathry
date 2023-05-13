@@ -1,6 +1,6 @@
 import Layout from "../../layout/Layout";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
-import { Box, Center, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex, Heading, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
@@ -327,6 +327,7 @@ const SettingsPage = () => {
           {/*    </Center>*/}
           {/*  </Flex>*/}
           {/*</Box>*/}
+          <Divider bg={"white"} />
           <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
             <Text fontSize={"2xl"} color={"white"}>
               Auto GPS

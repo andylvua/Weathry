@@ -66,16 +66,16 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
       p={3}
       w={"full"}
     >
-      <Flex gap={5}>
+      <Flex gap={{ lg: 5, sm: 2 }}>
         <Image
           display={"block"}
-          w={28}
-          h={28}
+          w={{ md: 28, sm: 20 }}
+          h={{ md: 28, sm: 20 }}
           src={weatherCodes[favoriteCityCurrentWeather.weathercode].imgSrc}
         />
         <Box mt={4}>
           <HStack>
-            <Text color={"white"} fontSize={"3xl"}>
+            <Text color={"white"} fontSize={{ md: "3xl", sm: "xl" }}>
               {favoriteCity.cityName}
             </Text>
             {isGeolocated && <Icon color={"white"} fill={"white"} w={7} h={7} as={MdLocationOn} />}
@@ -88,7 +88,12 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
           <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
-        <Text mt={!isGeolocated ? 12 : 4} mr={-2} color={"white"} fontSize={"3xl"}>
+        <Text
+          mt={!isGeolocated ? 12 : 4}
+          mr={-2}
+          color={"white"}
+          fontSize={{ lg: "3xl", sm: "xl" }}
+        >
           {favoriteCityCurrentWeather.temperature}
           {temperatureUnit === "celsius" ? "°С" : "°F"}
         </Text>

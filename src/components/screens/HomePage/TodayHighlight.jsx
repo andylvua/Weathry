@@ -51,18 +51,20 @@ const TodayHighlight = () => {
         <Grid
           mt={8}
           gridColumnGap={3}
-          gridRowGap={6}
-          gridTemplateColumns={"1fr 1fr 1fr"}
+          gridRowGap={{ lg: 6, sm: 2 }}
+          gridTemplateColumns={{ lg: "1fr 1fr 1fr", sm: "1fr 1fr" }}
           w={"full"}
         >
           <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
             <Text>Wind Status</Text>
             <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={3}>
-                <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
+              <Flex alignItems={"end"} gap={{ xl: 3, sm: 1 }}>
+                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
                   {hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()]}
                 </Text>
-                <Text>{hourlyWeatherData["hourly_units"]["windspeed_10m"]}</Text>
+                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ md: "sm" }}>
+                  {hourlyWeatherData["hourly_units"]["windspeed_10m"]}
+                </Text>
               </Flex>
               <Spacer />
               <Icon w={6} h={6} as={MdAir} />
@@ -72,10 +74,12 @@ const TodayHighlight = () => {
             <Text>UV Index</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
-                <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
+                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
                   {dailyWeatherData.daily["uv_index_max"][0]}
                 </Text>
-                <Text>uv</Text>
+                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ md: "sm" }}>
+                  uv
+                </Text>
               </Flex>
               <Spacer />
               <Icon w={6} h={6} as={MdLightMode} />
@@ -85,10 +89,12 @@ const TodayHighlight = () => {
             <Text>Humidity</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
-                <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
+                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
                   {hourlyWeatherData.hourly["relativehumidity_2m"][getCurrentHour()]}
                 </Text>
-                <Text>%</Text>
+                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ md: "sm" }}>
+                  %
+                </Text>
               </Flex>
               <Spacer />
               <Icon w={6} h={6} as={MdOpacity} />
@@ -98,10 +104,12 @@ const TodayHighlight = () => {
             <Text>Visibility</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
-                <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
+                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
                   {(hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1)}
                 </Text>
-                <Text>km</Text>
+                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ md: "sm" }}>
+                  km
+                </Text>
               </Flex>
               <Spacer />
               <Icon w={6} h={6} as={MdVisibility} />
@@ -111,7 +119,7 @@ const TodayHighlight = () => {
             <Text>Feels like</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
-                <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
+                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
                   {hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()]}
                   {hourlyWeatherData["hourly_units"]["apparent_temperature"]}
                 </Text>
@@ -124,10 +132,12 @@ const TodayHighlight = () => {
             <Text>Pressure</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={3}>
-                <Text lineHeight={1} color={"white"} fontSize={"4xl"}>
+                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
                   {hourlyWeatherData.hourly["pressure_msl"][getCurrentHour()]}
                 </Text>
-                <Text>hPa</Text>
+                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ md: "sm" }}>
+                  hPa
+                </Text>
               </Flex>
               <Spacer />
               <Icon w={6} h={6} as={MdCompress} />

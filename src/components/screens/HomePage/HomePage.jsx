@@ -9,15 +9,15 @@ import HourlyForecast from "./HourlyForecast";
 const HomePage = () => {
   return (
     <Layout>
-      <Grid gap={4} minW={"full"} templateColumns="1fr 2fr">
+      <Grid gap={4} templateColumns={{ xl: "1fr 2fr", lg: "3fr 4fr", md: "4fr 5fr" }}>
         <GridItem>
           <CurrentWeather />
         </GridItem>
-        <GridItem w={"full"} h={"full"}>
+        <GridItem>
           <TodayHighlight />
         </GridItem>
       </Grid>
-      <Grid gap={4} mt={8} templateColumns="1fr 2fr">
+      <Grid gap={4} mt={8} templateColumns={{ xl: "1fr 2fr", lg: "3fr 4fr", md: "5fr 5fr" }}>
         <GridItem>
           <Forecast />
         </GridItem>

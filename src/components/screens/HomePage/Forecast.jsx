@@ -75,7 +75,7 @@ const Forecast = () => {
         </Menu>
       </Flex>
       <GradientBlock overflow={"hidden"} mt={6} withoutPaddings={true}>
-        <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={5}>
+        <List display={"flex"} flexDirection={"column"} gap={{ xl: 5, sm: 8 }} p={3} pb={5}>
           <ListItem>
             <Flex
               alignItems={"center"}
@@ -86,13 +86,20 @@ const Forecast = () => {
               pr={5}
               boxShadow={"-1px -1px 58px 0px rgba(255,255,255,0.3)"}
             >
-              <Image mr={2} w={20} h={20} src={weatherCodes[tomorrowDay.weatherCode].imgSrc} />
+              <Image
+                mr={2}
+                w={{ xl: 20, sm: 14 }}
+                h={{ xl: 20, sm: 14 }}
+                src={weatherCodes[tomorrowDay.weatherCode].imgSrc}
+              />
               <Box>
-                <Text>Tomorrow</Text>
-                <Text lineHeight={1.2} color={"white"} fontSize={"2xl"}>
+                <Text fontSize={{ sm: "sm", xl: "lg" }}>Tomorrow</Text>
+                <Text lineHeight={1.2} color={"white"} fontSize={{ sm: "xl", xl: "2xl" }}>
                   {tomorrowDay.temperatureMax}°
                 </Text>
-                <Text>{weatherCodes[tomorrowDay.weatherCode].title}</Text>
+                <Text fontSize={{ sm: "sm", xl: "lg" }}>
+                  {weatherCodes[tomorrowDay.weatherCode].title}
+                </Text>
               </Box>
               <Spacer />
               <Flex gap={2} flexDirection={"column"} alignItems={"center"}>
@@ -109,27 +116,31 @@ const Forecast = () => {
           {days.slice(2, daysCount + 1).map((day) => (
             <ListItem
               key={day.time}
-              pr={4}
+              pr={{ lg: 4, sm: 0 }}
               gap={4}
-              display={"grid"}
+              display={{ lg: "grid", md: "flex", sm: "grid" }}
               gridTemplateColumns={"5fr 2fr 2fr"}
               alignItems={"center"}
             >
               <Flex alignItems={"center"} gap={3}>
-                <Image w={12} h={12} src={weatherCodes[day.weatherCode].imgSrc} />
-                <Flex alignItems={"end"}>
-                  <Text lineHeight={1} color={"white"} fontSize={"3xl"}>
+                <Image
+                  w={{ xl: 12, md: 8, sm: 8 }}
+                  h={{ xl: 12, md: 8, sm: 8 }}
+                  src={weatherCodes[day.weatherCode].imgSrc}
+                />
+                <Flex alignItems={{ "2xl": "end", "xl": "center" }}>
+                  <Text lineHeight={1} color={"white"} fontSize={{ "2xl": "3xl", "sm": "xl" }}>
                     +{day.temperatureMax}°/
                   </Text>
-                  <Text lineHeight={1.5} fontSize={"xl"}>
+                  <Text lineHeight={{ xl: 1.5, lg: 1 }} fontSize={{ "2xl": "xl", "sm": "md" }}>
                     +{day.temperatureMin}
                   </Text>
                 </Flex>
               </Flex>
-              <Text>
+              <Text fontSize={{ lg: "lg", sm: "sm" }}>
                 {getDayNumberFromString(day.time)} {getMonthNameFromString(day.time)}
               </Text>
-              <Text>{getDayNameFromString(day.time)}</Text>
+              <Text fontSize={{ lg: "lg", sm: "sm" }}>{getDayNameFromString(day.time)}</Text>
             </ListItem>
           ))}
         </List>
