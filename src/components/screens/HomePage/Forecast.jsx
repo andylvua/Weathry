@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Flex,
+  Icon,
   Image,
   List,
   ListItem,
@@ -24,6 +25,7 @@ import {
   getMonthNameFromString
 } from "../../../utils/time";
 import { weatherCodes } from "../../../utils/weatherCodes";
+import { MdGrain } from "react-icons/md";
 
 const Forecast = () => {
   const [daysCount, setDaysCount] = useState(5);
@@ -41,7 +43,8 @@ const Forecast = () => {
             temperatureMax: data.daily["temperature_2m_max"][index],
             temperatureMin: data.daily["temperature_2m_min"][index],
             time: data.daily["time"][index],
-            weatherCode: data.daily["weathercode"][index]
+            weatherCode: data.daily["weathercode"][index],
+            precipitationProbability: data.daily["precipitation_probability_max"][index]
           });
         }
 
@@ -75,11 +78,12 @@ const Forecast = () => {
         <List display={"flex"} flexDirection={"column"} gap={5} p={3} pb={5}>
           <ListItem>
             <Flex
-              left={"50%"}
+              alignItems={"center"}
               borderRadius={20}
               bg={"#15161A"}
               py={3}
               px={2}
+              pr={5}
               boxShadow={"-1px -1px 58px 0px rgba(255,255,255,0.3)"}
             >
               <Image mr={2} w={20} h={20} src={weatherCodes[tomorrowDay.weatherCode].imgSrc} />
@@ -90,6 +94,16 @@ const Forecast = () => {
                 </Text>
                 <Text>{weatherCodes[tomorrowDay.weatherCode].title}</Text>
               </Box>
+              <Spacer />
+              <Flex gap={2} flexDirection={"column"} alignItems={"center"}>
+                <Icon w={5} h={5} fill="white" as={MdGrain} />
+                <Flex alignItems={"end"} gap={1}>
+                  <Text lineHeight={1} color={"white"} fontSize={"xl"}>
+                    {tomorrowDay.precipitationProbability}
+                  </Text>
+                  <Text>%</Text>
+                </Flex>
+              </Flex>
             </Flex>
           </ListItem>
           {days.slice(2, daysCount + 1).map((day) => (
