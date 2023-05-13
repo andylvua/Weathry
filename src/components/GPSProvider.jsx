@@ -25,15 +25,17 @@ const GPSProvider = ({ children }) => {
     }
   );
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (result) => {
-        setLatitudeGps(result.coords.latitude);
-        setLongitudeGps(result.coords.longitude);
-      },
-      (error) => {
-        console.log("Error", error);
-      }
-    );
+    if (localStorage.getItem("autoGps") === "on") {
+      navigator.geolocation.getCurrentPosition(
+        (result) => {
+          setLatitudeGps(result.coords.latitude);
+          setLongitudeGps(result.coords.longitude);
+        },
+        (error) => {
+          console.log("Error", error);
+        }
+      );
+    }
   }, []);
 
   useEffect(() => {

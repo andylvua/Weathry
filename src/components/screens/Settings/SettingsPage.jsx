@@ -13,6 +13,7 @@ const SettingsPage = () => {
   const [temperatureUnit, setTemperatureUnit] = useState(""); // celsius | fahrenheit
   const [windSpeedUnit, setWindSpeedUnit] = useState(""); // km | ms | mph | kn
   const [precipitationUnit, setPrecipitationUnit] = useState(""); // millimeter | inch
+  const [autoGps, setAutoGps] = useState("");
   const dispatch = useDispatch();
 
   const getWindSpeedPosition = () => {
@@ -34,6 +35,7 @@ const SettingsPage = () => {
     const temperatureUnitData = localStorage.getItem("temperatureUnit");
     const windSpeedUnitData = localStorage.getItem("windSpeedUnit");
     const precipitationUnitData = localStorage.getItem("precipitationUnit");
+    const autoGpsData = localStorage.getItem("autoGps");
 
     if (temperatureUnitData) {
       setTemperatureUnit(temperatureUnitData);
@@ -51,6 +53,12 @@ const SettingsPage = () => {
       setPrecipitationUnit(precipitationUnitData);
     } else {
       setPrecipitationUnit("millimeter");
+    }
+
+    if (autoGpsData) {
+      setAutoGps(autoGpsData);
+    } else {
+      setAutoGps("on");
     }
   }, []);
 
@@ -74,6 +82,12 @@ const SettingsPage = () => {
       dispatch(setPrecipitationUnitRedux(precipitationUnit));
     }
   }, [precipitationUnit]);
+
+  useEffect(() => {
+    if (autoGps) {
+      localStorage.setItem("autoGps", autoGps);
+    }
+  }, [autoGps]);
 
   if (!temperatureUnit || !windSpeedUnit || !precipitationUnit) {
     return <Layout></Layout>;
@@ -248,16 +262,79 @@ const SettingsPage = () => {
               </Center>
             </Flex>
           </Box>
+          {/*<Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>*/}
+          {/*  <Text fontSize={"2xl"} color={"white"}>*/}
+          {/*    Precipitation*/}
+          {/*  </Text>*/}
+          {/*  <Flex*/}
+          {/*    _before={{*/}
+          {/*      content: `""`,*/}
+          {/*      position: "absolute",*/}
+          {/*      transition: "all ease .3s",*/}
+          {/*      left: precipitationUnit !== "millimeter" ? "50%" : 0,*/}
+          {/*      display: "block",*/}
+          {/*      bg: "blue.800",*/}
+          {/*      w: "49%",*/}
+          {/*      height: "80%",*/}
+          {/*      mt: 1,*/}
+          {/*      ml: 1,*/}
+          {/*      mr: 1,*/}
+          {/*      borderRadius: 10*/}
+          {/*    }}*/}
+          {/*    position={"relative"}*/}
+          {/*    mt={4}*/}
+          {/*    borderRadius={10}*/}
+          {/*    bg={"rgba(29,31,32,1)"}*/}
+          {/*  >*/}
+          {/*    <Center*/}
+          {/*      onClick={() => setPrecipitationUnit("millimeter")}*/}
+          {/*      cursor={"pointer"}*/}
+          {/*      alignItems={"center"}*/}
+          {/*      px={3}*/}
+          {/*      py={1}*/}
+          {/*      flexBasis={"50%"}*/}
+          {/*    >*/}
+          {/*      <Text*/}
+          {/*        color={precipitationUnit === "millimeter" ? "white" : ""}*/}
+          {/*        position={"relative"}*/}
+          {/*        zi={3}*/}
+          {/*        textAlign={"center"}*/}
+          {/*        fontSize={"xl"}*/}
+          {/*      >*/}
+          {/*        Millimeter*/}
+          {/*      </Text>*/}
+          {/*    </Center>*/}
+
+          {/*    <Center*/}
+          {/*      onClick={() => setPrecipitationUnit("inch")}*/}
+          {/*      cursor={"pointer"}*/}
+          {/*      alignItems={"center"}*/}
+          {/*      px={3}*/}
+          {/*      py={1}*/}
+          {/*      flexBasis={"50%"}*/}
+          {/*    >*/}
+          {/*      <Text*/}
+          {/*        color={precipitationUnit === "inch" ? "white" : ""}*/}
+          {/*        position={"relative"}*/}
+          {/*        zi={3}*/}
+          {/*        textAlign={"center"}*/}
+          {/*        fontSize={"xl"}*/}
+          {/*      >*/}
+          {/*        Inch*/}
+          {/*      </Text>*/}
+          {/*    </Center>*/}
+          {/*  </Flex>*/}
+          {/*</Box>*/}
           <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
             <Text fontSize={"2xl"} color={"white"}>
-              Precipitation
+              Auto GPS
             </Text>
             <Flex
               _before={{
                 content: `""`,
                 position: "absolute",
                 transition: "all ease .3s",
-                left: precipitationUnit !== "millimeter" ? "50%" : 0,
+                left: autoGps !== "on" ? "50%" : 0,
                 display: "block",
                 bg: "blue.800",
                 w: "49%",
@@ -273,7 +350,7 @@ const SettingsPage = () => {
               bg={"rgba(29,31,32,1)"}
             >
               <Center
-                onClick={() => setPrecipitationUnit("millimeter")}
+                onClick={() => setAutoGps("on")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -281,18 +358,18 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={precipitationUnit === "millimeter" ? "white" : ""}
+                  color={autoGps === "on" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
                   fontSize={"xl"}
                 >
-                  Millimeter
+                  On
                 </Text>
               </Center>
 
               <Center
-                onClick={() => setPrecipitationUnit("inch")}
+                onClick={() => setAutoGps("off")}
                 cursor={"pointer"}
                 alignItems={"center"}
                 px={3}
@@ -300,13 +377,13 @@ const SettingsPage = () => {
                 flexBasis={"50%"}
               >
                 <Text
-                  color={precipitationUnit === "inch" ? "white" : ""}
+                  color={autoGps === "off" ? "white" : ""}
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
                   fontSize={"xl"}
                 >
-                  Inch
+                  Off
                 </Text>
               </Center>
             </Flex>
