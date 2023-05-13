@@ -9,10 +9,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
 import { MdAir } from "react-icons/md";
+import { useState } from "react";
 
 const HourlyForecast = () => {
   const { latitude, longitude } = useSelector((state) => state.location);
   const { temperatureUnit, windSpeedUnit } = useSelector((state) => state.units);
+  const [swiperInstance, setSwiperInstance] = useState();
   const { data: hourlyWeatherData } = useQuery(
     ["hourly weather", latitude, longitude],
     () => weatherApi.hourlyWeather(latitude, longitude, { temperatureUnit, windSpeedUnit }),
@@ -42,14 +44,23 @@ const HourlyForecast = () => {
   }
 
   return (
-    <Box maxW={"full"}>
-      <Flex>
+    <Box maxW={"full"} postion={"relative"}>
+      <Flex alignItems={"center"} justifyContent={"space-between"}>
         <Text fontSize={"xl"} color={"white"}>
           Hourly Forecast
         </Text>
+        <Flex gap={5} justifyContent={"end"}>
+          <SlideNavigationButton type={"prev"} swiper={swiperInstance} />
+          <SlideNavigationButton type={"next"} swiper={swiperInstance} />
+        </Flex>
       </Flex>
       <GradientBlock withoutPaddings={true} p={2} mt={6}>
-        <Swiper modules={[Navigation, Pagination, Scrollbar]} spaceBetween={5} slidesPerView={8}>
+        <Swiper
+          onSwiper={(swiper) => setSwiperInstance(swiper)}
+          modules={[Navigation, Pagination, Scrollbar]}
+          spaceBetween={5}
+          slidesPerView={8}
+        >
           {hourlyWeatherData.map((el) => (
             <SwiperSlide>
               <Flex
@@ -84,12 +95,7 @@ const HourlyForecast = () => {
               </Flex>
             </SwiperSlide>
           ))}
-          <span slot="container-start">
-            <Flex mb={3} gap={5} justifyContent={"end"}>
-              <SlideNavigationButton type={"prev"} />
-              <SlideNavigationButton type={"next"} />
-            </Flex>
-          </span>
+          <span slot="container-start"></span>
         </Swiper>
       </GradientBlock>
     </Box>
