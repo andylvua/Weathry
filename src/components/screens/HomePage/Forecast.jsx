@@ -59,7 +59,7 @@ const Forecast = () => {
   const tomorrowDay = days[1];
   return (
     <Box position={"relative"} overflow={"hidden"}>
-      <Flex>
+      <Flex alignItems={"center"}>
         <Text fontSize={"xl"} color={"white"}>
           {daysCount === 5 ? "5 days Forecast" : "7 days Forecast"}
         </Text>
