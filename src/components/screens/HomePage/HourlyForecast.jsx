@@ -63,7 +63,7 @@ const HourlyForecast = () => {
           slidesPerView={8}
         >
           {hourlyWeatherData.map((el) => (
-            <SwiperSlide style={{ height: "auto" }}>
+            <SwiperSlide key={el.time} style={{ height: "auto" }}>
               <Flex
                 borderRadius={10}
                 flexDirection={"column"}

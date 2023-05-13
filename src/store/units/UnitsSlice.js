@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   temperatureUnit: localStorage.getItem("temperatureUnit"),
   windSpeedUnit: localStorage.getItem("windSpeedUnit"),
-  precipitationUnit: localStorage.getItem("precipitationUnit")
+  precipitationUnit: localStorage.getItem("precipitationUnit"),
+  autoGps: localStorage.getItem("autoGps") ? localStorage.getItem("autoGps") : "on"
 };
 
 export const unitsSlice = createSlice({
@@ -19,9 +20,13 @@ export const unitsSlice = createSlice({
     },
     setPrecipitationUnit(state, action) {
       state.precipitationUnit = action.payload;
+    },
+    setAutoGps(state, action) {
+      state.autoGps = action.payload;
     }
   }
 });
 
-export const { setTemperatureUnit, setWindSpeedUnit, setPrecipitationUnit } = unitsSlice.actions;
+export const { setTemperatureUnit, setWindSpeedUnit, setPrecipitationUnit, setAutoGps } =
+  unitsSlice.actions;
 export const unitsReducer = unitsSlice.reducer;

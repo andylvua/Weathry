@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import { weatherApi } from "../api/weatherApi";
 import {
@@ -15,6 +15,7 @@ const GPSProvider = ({ children }) => {
   const [latitudeGps, setLatitudeGps] = useState(50.066279);
   const [longitudeGps, setLongitudeGps] = useState(14.434908);
   const dispatch = useDispatch();
+  const { autoGps } = useSelector((state) => state.units);
   const { data } = useQuery(
     ["reverse geocoding", latitudeGps, longitudeGps],
     () => weatherApi.reverseGeocoding(latitudeGps, longitudeGps),
@@ -25,7 +26,7 @@ const GPSProvider = ({ children }) => {
     }
   );
   useEffect(() => {
-    if (localStorage.getItem("autoGps") === "on") {
+    if (autoGps === "on") {
       navigator.geolocation.getCurrentPosition(
         (result) => {
           setLatitudeGps(result.coords.latitude);
@@ -36,7 +37,7 @@ const GPSProvider = ({ children }) => {
         }
       );
     }
-  }, []);
+  }, [autoGps]);
 
   useEffect(() => {
     if (data) {

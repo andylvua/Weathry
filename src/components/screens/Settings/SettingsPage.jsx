@@ -6,7 +6,8 @@ import { useDispatch } from "react-redux";
 import {
   setTemperatureUnit as setTemperatureUnitRedux,
   setWindSpeedUnit as setWindSpeedUnitRedux,
-  setPrecipitationUnit as setPrecipitationUnitRedux
+  setPrecipitationUnit as setPrecipitationUnitRedux,
+  setAutoGps as setAutoGpsRedux
 } from "../../../store/units/UnitsSlice";
 
 const SettingsPage = () => {
@@ -86,6 +87,7 @@ const SettingsPage = () => {
   useEffect(() => {
     if (autoGps) {
       localStorage.setItem("autoGps", autoGps);
+      dispatch(setAutoGpsRedux(autoGps));
     }
   }, [autoGps]);
 
