@@ -5,14 +5,14 @@ import logo from "../../../assets/logo.png";
 
 const Navigation = () => {
   return (
-    <GradientBlock
-      // position={{ sm: "relative", usm: "fixed" }}
-      // bg={{ sm: "", usm: "#252424" }}
-      withoutPaddings={true}
-      my={3}
-      ml={3}
-    >
-      <Flex flexDirection={"column"} alignItems={"center"} flexBasis={10} py={6} gap={4}>
+    <GradientBlock withoutPaddings={true} my={3} ml={{ sm: 3, usm: 1 }}>
+      <Flex
+        flexDirection={"column"}
+        alignItems={"center"}
+        flexBasis={{ sm: 10, usm: 8 }}
+        py={6}
+        gap={4}
+      >
         <Center w={"full"} pb={5} borderBottomWidth={1} borderBottomColor={"text.100"}>
           <Image w={6} h={6} src={logo} />
         </Center>

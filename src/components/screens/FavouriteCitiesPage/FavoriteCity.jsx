@@ -2,17 +2,7 @@ import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { weatherCodes } from "../../../utils/weatherCodes";
-import {
-  Box,
-  Flex,
-  HStack,
-  Icon,
-  IconButton,
-  Image,
-  Skeleton,
-  Spacer,
-  Text
-} from "@chakra-ui/react";
+import { Box, Flex, Icon, IconButton, Image, Skeleton, Spacer, Text } from "@chakra-ui/react";
 import React from "react";
 import { getCurrentTime } from "../../../utils/time";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,36 +53,51 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
       cursor={"pointer"}
       withoutPaddings={true}
       pr={10}
-      p={3}
+      p={{ sm: 3, usm: 1 }}
       w={"full"}
     >
-      <Flex gap={{ lg: 5, sm: 2 }}>
+      <Flex alignItems={{ sm: "", usm: "center" }} gap={{ lg: 5, usm: 1 }}>
         <Image
           display={"block"}
-          w={{ md: 28, sm: 20 }}
-          h={{ md: 28, sm: 20 }}
+          mt={{ sm: 0, usm: 2 }}
+          w={{ md: 28, sm: 20, usm: 10 }}
+          h={{ md: 28, sm: 20, usm: 10 }}
           src={weatherCodes[favoriteCityCurrentWeather.weathercode].imgSrc}
         />
         <Box mt={4}>
-          <HStack>
-            <Text color={"white"} fontSize={{ md: "3xl", sm: "xl" }}>
+          <Flex
+            flexDirection={{ sm: "row", usm: "column" }}
+            alignItems={{ sm: "center", usm: "start" }}
+            gap={{ sm: 3, usm: 1 }}
+          >
+            <Text color={"white"} fontSize={{ md: "3xl", usm: "xl" }}>
               {favoriteCity.cityName}
             </Text>
-            {isGeolocated && <Icon color={"white"} fill={"white"} w={7} h={7} as={MdLocationOn} />}
-            <Image
-              w={5}
-              h={5}
-              src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
-            />
-          </HStack>
+            <Flex alignItems={"center"} gap={1}>
+              {isGeolocated && (
+                <Icon
+                  color={"white"}
+                  fill={"white"}
+                  w={{ sm: 7, usm: 4 }}
+                  h={{ sm: 7, usm: 4 }}
+                  as={MdLocationOn}
+                />
+              )}
+              <Image
+                w={5}
+                h={5}
+                src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
+              />
+            </Flex>
+          </Flex>
           <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
         <Text
           mt={!isGeolocated ? 12 : 4}
-          mr={-2}
+          mr={2}
           color={"white"}
-          fontSize={{ lg: "3xl", sm: "xl" }}
+          fontSize={{ lg: "3xl", usm: "xl" }}
         >
           {favoriteCityCurrentWeather.temperature}
           {temperatureUnit === "celsius" ? "°С" : "°F"}
@@ -107,7 +112,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
             aria-label={""}
             position={"absolute"}
             top={-4}
-            right={-4}
+            right={1}
           >
             <Icon fill={"red.500"} as={MdClose} w={7} h={7} />
           </IconButton>

@@ -7,7 +7,6 @@ import {
   FormHelperText,
   FormLabel,
   Heading,
-  HStack,
   Input,
   Radio,
   RadioGroup,
@@ -72,10 +71,10 @@ const FeedbackPage = () => {
   return (
     <Layout>
       <form ref={form} onSubmit={handleSubmit}>
-        <GradientBlock maxW={800} mt={5} mx={"auto"}>
+        <GradientBlock withoutPaddings={true} p={{ sm: 7, usm: 3 }} maxW={800} mt={5} mx={"auto"}>
           <Flex gap={8} flexDirection={"column"}>
             <Heading textAlign={"center"}>Feedback</Heading>
-            <FormControl as="fieldset">
+            <FormControl>
               <FormLabel as="legend">
                 <Flex>
                   <Text fontSize={"xl"} color={"white"}>
@@ -85,7 +84,7 @@ const FeedbackPage = () => {
                 </Flex>
               </FormLabel>
               <RadioGroup defaultValue={feedbackForm.mailType}>
-                <HStack spacing="24px">
+                <Flex flexDirection={{ md: "row", usm: "column" }} gap="24px">
                   <Radio
                     name={"mailType"}
                     onChange={onChangeValue}
@@ -102,7 +101,7 @@ const FeedbackPage = () => {
                   >
                     Suggest new features
                   </Radio>
-                </HStack>
+                </Flex>
               </RadioGroup>
             </FormControl>
             <FormControl isInvalid={feedbackFormErrors.email}>

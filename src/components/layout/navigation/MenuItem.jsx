@@ -7,8 +7,8 @@ const MenuItem = ({ icon, direction }) => {
   return (
     <ListItem>
       <NavLink className={(navData) => (navData.isActive ? styles.active : "")} to={direction}>
-        <Center className={styles.menuItem} px={5} py={1.5}>
-          <Icon w={7} h={7} color={color} as={icon} />
+        <Center className={styles.menuItem} px={{ sm: 5, usm: 3 }} py={1.5}>
+          <Icon w={{ sm: 7, usm: 5 }} h={{ sm: 7, usm: 5 }} color={color} as={icon} />
         </Center>
       </NavLink>
     </ListItem>

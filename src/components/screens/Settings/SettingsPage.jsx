@@ -97,10 +97,16 @@ const SettingsPage = () => {
 
   return (
     <Layout>
-      <GradientBlock withoutPaddings={true} p={2} mt={5} mx={"auto"} maxW={800}>
+      <GradientBlock withoutPaddings={true} pt={7} p={2} mt={5} mx={"auto"} maxW={800}>
         <VStack w={"full"} spacing={5}>
           <Heading textAlign={"center"}>Settings</Heading>
-          <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
+          <Box
+            px={{ sm: 5, usm: 1 }}
+            py={{ sm: 5, usm: 2 }}
+            borderRadius={7}
+            bg={"rgba(29,31,32,0.44)"}
+            w={"full"}
+          >
             <Text fontSize={"2xl"} color={"white"}>
               Temperature
             </Text>
@@ -137,7 +143,7 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   Celsius
                 </Text>
@@ -156,14 +162,20 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   Fahrenheit
                 </Text>
               </Center>
             </Flex>
           </Box>
-          <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
+          <Box
+            px={{ sm: 5, usm: 1 }}
+            py={{ sm: 5, usm: 2 }}
+            borderRadius={7}
+            bg={"rgba(29,31,32,0.44)"}
+            w={"full"}
+          >
             <Text fontSize={"2xl"} color={"white"}>
               Wind speed
             </Text>
@@ -200,7 +212,7 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   Km/h
                 </Text>
@@ -238,7 +250,7 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   Mph
                 </Text>
@@ -257,78 +269,21 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   Knots
                 </Text>
               </Center>
             </Flex>
           </Box>
-          {/*<Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>*/}
-          {/*  <Text fontSize={"2xl"} color={"white"}>*/}
-          {/*    Precipitation*/}
-          {/*  </Text>*/}
-          {/*  <Flex*/}
-          {/*    _before={{*/}
-          {/*      content: `""`,*/}
-          {/*      position: "absolute",*/}
-          {/*      transition: "all ease .3s",*/}
-          {/*      left: precipitationUnit !== "millimeter" ? "50%" : 0,*/}
-          {/*      display: "block",*/}
-          {/*      bg: "blue.800",*/}
-          {/*      w: "49%",*/}
-          {/*      height: "80%",*/}
-          {/*      mt: 1,*/}
-          {/*      ml: 1,*/}
-          {/*      mr: 1,*/}
-          {/*      borderRadius: 10*/}
-          {/*    }}*/}
-          {/*    position={"relative"}*/}
-          {/*    mt={4}*/}
-          {/*    borderRadius={10}*/}
-          {/*    bg={"rgba(29,31,32,1)"}*/}
-          {/*  >*/}
-          {/*    <Center*/}
-          {/*      onClick={() => setPrecipitationUnit("millimeter")}*/}
-          {/*      cursor={"pointer"}*/}
-          {/*      alignItems={"center"}*/}
-          {/*      px={3}*/}
-          {/*      py={1}*/}
-          {/*      flexBasis={"50%"}*/}
-          {/*    >*/}
-          {/*      <Text*/}
-          {/*        color={precipitationUnit === "millimeter" ? "white" : ""}*/}
-          {/*        position={"relative"}*/}
-          {/*        zi={3}*/}
-          {/*        textAlign={"center"}*/}
-          {/*        fontSize={"xl"}*/}
-          {/*      >*/}
-          {/*        Millimeter*/}
-          {/*      </Text>*/}
-          {/*    </Center>*/}
-
-          {/*    <Center*/}
-          {/*      onClick={() => setPrecipitationUnit("inch")}*/}
-          {/*      cursor={"pointer"}*/}
-          {/*      alignItems={"center"}*/}
-          {/*      px={3}*/}
-          {/*      py={1}*/}
-          {/*      flexBasis={"50%"}*/}
-          {/*    >*/}
-          {/*      <Text*/}
-          {/*        color={precipitationUnit === "inch" ? "white" : ""}*/}
-          {/*        position={"relative"}*/}
-          {/*        zi={3}*/}
-          {/*        textAlign={"center"}*/}
-          {/*        fontSize={"xl"}*/}
-          {/*      >*/}
-          {/*        Inch*/}
-          {/*      </Text>*/}
-          {/*    </Center>*/}
-          {/*  </Flex>*/}
-          {/*</Box>*/}
           <Divider bg={"white"} />
-          <Box p={5} borderRadius={7} bg={"rgba(29,31,32,0.44)"} w={"full"}>
+          <Box
+            px={{ sm: 5, usm: 1 }}
+            py={{ sm: 5, usm: 2 }}
+            borderRadius={7}
+            bg={"rgba(29,31,32,0.44)"}
+            w={"full"}
+          >
             <Text fontSize={"2xl"} color={"white"}>
               Auto GPS
             </Text>
@@ -365,7 +320,7 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   On
                 </Text>
@@ -384,7 +339,7 @@ const SettingsPage = () => {
                   position={"relative"}
                   zi={3}
                   textAlign={"center"}
-                  fontSize={"xl"}
+                  fontSize={{ sm: "xl", usm: "md" }}
                 >
                   Off
                 </Text>

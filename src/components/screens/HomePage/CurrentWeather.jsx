@@ -44,8 +44,8 @@ const CurrentWeather = () => {
       <Flex flexDirection={"column"} position={"relative"}>
         <IconButton
           position={"absolute"}
-          top={0}
-          right={0}
+          top={{ sm: 0, usm: -4 }}
+          right={{ sm: 0, usm: -4 }}
           borderRadius={"50%"}
           aria-label={"iconBase"}
           display={"flex"}
@@ -60,13 +60,13 @@ const CurrentWeather = () => {
         </IconButton>
         <Image
           display={"block"}
-          mt={-7}
-          w={32}
-          h={32}
+          mt={{ sm: -7, usm: -10 }}
+          w={{ sm: 32, usm: 24 }}
+          h={{ sm: 32, usm: 24 }}
           src={weatherCodes[data.weathercode].imgSrc}
         />
-        <Flex mt={-4} pl={7} flexDirection={"column"}>
-          <Text fontSize="5xl" color={"white"}>
+        <Flex mt={-4} pl={{ sm: 7, usm: 4 }} flexDirection={"column"}>
+          <Text fontSize={{ sm: "5xl", usm: "3xl" }} color={"white"}>
             {data.temperature}
             {temperatureUnit === "celsius" ? "°С" : "°F"}
           </Text>

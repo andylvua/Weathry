@@ -128,19 +128,29 @@ const Forecast = () => {
                   h={{ xl: 12, md: 8, usm: 8 }}
                   src={weatherCodes[day.weatherCode].imgSrc}
                 />
-                <Flex alignItems={{ "2xl": "end", "xl": "center" }}>
-                  <Text lineHeight={1} color={"white"} fontSize={{ "2xl": "3xl", "usm": "xl" }}>
+                <Flex
+                  flexDirection={{ sm: "row", usm: "column" }}
+                  alignItems={{ "2xl": "end", "xl": "center" }}
+                >
+                  <Text
+                    lineHeight={1}
+                    color={"white"}
+                    fontSize={{ "2xl": "3xl", "sm": "xl", "usm": "sm" }}
+                  >
                     +{day.temperatureMax}°/
                   </Text>
-                  <Text lineHeight={{ xl: 1.5, lg: 1 }} fontSize={{ "2xl": "xl", "usm": "md" }}>
+                  <Text
+                    lineHeight={{ xl: 1.5, lg: 1 }}
+                    fontSize={{ "2xl": "xl", "sm": "md", "usm": "sm" }}
+                  >
                     +{day.temperatureMin}
                   </Text>
                 </Flex>
               </Flex>
-              <Text fontSize={{ lg: "lg", usm: "sm" }}>
+              <Text fontSize={{ lg: "lg", usm: "xs" }}>
                 {getDayNumberFromString(day.time)} {getMonthNameFromString(day.time)}
               </Text>
-              <Text fontSize={{ lg: "lg", usm: "sm" }}>{getDayNameFromString(day.time)}</Text>
+              <Text fontSize={{ lg: "lg", usm: "xs" }}>{getDayNameFromString(day.time)}</Text>
             </ListItem>
           ))}
         </List>
