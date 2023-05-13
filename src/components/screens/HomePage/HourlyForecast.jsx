@@ -81,6 +81,9 @@ const HourlyForecast = () => {
                     {el.temperatureUnit}
                   </Text>
                 </Flex>
+                <Text textAlign={"center"} fontSize={16} mt={5}>
+                  {weatherCodes[el.weatherCode].title}
+                </Text>
                 <Divider bg={"white"} mt={5} />
                 <Flex gap={2} mt={8} flexDirection={"column"} alignItems={"center"}>
                   <Icon w={5} h={5} fill="white" as={MdAir} />
@@ -100,9 +103,6 @@ const HourlyForecast = () => {
                     <Text lineHeight={1.2}>%</Text>
                   </Flex>
                 </Flex>
-                <Text textAlign={"center"} fontSize={16} mt={5}>
-                  {weatherCodes[el.weatherCode].title}
-                </Text>
               </Flex>
             </SwiperSlide>
           ))}
