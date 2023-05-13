@@ -88,7 +88,7 @@ const HourlyForecast = () => {
                     <Text lineHeight={1} color={"white"} fontSize={"xl"}>
                       {el.windSpeed}
                     </Text>
-                    <Text>{el.windSpeedUnit}</Text>
+                    <Text lineHeight={1.2}>{el.windSpeedUnit}</Text>
                   </Flex>
                 </Flex>
                 <Flex gap={2} mt={5} flexDirection={"column"} alignItems={"center"}>
@@ -97,7 +97,7 @@ const HourlyForecast = () => {
                     <Text lineHeight={1} color={"white"} fontSize={"xl"}>
                       {el.precipitationProbability}
                     </Text>
-                    <Text>%</Text>
+                    <Text lineHeight={1.2}>%</Text>
                   </Flex>
                 </Flex>
                 <Text textAlign={"center"} fontSize={16} mt={5}>
