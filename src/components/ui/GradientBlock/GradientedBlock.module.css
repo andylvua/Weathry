@@ -7,39 +7,10 @@
 
 .canvas {
     overflow: hidden;
-    background: -webkit-gradient(
-            linear,
-            right top, left top,
-            from(#e3e5e8),
-            color-stop(10%, #ebe4e3),
-            color-stop(25%, #e4e1e0),
-            color-stop(45%, #ced9e9),
-            color-stop(60%, #adb7d2),
-            color-stop(75%, #a2b9e5),
-            color-stop(85%, #86acea),
-            to(#44a6e5)
-    );
-    background: -o-linear-gradient(
-            right,
-            #e3e5e8 0%,
-            #ebe4e3 10%,
-            #e4e1e0 25%,
-            #ced9e9 45%,
-            #adb7d2 60%,
-            #a2b9e5 75%,
-            #86acea 85%,
-            #44a6e5 100%
-    );
     background: linear-gradient(
             -90deg,
-            #e3e5e8 0%,
-            #ebe4e3 10%,
-            #e4e1e0 25%,
-            #ced9e9 45%,
-            #adb7d2 60%,
-            #a2b9e5 75%,
-            #86acea 85%,
-            #44a6e5 100%
+            #20385b 0%,
+            #0f484f 10%
     );
 }
 
@@ -63,7 +34,7 @@
 }
 
 .canvas::before {
-    background: #83c2ba;
+    background: #263130;
     top: -195px;
     left: -195px;
 }
@@ -90,7 +61,6 @@
     width: 140px;
     height: 140px;
     top: 50%;
-    -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }

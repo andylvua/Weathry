@@ -66,11 +66,11 @@ const Forecast = () => {
         <Spacer />
         <Menu zIndex={20} size={"sm"}>
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />} borderRadius={20} height={7}>
-            {daysCount === 5 ? "5d" : "7d"}
+            {daysCount === 5 ? "5 Days" : "7 Days"}
           </MenuButton>
           <MenuList zIndex={20}>
-            <MenuItem onClick={() => setDaysCount(5)}>5d</MenuItem>
-            <MenuItem onClick={() => setDaysCount(7)}>7d</MenuItem>
+            <MenuItem onClick={() => setDaysCount(5)}>5 Days</MenuItem>
+            <MenuItem onClick={() => setDaysCount(7)}>7 Days</MenuItem>
           </MenuList>
         </Menu>
       </Flex>
@@ -80,11 +80,11 @@ const Forecast = () => {
             <Flex
               alignItems={"center"}
               borderRadius={13}
-              bg={"rgba(21,22,26,0.8)"}
+              bg={"rgba(29,31,32,0.24)"}
               py={3}
               px={2}
               pr={5}
-              boxShadow={"-1px -1px 58px 0px rgba(255,255,255,0.3)"}
+              boxShadow={"0px 3px 30px 0px rgba(255,255,255,0.15)"}
             >
               <Image
                 mr={2}

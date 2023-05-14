@@ -9,7 +9,8 @@ import {
   Skeleton,
   IconButton
 } from "@chakra-ui/react";
-import { MdFavorite, MdFavoriteBorder, MdLocationCity } from "react-icons/md";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { CiShare1 } from "react-icons/ci";
 import React, { useEffect, useState } from "react";
 import {
   setCityName,
@@ -92,7 +93,7 @@ const CityList = (data, isLoading) => {
   }
 
   return (
-    <List mt={3} display={"flex"} flexDirection={"column"} gap={3}>
+    <List mt={5} display={"flex"} flexDirection={"column"} gap={3}>
       {cities.map((city) => (
         <ListItem
           onClick={() => onChoseCity(city)}
@@ -102,16 +103,15 @@ const CityList = (data, isLoading) => {
           cursor={"pointer"}
           px={4}
           py={2}
-          borderRadius={15}
+          borderRadius={8}
           display={"flex"}
-          bg={"gray.600"}
           transition={"all .2s ease"}
           _hover={{
-            bg: "gray.800"
+            bg: "rgba(255,255,255,0.07)"
           }}
         >
-          <Icon color={"white"} w={8} h={8} as={MdLocationCity} />
-          <Text color={"white"} fontSize={"2xl"}>
+          <Icon color={"white"} w={6} h={6} as={CiShare1} />
+          <Text color={"white"} fontSize={"md"} fontWeight={"bold"}>
             {city.name}, {city.country}
           </Text>
           <Spacer />
@@ -127,15 +127,20 @@ const CityList = (data, isLoading) => {
             position={"relative"}
             zIndex={10}
             aria-label={""}
+            bg={"transparent"}
+            _hover={{
+              bg: "rgba(255,255,255,0.07)"
+              }
+            }
           >
             <Icon
               fill={"red.500"}
-              w={8}
-              h={8}
+              w={7}
+              h={7}
               as={checkIsAlreadyFavorite(city.id) ? MdFavorite : MdFavoriteBorder}
             />
           </IconButton>
-          <Image w={10} h={10} src={`https://flagsapi.com/${city.country_code}/flat/32.png`} />
+          <Image w={8} h={8} src={`https://flagsapi.com/${city.country_code}/flat/32.png`} />
         </ListItem>
       ))}
     </List>

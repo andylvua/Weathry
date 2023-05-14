@@ -150,6 +150,7 @@ const FeedbackPage = () => {
               alignSelf={"center"}
               borderRadius={20}
               variant={"outline"}
+              colorScheme={"green"}
             >
               Submit
             </Button>

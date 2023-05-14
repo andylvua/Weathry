@@ -38,7 +38,7 @@ const FavoriteCitiesPage = () => {
       <VStack mt={5} spacing={7} alignItems={"flex-start"} w={"full"}>
         {GPSCity && autoGps === "on" ? (
           <>
-            <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"}>
+            <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} pl={4}>
               Your location
             </Text>
             <FavoriteCity
@@ -51,7 +51,7 @@ const FavoriteCitiesPage = () => {
         ) : (
           <></>
         )}
-        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"}>
+        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} pl={4}>
           Favorite cities
         </Text>
         {favoriteCities.length > 0 ? (

@@ -70,14 +70,14 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
             alignItems={{ sm: "center", usm: "start" }}
             gap={{ sm: 3, usm: 1 }}
           >
-            <Text color={"white"} fontSize={{ md: "3xl", usm: "xl" }}>
+            <Text color={"white"} fontSize={{ md: "3xl", usm: "xl" }} fontWeight={"medium"}>
               {favoriteCity.cityName}
             </Text>
             <Flex alignItems={"center"} gap={1}>
               {isGeolocated && (
                 <Icon
                   color={"white"}
-                  fill={"white"}
+                  fill={"whatsapp.100"}
                   w={{ sm: 7, usm: 4 }}
                   h={{ sm: 7, usm: 4 }}
                   as={CiLocationArrow1}
@@ -85,8 +85,9 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
               )}
               {!isGeolocated && (
                 <Image
-                  w={5}
-                  h={5}
+                  mt={1}
+                  w={6}
+                  h={6}
                   src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
                 />
               )}

@@ -44,6 +44,13 @@ const HourlyForecast = () => {
     return null;
   }
 
+  const gridItemProps = {
+    borderRadius: 13,
+    p: 3,
+    bg: "rgba(29,31,32,0.24)",
+    boxShadow: "0 0 30px 0px rgba(255,255,255,0.05)"
+  }
+
   return (
     <Box maxW={"full"} postion={"relative"}>
       <Flex alignItems={"center"} justifyContent={"space-between"} mx={2}>
@@ -96,7 +103,7 @@ const HourlyForecast = () => {
                 alignItems={"center"}
                 py={5}
                 px={1}
-                bg={"rgba(29,31,32,0.44)"}
+                bg={"rgba(29,31,32,0.24)"}
                 h={"full"}
               >
                 <Text>{getHourFromString(el.time)}</Text>

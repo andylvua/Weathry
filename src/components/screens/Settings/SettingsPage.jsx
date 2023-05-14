@@ -117,13 +117,14 @@ const SettingsPage = () => {
                   transition: "all ease .3s",
                   left: temperatureUnit === "celsius" ? 0 : "50%",
                   display: "block",
-                  bg: "blue.800",
+                  bg: "gray.700",
                   w: "49%",
-                  height: "75%",
+                  height: "80%",
                   mt: 1,
                   ml: 1,
                   mr: 1,
-                  borderRadius: 7
+                  borderRadius: 7,
+                  zIndex: 2
                 }}
                 position={"relative"}
                 mt={4}
@@ -135,19 +136,21 @@ const SettingsPage = () => {
                   cursor={"pointer"}
                   alignItems={"center"}
                   px={3}
-                  py={1}
+                  py={2}
                   flexBasis={"50%"}
                 >
                   <Text
                     color={temperatureUnit === "celsius" ? "white" : ""}
                     position={"relative"}
-                    zi={3}
+                    zIndex={3}
                     textAlign={"center"}
                   >
                     Celsius
                   </Text>
                 </Center>
-
+                <Center>
+                  <Divider orientation={"vertical"} height={"60%"} />
+                </Center>
                 <Center
                   onClick={() => setTemperatureUnit("fahrenheit")}
                   cursor={"pointer"}
@@ -159,7 +162,7 @@ const SettingsPage = () => {
                   <Text
                     color={temperatureUnit === "fahrenheit" ? "white" : ""}
                     position={"relative"}
-                    zi={3}
+                    zIndex={3}
                     textAlign={"center"}
                   >
                     Fahrenheit
@@ -179,13 +182,14 @@ const SettingsPage = () => {
                   transition: "all ease .3s",
                   left: getWindSpeedPosition(),
                   display: "block",
-                  bg: "blue.800",
+                  bg: "gray.700",
                   w: "24%",
-                  height: "75%",
+                  height: "80%",
                   mt: 1,
                   ml: 1,
                   mr: 1,
-                  borderRadius: 7
+                  borderRadius: 7,
+                  zIndex: 2
                 }}
                 position={"relative"}
                 mt={4}
@@ -197,19 +201,21 @@ const SettingsPage = () => {
                   cursor={"pointer"}
                   alignItems={"center"}
                   px={3}
-                  py={1}
+                  py={2}
                   flexBasis={"50%"}
                 >
                   <Text
                     color={windSpeedUnit === "km" ? "white" : ""}
                     position={"relative"}
-                    zi={3}
+                    zIndex={3}
                     textAlign={"center"}
                   >
                     km/h
                   </Text>
                 </Center>
-
+                <Center>
+                  <Divider orientation={"vertical"} height={"60%"} zIndex={1} />
+                </Center>
                 <Center
                   onClick={() => setWindSpeedUnit("ms")}
                   cursor={"pointer"}
@@ -221,13 +227,15 @@ const SettingsPage = () => {
                   <Text
                     color={windSpeedUnit === "ms" ? "white" : ""}
                     position={"relative"}
-                    zi={3}
+                    zIndex={3}
                     textAlign={"center"}
                   >
                     m/s
                   </Text>
                 </Center>
-
+                <Center>
+                  <Divider orientation={"vertical"} height={"60%"} />
+                </Center>
                 <Center
                   onClick={() => setWindSpeedUnit("mph")}
                   cursor={"pointer"}
@@ -239,13 +247,15 @@ const SettingsPage = () => {
                   <Text
                     color={windSpeedUnit === "mph" ? "white" : ""}
                     position={"relative"}
-                    zi={3}
+                    zIndex={3}
                     textAlign={"center"}
                   >
                     mph
                   </Text>
                 </Center>
-
+                <Center>
+                  <Divider orientation={"vertical"} height={"60%"} />
+                </Center>
                 <Center
                   onClick={() => setWindSpeedUnit("kn")}
                   cursor={"pointer"}
@@ -257,7 +267,7 @@ const SettingsPage = () => {
                   <Text
                     color={windSpeedUnit === "kn" ? "white" : ""}
                     position={"relative"}
-                    zi={3}
+                    zIndex={3}
                     textAlign={"center"}
                   >
                     Knots
@@ -288,7 +298,6 @@ const SettingsPage = () => {
             <Switch
               onChange={() => (autoGps === "on" ? setAutoGps("off") : setAutoGps("on"))}
               isChecked={autoGps === "on"}
-              colorScheme="whatsapp"
               size="lg"
             />
           </Box>

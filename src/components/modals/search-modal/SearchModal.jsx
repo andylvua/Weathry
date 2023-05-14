@@ -48,7 +48,7 @@ const SearchModal = () => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>
-          <Heading fontSize={"3xl"} color={"white"}>
+          <Heading fontSize={"3xl"} color={"white"} mt={3}>
             Search city
           </Heading>
         </ModalHeader>
