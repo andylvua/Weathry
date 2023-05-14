@@ -1,5 +1,6 @@
 html,body,#root {
     min-height: 100vh !important;
+    background: black;
 }
 * {
     color: #989a9b;
