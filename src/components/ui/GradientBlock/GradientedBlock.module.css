@@ -50,6 +50,7 @@
 .canvas > .circles::after {
     -webkit-filter: blur(75px);
     filter: blur(75px);
+    will-change: filter;
 }
 
 .canvas::before,
