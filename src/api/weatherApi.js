@@ -15,10 +15,13 @@ const getUnitsString = (
   windSpeedUnit = "km",
   precipitationUnit = "millimeter"
 ) => {
-  const temperatureUnitString = `temperature_unit=${temperatureUnit}`;
-  const windSpeedUnitString = windSpeedUnit !== "km" ? `&windspeed_unit=${windSpeedUnit}` : "";
+  const temperatureUnitString = `temperature_unit=${temperatureUnit ? temperatureUnit : "celsius"}`;
+  const windSpeedUnitString =
+    windSpeedUnit !== "km" && windSpeedUnit ? `&windspeed_unit=${windSpeedUnit}` : "";
   const precipitationUnitString =
-    precipitationUnit !== "millimeter" ? `&precipitation_unit=${precipitationUnit}` : "";
+    precipitationUnit !== "millimeter" && precipitationUnit
+      ? `&precipitation_unit=${precipitationUnit}`
+      : "";
 
   return temperatureUnitString + windSpeedUnitString + precipitationUnitString;
 };
