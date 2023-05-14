@@ -18,12 +18,12 @@ const SlideNavigationButton = ({ type, swiper }) => {
   return (
     <>
       {type === "prev" ? (
-        <IconButton onClick={handleClick} aria-label={""}>
-          <Icon w={5} h={5} as={MdArrowBackIosNew} />
+        <IconButton onClick={handleClick} aria-label={""} height={7}>
+          <Icon w={4} h={4} as={MdArrowBackIosNew} />
         </IconButton>
       ) : (
-        <IconButton onClick={handleClick} aria-label={""}>
-          <Icon w={5} h={5} as={MdArrowForwardIos} />
+        <IconButton onClick={handleClick} aria-label={""} height={7}>
+          <Icon w={4} h={4} as={MdArrowForwardIos} />
         </IconButton>
       )}
     </>

@@ -1,6 +1,7 @@
 import { Divider, Flex, Icon, IconButton, Image, Text } from "@chakra-ui/react";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
-import { MdCalendarMonth, MdGrain, MdLocationPin, MdSearch } from "react-icons/md";
+import { MdGrain } from "react-icons/md";
+import { CiCalendar, CiLocationOn, CiSearch } from "react-icons/ci";
 import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "react-query";
@@ -56,7 +57,7 @@ const CurrentWeather = () => {
           h={16}
           onClick={onOpen}
         >
-          <Icon color={"white"} w={35} h={35} as={MdSearch} />
+          <Icon color={"white"} w={35} h={35} as={CiSearch} />
         </IconButton>
         <Image
           display={"block"}
@@ -66,31 +67,40 @@ const CurrentWeather = () => {
           src={weatherCodes[data.weathercode].imgSrc}
         />
         <Flex mt={-4} pl={{ sm: 7, usm: 4 }} flexDirection={"column"}>
-          <Text fontSize={{ sm: "5xl", usm: "3xl" }} color={"white"}>
+          <Text fontSize={{ sm: "5xl", usm: "3xl" }} color={"white"} fontWeight={"medium"}>
             {data.temperature}
             {temperatureUnit === "celsius" ? "°С" : "°F"}
           </Text>
           <Flex ml={-2} alignItems={"center"} gap={1}>
             <Image display={"block"} w={10} h={10} src={weatherCodes[data.weathercode].imgSrc} />
-            <Text color={"white"}>{weatherCodes[data.weathercode].title}</Text>
+            <Text color={"white"} fontWeight={"medium"}>
+              {weatherCodes[data.weathercode].title}
+            </Text>
             |
             <Icon w={5} h={5} as={MdGrain} />{" "}
-            <Text color={"white"}>{dailyForecast.daily["precipitation_probability_max"][0]}</Text>%
+            <Text color={"white"} fontWeight={"medium"}>
+              {dailyForecast.daily["precipitation_probability_max"][0]}
+            </Text>
+            %
           </Flex>
           <Divider mt={2} />
           <Flex mt={4} alignItems={"center"} gap={2}>
-            <Icon color={"white"} w={6} h={6} as={MdLocationPin} />
+            <Icon color={"white"} w={6} h={6} as={CiLocationOn} />
             <Flex gap={3} alignItems={"center"}>
-              <Text fontSize={"sm"} color={"white"}>
+              <Text fontSize={"sm"} color={"white"} fontWeight={"medium"}>
                 {cityName}, {countryName}
               </Text>
               <Image w={5} h={5} src={`https://flagsapi.com/${countryCode}/flat/32.png`} />
             </Flex>
           </Flex>
           <Flex mt={4} alignItems={"center"} gap={2}>
-            <Icon color={"white"} w={6} h={6} as={MdCalendarMonth} />
-            <Text fontSize={"sm"} color={"white"}>
-              {getCurrentDate()} | {getCurrentTime(timezone)}
+            <Icon color={"white"} w={6} h={6} as={CiCalendar} />
+            <Text fontSize={"sm"} color={"white"} fontWeight={"medium"}>
+              {getCurrentDate()}
+            </Text>
+            |
+            <Text fontSize={"sm"} color={"white"} fontWeight={"semibold"}>
+              {getCurrentTime(timezone)}
             </Text>
           </Flex>
         </Flex>

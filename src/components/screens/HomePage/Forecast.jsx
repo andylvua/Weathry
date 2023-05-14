@@ -59,13 +59,13 @@ const Forecast = () => {
   const tomorrowDay = days[1];
   return (
     <Box position={"relative"} overflow={"hidden"}>
-      <Flex alignItems={"center"}>
-        <Text fontSize={"xl"} color={"white"}>
+      <Flex alignItems={"center"} mx={2}>
+        <Text fontSize={"xl"} color={"white"} fontWeight={"bold"}>
           {daysCount === 5 ? "5 days Forecast" : "7 days Forecast"}
         </Text>
         <Spacer />
         <Menu zIndex={20} size={"sm"}>
-          <MenuButton py={1} as={Button} rightIcon={<ChevronDownIcon />}>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />} borderRadius={20} height={7}>
             {daysCount === 5 ? "5d" : "7d"}
           </MenuButton>
           <MenuList zIndex={20}>
@@ -74,13 +74,14 @@ const Forecast = () => {
           </MenuList>
         </Menu>
       </Flex>
-      <GradientBlock overflow={"hidden"} mt={6} withoutPaddings={true}>
+      <GradientBlock overflow={"hidden"} mt={3} withoutPaddings={true}>
         <List display={"flex"} flexDirection={"column"} gap={{ xl: 5, usm: 8 }} p={3} pb={5}>
           <ListItem>
             <Flex
               alignItems={"center"}
-              borderRadius={20}
+              borderRadius={13}
               bg={"#15161A"}
+              opacity={0.8}
               py={3}
               px={2}
               pr={5}
@@ -93,18 +94,20 @@ const Forecast = () => {
                 src={weatherCodes[tomorrowDay.weatherCode].imgSrc}
               />
               <Box>
-                <Text fontSize={{ usm: "sm", xl: "lg" }}>Tomorrow</Text>
+                <Text fontWeight={"medium"} fontSize={{ usm: "sm", xl: "lg" }}>
+                  Tomorrow
+                </Text>
                 <Text lineHeight={1.2} color={"white"} fontSize={{ usm: "xl", xl: "2xl" }}>
                   {tomorrowDay.temperatureMax}°
                 </Text>
-                <Text fontSize={{ usm: "sm", xl: "lg" }}>
+                <Text fontSize={{ usm: "x-sm", xl: "sm" }}>
                   {weatherCodes[tomorrowDay.weatherCode].title}
                 </Text>
               </Box>
               <Spacer />
               <Flex gap={2} flexDirection={"column"} alignItems={"center"}>
                 <Icon w={5} h={5} fill="white" as={MdGrain} />
-                <Flex alignItems={"end"} gap={1}>
+                <Flex alignItems={"start"} gap={1}>
                   <Text lineHeight={1} color={"white"} fontSize={"xl"}>
                     {tomorrowDay.precipitationProbability}
                   </Text>
@@ -147,10 +150,12 @@ const Forecast = () => {
                   </Text>
                 </Flex>
               </Flex>
-              <Text fontSize={{ lg: "lg", usm: "xs" }}>
+              <Text fontSize={{ lg: "md", usm: "xs" }}>
                 {getDayNumberFromString(day.time)} {getMonthNameFromString(day.time)}
               </Text>
-              <Text fontSize={{ lg: "lg", usm: "xs" }}>{getDayNameFromString(day.time)}</Text>
+              <Text selfAlign={"end"} fontSize={{ lg: "md", usm: "xs" }}>
+                {getDayNameFromString(day.time)}
+              </Text>
             </ListItem>
           ))}
         </List>

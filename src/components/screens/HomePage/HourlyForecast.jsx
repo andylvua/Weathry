@@ -46,16 +46,16 @@ const HourlyForecast = () => {
 
   return (
     <Box maxW={"full"} postion={"relative"}>
-      <Flex alignItems={"center"} justifyContent={"space-between"}>
-        <Text fontSize={"xl"} color={"white"}>
+      <Flex alignItems={"center"} justifyContent={"space-between"} mx={2}>
+        <Text fontSize={"xl"} color={"white"} fontWeight={"bold"}>
           Hourly Forecast
         </Text>
-        <Flex gap={5} justifyContent={"end"}>
-          <SlideNavigationButton type={"prev"} swiper={swiperInstance} />
-          <SlideNavigationButton type={"next"} swiper={swiperInstance} />
+        <Flex gap={4} justifyContent={"end"}>
+          <SlideNavigationButton type={"prev"} swiper={swiperInstance} size={7} />
+          <SlideNavigationButton type={"next"} swiper={swiperInstance} height={7} />
         </Flex>
       </Flex>
-      <GradientBlock withoutPaddings={true} p={2} mt={6}>
+      <GradientBlock withoutPaddings={true} p={2} mt={3}>
         <Swiper
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           modules={[Navigation, Pagination, Scrollbar]}
@@ -91,7 +91,7 @@ const HourlyForecast = () => {
           {hourlyWeatherData.map((el) => (
             <SwiperSlide key={el.time} style={{ height: "auto" }}>
               <Flex
-                borderRadius={10}
+                borderRadius={13}
                 flexDirection={"column"}
                 alignItems={"center"}
                 py={5}
@@ -112,12 +112,16 @@ const HourlyForecast = () => {
                     {el.temperatureUnit}
                   </Text>
                 </Flex>
-                <Text textAlign={"center"} fontSize={{ lg: 16, usm: 13 }} mt={{ lg: 5, usm: 3 }}>
+                <Text
+                  textAlign={"center"}
+                  fontSize={{ lg: "sm", usm: "xs" }}
+                  mt={{ lg: 5, usm: 3 }}
+                >
                   {weatherCodes[el.weatherCode].title}
                 </Text>
-                <Divider bg={"white"} mt={{ lg: 5, usm: 3 }} />
+                <Divider mt={{ lg: 7, usm: 5 }} />
                 <Flex gap={2} mt={{ lg: 8, usm: 4 }} flexDirection={"column"} alignItems={"center"}>
-                  <Icon w={5} h={5} fill="white" as={MdAir} />
+                  <Icon w={5} h={5} as={MdAir} />
                   <Flex alignItems={"end"} gap={1}>
                     <Text lineHeight={1} color={"white"} fontSize={{ lg: "xl", usm: "md" }}>
                       {el.windSpeed}
@@ -126,7 +130,7 @@ const HourlyForecast = () => {
                   </Flex>
                 </Flex>
                 <Flex gap={2} mt={5} flexDirection={"column"} alignItems={"center"}>
-                  <Icon w={5} h={5} fill="white" as={MdGrain} />
+                  <Icon w={5} h={5} as={MdGrain} />
                   <Flex alignItems={"end"} gap={1}>
                     <Text fontSize={{ lg: "xl", usm: "md" }} lineHeight={1} color={"white"}>
                       {el.precipitationProbability}

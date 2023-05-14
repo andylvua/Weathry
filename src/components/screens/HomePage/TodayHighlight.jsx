@@ -45,7 +45,7 @@ const TodayHighlight = () => {
   return (
     <GradientBlock h={"full"} withoutPaddings={true}>
       <Box p={{ sm: 5, usm: 3 }}>
-        <Text fontSize={"xl"} color={"white"}>
+        <Text fontSize={"xl"} color={"white"} fontWeight={"medium"}>
           Today's Highlight
         </Text>
         <Grid
@@ -55,8 +55,8 @@ const TodayHighlight = () => {
           gridTemplateColumns={{ lg: "1fr 1fr 1fr", usm: "1fr 1fr" }}
           w={"full"}
         >
-          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
-            <Text fontSize={{ sm: "xm", usm: 13 }}>Wind Status</Text>
+          <GridItem borderRadius={13} bg={"rgba(29,31,32,0.44)"} p={3}>
+            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Wind Status</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
                 <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
@@ -70,8 +70,8 @@ const TodayHighlight = () => {
               <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdAir} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
-            <Text fontSize={{ sm: "xm", usm: 13 }}>UV Index</Text>
+          <GridItem borderRadius={13} bg={"rgba(29,31,32,0.44)"} p={3}>
+            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>UV Index</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
                 <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
@@ -85,8 +85,8 @@ const TodayHighlight = () => {
               <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdLightMode} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
-            <Text fontSize={{ sm: "xm", usm: 13 }}>Humidity</Text>
+          <GridItem borderRadius={13} bg={"rgba(29,31,32,0.44)"} p={3}>
+            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Humidity</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
                 <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
@@ -100,8 +100,8 @@ const TodayHighlight = () => {
               <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdOpacity} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
-            <Text fontSize={{ sm: "xm", usm: 13 }}>Visibility</Text>
+          <GridItem borderRadius={13} bg={"rgba(29,31,32,0.44)"} p={3}>
+            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Visibility</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
                 <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
@@ -115,8 +115,8 @@ const TodayHighlight = () => {
               <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdVisibility} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
-            <Text fontSize={{ sm: "xm", usm: 13 }}>Feels like</Text>
+          <GridItem borderRadius={13} bg={"rgba(29,31,32,0.44)"} p={3}>
+            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Feels like</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
                 <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
@@ -128,8 +128,8 @@ const TodayHighlight = () => {
               <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdThermostat} />
             </Flex>
           </GridItem>
-          <GridItem borderRadius={10} bg={"rgba(29,31,32,0.44)"} p={3}>
-            <Text fontSize={{ sm: "xm", usm: 13 }}>Pressure</Text>
+          <GridItem borderRadius={13} bg={"rgba(29,31,32,0.44)"} p={3}>
+            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Pressure</Text>
             <Flex mt={5} alignItems={"end"}>
               <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
                 <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
