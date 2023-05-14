@@ -1,13 +1,13 @@
-import { MdEmail, MdFavorite, MdSettings, MdThermostat } from "react-icons/md";
+import { CiGrid41, CiLocationOn, CiSettings, CiMail } from "react-icons/ci";
 import MenuItem from "./MenuItem";
 import { List } from "@chakra-ui/react";
 
 const Menu = () => {
   const menuItems = [
-    { icon: MdThermostat, direction: "/" },
-    { icon: MdFavorite, direction: "/favourite" },
-    { icon: MdSettings, direction: "/settings" },
-    { icon: MdEmail, direction: "/feedback" }
+    { icon: CiGrid41, direction: "/" },
+    { icon: CiLocationOn, direction: "/favourite" },
+    { icon: CiSettings, direction: "/settings" },
+    { icon: CiMail, direction: "/feedback" }
   ];
   return (
     <List display={"flex"} gap={8} flexDirection={"column"}>
