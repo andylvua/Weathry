@@ -4,7 +4,6 @@ import {
   Flex,
   FormControl,
   FormErrorMessage,
-  FormHelperText,
   FormLabel,
   Heading,
   Input,
@@ -12,6 +11,14 @@ import {
   RadioGroup,
   Text,
   Textarea
+} from "@chakra-ui/react";
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay
 } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
@@ -29,6 +36,9 @@ const FeedbackPage = () => {
     email: false,
     text: false
   });
+  const [successDialogOpen, setSuccessDialogOpen] = useState(false);
+  const [errorDialogOpen, setErrorDialogOpen] = useState(false);
+
   const onChangeValue = (event) => {
     setFeedbackForm({ ...feedbackForm, mailType: event.target.value });
   };
@@ -47,14 +57,16 @@ const FeedbackPage = () => {
 
     setIsSubmitting(true);
 
-    emailjs.sendForm("service_fjgbi4e", "template_vgej6tc", form.current, "sGi4vSjMMbNXBNIpc").then(
+    emailjs.sendForm("service_3h7ikkq", "template_wxskc6y", form.current, "wGyV6Jdk4spTg9cDg").then(
       () => {
         setIsSubmitting(false);
         setFeedbackForm({ ...feedbackForm, email: "", text: "" });
+        setSuccessDialogOpen(true);
       },
       () => {
         setIsSubmitting(false);
         setFeedbackForm({ ...feedbackForm, email: "", text: "" });
+        setErrorDialogOpen(true);
       }
     );
   };
@@ -66,6 +78,14 @@ const FeedbackPage = () => {
   const handleInputTextChange = (event) => {
     setFeedbackForm(() => ({ ...feedbackForm, text: event.target.value }));
     setFeedbackFormErrors(() => ({ email: feedbackFormErrors.email, text: false }));
+  };
+
+  const closeSuccessDialog = () => {
+    setSuccessDialogOpen(false);
+  };
+
+  const closeErrorDialog = () => {
+    setErrorDialogOpen(false);
   };
 
   return (
@@ -156,6 +176,50 @@ const FeedbackPage = () => {
             </Button>
           </Flex>
         </GradientBlock>
+
+        <AlertDialog
+          isOpen={successDialogOpen}
+          leastDestructiveRef={undefined}
+          onClose={closeSuccessDialog}
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold" color={"green.500"}>
+                Message sent
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                Your feedback has been successfully sent. Thank you for your help!
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button onClick={closeSuccessDialog}>Close</Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
+
+        <AlertDialog
+          isOpen={errorDialogOpen}
+          leastDestructiveRef={undefined}
+          onClose={closeErrorDialog}
+        >
+          <AlertDialogOverlay>
+            <AlertDialogContent>
+              <AlertDialogHeader fontSize="lg" fontWeight="bold" color={"red.500"}>
+                Error sending
+              </AlertDialogHeader>
+
+              <AlertDialogBody>
+                There was an error while sending your feedback. Please try again later.
+              </AlertDialogBody>
+
+              <AlertDialogFooter>
+                <Button onClick={closeErrorDialog}>Close</Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialogOverlay>
+        </AlertDialog>
       </form>
     </Layout>
   );
