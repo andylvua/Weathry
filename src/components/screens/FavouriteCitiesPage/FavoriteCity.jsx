@@ -98,7 +98,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
         <Spacer />
         <Text mr={20} color={"white"} fontWeight={"medium"} fontSize={{ lg: "3xl", usm: "xl" }}>
           {favoriteCityCurrentWeather.temperature}
-          {temperatureUnit === "celsius" ? "°С" : "°F"}
+          {temperatureUnit === "fahrenheit" ? "°F" : "°С"}
         </Text>
         {!isGeolocated && (
           <IconButton
