@@ -95,7 +95,7 @@ const FeedbackPage = () => {
           Feedback
         </Heading>
 
-        <GradientBlock withoutPaddings={true} p={{ sm: 7, usm: 3 }} maxW={800} mt={5} mx={"auto"}>
+        <GradientBlock withoutPaddings={true} p={{ sm: 7, usm: 3 }} maxW={800} mt={5} mx={"auto"} overflow={"hidden"}>
           <Flex gap={8} flexDirection={"column"}>
             <FormControl>
               <FormLabel as="legend">
