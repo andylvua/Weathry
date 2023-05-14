@@ -80,8 +80,7 @@ const Forecast = () => {
             <Flex
               alignItems={"center"}
               borderRadius={13}
-              bg={"#15161A"}
-              opacity={0.8}
+              bg={"rgba(21,22,26,0.8)"}
               py={3}
               px={2}
               pr={5}
