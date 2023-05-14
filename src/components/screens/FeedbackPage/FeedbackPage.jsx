@@ -91,7 +91,7 @@ const FeedbackPage = () => {
   return (
     <Layout>
       <form ref={form} onSubmit={handleSubmit}>
-        <Heading textAlign={"center"} mt={10} mb={10} color={"white"}>
+        <Heading textAlign={"center"} mt={20} mb={10} color={"white"}>
           Feedback
         </Heading>
 

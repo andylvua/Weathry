@@ -97,7 +97,7 @@ const SettingsPage = () => {
 
   return (
     <Layout>
-      <Heading textAlign={"center"} mt={10} mb={10} color={"white"}>
+      <Heading textAlign={"center"} mt={20} mb={10} color={"white"}>
         Settings
       </Heading>
       <VStack w={"70%"} spacing={5} withoutPaddings={true} alignItems={"flex-start"} mx={"auto"}>
