@@ -69,7 +69,7 @@ const CurrentWeather = () => {
         <Flex mt={-4} pl={{ sm: 7, usm: 4 }} flexDirection={"column"}>
           <Text fontSize={{ sm: "5xl", usm: "3xl" }} color={"white"} fontWeight={"medium"}>
             {data.temperature}
-            {temperatureUnit === "celsius" ? "°С" : "°F"}
+            {temperatureUnit === "fahrenheit" ? "°F" : "°С"}
           </Text>
           <Flex ml={-2} alignItems={"center"} gap={1}>
             <Image display={"block"} w={10} h={10} src={weatherCodes[data.weathercode].imgSrc} />
