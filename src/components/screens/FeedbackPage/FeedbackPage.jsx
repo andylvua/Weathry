@@ -71,14 +71,17 @@ const FeedbackPage = () => {
   return (
     <Layout>
       <form ref={form} onSubmit={handleSubmit}>
+        <Heading textAlign={"center"} mt={10} mb={10} color={"white"}>
+          Feedback
+        </Heading>
+
         <GradientBlock withoutPaddings={true} p={{ sm: 7, usm: 3 }} maxW={800} mt={5} mx={"auto"}>
           <Flex gap={8} flexDirection={"column"}>
-            <Heading textAlign={"center"}>Feedback</Heading>
             <FormControl>
               <FormLabel as="legend">
                 <Flex>
                   <Text fontSize={"xl"} color={"white"}>
-                    What do you want to tell
+                    Type of feedback
                   </Text>
                   <Text color={"red"}>*</Text>
                 </Flex>
@@ -118,19 +121,15 @@ const FeedbackPage = () => {
                 name={"email"}
                 value={feedbackForm.email}
                 onChange={handleInputEmailChange}
-                placeholder={"email"}
+                placeholder={"Enter your email..."}
               />
-              {!feedbackFormErrors.email ? (
-                <FormHelperText>Enter the email.</FormHelperText>
-              ) : (
-                <FormErrorMessage>Email is required.</FormErrorMessage>
-              )}
+              {feedbackFormErrors.email && <FormErrorMessage>Email is not valid.</FormErrorMessage>}
             </FormControl>
             <FormControl isInvalid={feedbackFormErrors.text}>
               <FormLabel>
                 <Flex>
                   <Text fontSize={"xl"} color={"white"}>
-                    Text
+                    Message
                   </Text>
                   <Text color={"red"}>*</Text>
                 </Flex>
@@ -140,15 +139,18 @@ const FeedbackPage = () => {
                 type="text"
                 value={feedbackForm.text}
                 onChange={handleInputTextChange}
-                placeholder={"Text..."}
+                placeholder={"Enter your message..."}
               />
-              {!feedbackFormErrors.text ? (
-                <FormHelperText>Enter text.</FormHelperText>
-              ) : (
-                <FormErrorMessage>Text is required.</FormErrorMessage>
-              )}
+              {feedbackFormErrors.text && <FormErrorMessage>Text is required.</FormErrorMessage>}
             </FormControl>
-            <Button isLoading={isSubmitting} type={"submit"}>
+            <Button
+              isLoading={isSubmitting}
+              type={"submit"}
+              width={"25%"}
+              alignSelf={"center"}
+              borderRadius={20}
+              variant={"outline"}
+            >
               Submit
             </Button>
           </Flex>
