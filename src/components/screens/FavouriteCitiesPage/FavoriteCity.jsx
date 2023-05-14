@@ -15,7 +15,7 @@ import {
   setTimezone
 } from "../../../store/location/LocationSlice";
 import { useNavigate } from "react-router-dom";
-import { MdClose, MdLocationOn } from "react-icons/md";
+import { CiCircleRemove, CiLocationArrow1 } from "react-icons/ci";
 
 const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = false }) => {
   const { temperatureUnit } = useSelector((state) => state.units);
@@ -64,7 +64,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
           h={{ md: 28, sm: 20, usm: 10 }}
           src={weatherCodes[favoriteCityCurrentWeather.weathercode].imgSrc}
         />
-        <Box mt={4}>
+        <Box>
           <Flex
             flexDirection={{ sm: "row", usm: "column" }}
             alignItems={{ sm: "center", usm: "start" }}
@@ -80,25 +80,22 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
                   fill={"white"}
                   w={{ sm: 7, usm: 4 }}
                   h={{ sm: 7, usm: 4 }}
-                  as={MdLocationOn}
+                  as={CiLocationArrow1}
                 />
               )}
-              <Image
-                w={5}
-                h={5}
-                src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
-              />
+              {!isGeolocated && (
+                <Image
+                  w={5}
+                  h={5}
+                  src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
+                />
+              )}
             </Flex>
           </Flex>
           <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
         </Box>
         <Spacer />
-        <Text
-          mt={!isGeolocated ? 12 : 4}
-          mr={2}
-          color={"white"}
-          fontSize={{ lg: "3xl", usm: "xl" }}
-        >
+        <Text mr={20} color={"white"} fontWeight={"medium"} fontSize={{ lg: "3xl", usm: "xl" }}>
           {favoriteCityCurrentWeather.temperature}
           {temperatureUnit === "celsius" ? "°С" : "°F"}
         </Text>
@@ -108,13 +105,14 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
               event.stopPropagation();
               deleteFromFavoriteList(favoriteCity.id);
             }}
-            mt={4}
             aria-label={""}
             position={"absolute"}
-            top={-4}
-            right={1}
+            top={-1}
+            right={-1}
+            borderRadius={7}
+            borderTopRightRadius={13}
           >
-            <Icon fill={"red.500"} as={MdClose} w={7} h={7} />
+            <Icon fill={"red.500"} as={CiCircleRemove} w={7} h={7} />
           </IconButton>
         )}
       </Flex>
