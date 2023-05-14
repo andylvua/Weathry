@@ -1,6 +1,6 @@
 import Layout from "../../layout/Layout";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
-import { Box, Center, Divider, Flex, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex, Heading, Switch, Text, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import {
@@ -97,257 +97,203 @@ const SettingsPage = () => {
 
   return (
     <Layout>
-      <GradientBlock withoutPaddings={true} pt={7} p={2} mt={5} mx={"auto"} maxW={800}>
-        <VStack w={"full"} spacing={5}>
-          <Heading textAlign={"center"}>Settings</Heading>
+      <Heading textAlign={"center"} mt={10} mb={10} color={"white"}>
+        Settings
+      </Heading>
+      <VStack w={"70%"} spacing={5} withoutPaddings={true} alignItems={"flex-start"} mx={"auto"}>
+        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} ml={2}>
+          Units
+        </Text>
+        <GradientBlock withoutPaddings={true} pt={3} p={2} mt={5} mx={"auto"} w={"full"}>
+          <VStack w={"full"} spacing={2} alignItems={"flex-start"}>
+            <Box px={{ sm: 5, usm: 1 }} py={{ sm: 5, usm: 2 }} w={"full"}>
+              <Text fontWeight={"bold"} color={"lightgray"}>
+                Temperature
+              </Text>
+              <Flex
+                _before={{
+                  content: `""`,
+                  position: "absolute",
+                  transition: "all ease .3s",
+                  left: temperatureUnit === "celsius" ? 0 : "50%",
+                  display: "block",
+                  bg: "blue.800",
+                  w: "49%",
+                  height: "75%",
+                  mt: 1,
+                  ml: 1,
+                  mr: 1,
+                  borderRadius: 7
+                }}
+                position={"relative"}
+                mt={4}
+                borderRadius={10}
+                bg={"rgba(29,31,32,1)"}
+              >
+                <Center
+                  onClick={() => setTemperatureUnit("celsius")}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  px={3}
+                  py={1}
+                  flexBasis={"50%"}
+                >
+                  <Text
+                    color={temperatureUnit === "celsius" ? "white" : ""}
+                    position={"relative"}
+                    zi={3}
+                    textAlign={"center"}
+                  >
+                    Celsius
+                  </Text>
+                </Center>
+
+                <Center
+                  onClick={() => setTemperatureUnit("fahrenheit")}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  px={3}
+                  py={1}
+                  flexBasis={"50%"}
+                >
+                  <Text
+                    color={temperatureUnit === "fahrenheit" ? "white" : ""}
+                    position={"relative"}
+                    zi={3}
+                    textAlign={"center"}
+                  >
+                    Fahrenheit
+                  </Text>
+                </Center>
+              </Flex>
+            </Box>
+            <Divider width={"95%"} alignSelf={"center"} />
+            <Box px={{ sm: 5, usm: 1 }} py={{ sm: 5, usm: 2 }} w={"full"}>
+              <Text fontWeight={"bold"} color={"lightgray"}>
+                Wind speed
+              </Text>
+              <Flex
+                _before={{
+                  content: `""`,
+                  position: "absolute",
+                  transition: "all ease .3s",
+                  left: getWindSpeedPosition(),
+                  display: "block",
+                  bg: "blue.800",
+                  w: "24%",
+                  height: "75%",
+                  mt: 1,
+                  ml: 1,
+                  mr: 1,
+                  borderRadius: 7
+                }}
+                position={"relative"}
+                mt={4}
+                borderRadius={10}
+                bg={"rgba(29,31,32,1)"}
+              >
+                <Center
+                  onClick={() => setWindSpeedUnit("km")}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  px={3}
+                  py={1}
+                  flexBasis={"50%"}
+                >
+                  <Text
+                    color={windSpeedUnit === "km" ? "white" : ""}
+                    position={"relative"}
+                    zi={3}
+                    textAlign={"center"}
+                  >
+                    km/h
+                  </Text>
+                </Center>
+
+                <Center
+                  onClick={() => setWindSpeedUnit("ms")}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  px={3}
+                  py={1}
+                  flexBasis={"50%"}
+                >
+                  <Text
+                    color={windSpeedUnit === "ms" ? "white" : ""}
+                    position={"relative"}
+                    zi={3}
+                    textAlign={"center"}
+                  >
+                    m/s
+                  </Text>
+                </Center>
+
+                <Center
+                  onClick={() => setWindSpeedUnit("mph")}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  px={3}
+                  py={1}
+                  flexBasis={"50%"}
+                >
+                  <Text
+                    color={windSpeedUnit === "mph" ? "white" : ""}
+                    position={"relative"}
+                    zi={3}
+                    textAlign={"center"}
+                  >
+                    mph
+                  </Text>
+                </Center>
+
+                <Center
+                  onClick={() => setWindSpeedUnit("kn")}
+                  cursor={"pointer"}
+                  alignItems={"center"}
+                  px={3}
+                  py={1}
+                  flexBasis={"50%"}
+                >
+                  <Text
+                    color={windSpeedUnit === "kn" ? "white" : ""}
+                    position={"relative"}
+                    zi={3}
+                    textAlign={"center"}
+                  >
+                    Knots
+                  </Text>
+                </Center>
+              </Flex>
+            </Box>
+          </VStack>
+        </GradientBlock>
+
+        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} ml={2}>
+          General
+        </Text>
+        <GradientBlock withoutPaddings={true} pt={2} p={2} mt={5} mx={"auto"} w={"full"}>
           <Box
             px={{ sm: 5, usm: 1 }}
             py={{ sm: 5, usm: 2 }}
-            borderRadius={7}
-            bg={"rgba(29,31,32,0.44)"}
             w={"full"}
+            flexDirection={"row"}
+            display={"flex"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
           >
-            <Text fontSize={"2xl"} color={"white"}>
-              Temperature
+            <Text fontWeight={"bold"} color={"lightgray"}>
+              Automatic location
             </Text>
-            <Flex
-              _before={{
-                content: `""`,
-                position: "absolute",
-                transition: "all ease .3s",
-                left: temperatureUnit === "celsius" ? 0 : "50%",
-                display: "block",
-                bg: "blue.800",
-                w: "49%",
-                height: "80%",
-                mt: 1,
-                ml: 1,
-                mr: 1,
-                borderRadius: 10
-              }}
-              position={"relative"}
-              mt={4}
-              borderRadius={10}
-              bg={"rgba(29,31,32,1)"}
-            >
-              <Center
-                onClick={() => setTemperatureUnit("celsius")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={temperatureUnit === "celsius" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  Celsius
-                </Text>
-              </Center>
 
-              <Center
-                onClick={() => setTemperatureUnit("fahrenheit")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={temperatureUnit === "fahrenheit" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  Fahrenheit
-                </Text>
-              </Center>
-            </Flex>
+            <Switch
+              onChange={() => (autoGps === "on" ? setAutoGps("off") : setAutoGps("on"))}
+              isChecked={autoGps === "on"}
+              colorScheme="whatsapp"
+              size="lg"
+            />
           </Box>
-          <Box
-            px={{ sm: 5, usm: 1 }}
-            py={{ sm: 5, usm: 2 }}
-            borderRadius={7}
-            bg={"rgba(29,31,32,0.44)"}
-            w={"full"}
-          >
-            <Text fontSize={"2xl"} color={"white"}>
-              Wind speed
-            </Text>
-            <Flex
-              _before={{
-                content: `""`,
-                position: "absolute",
-                transition: "all ease .3s",
-                left: getWindSpeedPosition(),
-                display: "block",
-                bg: "blue.800",
-                w: "24%",
-                height: "80%",
-                mt: 1,
-                ml: 1,
-                mr: 1,
-                borderRadius: 10
-              }}
-              position={"relative"}
-              mt={4}
-              borderRadius={10}
-              bg={"rgba(29,31,32,1)"}
-            >
-              <Center
-                onClick={() => setWindSpeedUnit("km")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={windSpeedUnit === "km" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  Km/h
-                </Text>
-              </Center>
-
-              <Center
-                onClick={() => setWindSpeedUnit("ms")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={windSpeedUnit === "ms" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={"xl"}
-                >
-                  m/s
-                </Text>
-              </Center>
-
-              <Center
-                onClick={() => setWindSpeedUnit("mph")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={windSpeedUnit === "mph" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  Mph
-                </Text>
-              </Center>
-
-              <Center
-                onClick={() => setWindSpeedUnit("kn")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={windSpeedUnit === "kn" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  Knots
-                </Text>
-              </Center>
-            </Flex>
-          </Box>
-          <Divider bg={"white"} />
-          <Box
-            px={{ sm: 5, usm: 1 }}
-            py={{ sm: 5, usm: 2 }}
-            borderRadius={7}
-            bg={"rgba(29,31,32,0.44)"}
-            w={"full"}
-          >
-            <Text fontSize={"2xl"} color={"white"}>
-              Auto GPS
-            </Text>
-            <Flex
-              _before={{
-                content: `""`,
-                position: "absolute",
-                transition: "all ease .3s",
-                left: autoGps !== "on" ? "50%" : 0,
-                display: "block",
-                bg: "blue.800",
-                w: "49%",
-                height: "80%",
-                mt: 1,
-                ml: 1,
-                mr: 1,
-                borderRadius: 10
-              }}
-              position={"relative"}
-              mt={4}
-              borderRadius={10}
-              bg={"rgba(29,31,32,1)"}
-            >
-              <Center
-                onClick={() => setAutoGps("on")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={autoGps === "on" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  On
-                </Text>
-              </Center>
-
-              <Center
-                onClick={() => setAutoGps("off")}
-                cursor={"pointer"}
-                alignItems={"center"}
-                px={3}
-                py={1}
-                flexBasis={"50%"}
-              >
-                <Text
-                  color={autoGps === "off" ? "white" : ""}
-                  position={"relative"}
-                  zi={3}
-                  textAlign={"center"}
-                  fontSize={{ sm: "xl", usm: "md" }}
-                >
-                  Off
-                </Text>
-              </Center>
-            </Flex>
-          </Box>
-        </VStack>
-      </GradientBlock>
+        </GradientBlock>
+      </VStack>
     </Layout>
   );
 };
