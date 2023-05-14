@@ -101,7 +101,7 @@ const SettingsPage = () => {
         Settings
       </Heading>
       <VStack w={"70%"} spacing={5} withoutPaddings={true} alignItems={"flex-start"} mx={"auto"}>
-        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} ml={2}>
+        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} pl={2}>
           Units
         </Text>
         <GradientBlock withoutPaddings={true} pt={3} p={2} mt={5} mx={"auto"} w={"full"}>
@@ -268,7 +268,7 @@ const SettingsPage = () => {
           </VStack>
         </GradientBlock>
 
-        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} ml={2}>
+        <Text fontSize={"2xl"} color={"white"} fontWeight={"bold"} pl={2}>
           General
         </Text>
         <GradientBlock withoutPaddings={true} pt={2} p={2} mt={5} mx={"auto"} w={"full"}>
