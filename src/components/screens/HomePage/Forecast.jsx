@@ -152,9 +152,7 @@ const Forecast = () => {
               <Text fontSize={{ lg: "md", usm: "xs" }}>
                 {getDayNumberFromString(day.time)} {getMonthNameFromString(day.time)}
               </Text>
-              <Text selfAlign={"end"} fontSize={{ lg: "md", usm: "xs" }}>
-                {getDayNameFromString(day.time)}
-              </Text>
+              <Text fontSize={{ lg: "md", usm: "xs" }}>{getDayNameFromString(day.time)}</Text>
             </ListItem>
           ))}
         </List>

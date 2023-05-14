@@ -24,8 +24,8 @@ root.render(
       <Fonts />
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <GPSProvider>
+            <ColorModeScript initialColorMode={theme.config.initialColorMode} />
             <RouterProvider router={router}></RouterProvider>
           </GPSProvider>
         </Provider>
