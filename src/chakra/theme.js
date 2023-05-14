@@ -20,7 +20,7 @@ const Menu = defineStyleConfig({
 const Modal = defineStyleConfig({
   baseStyle: {
     dialog: {
-      bg: "rgba(255,255,255,0.03)",
+      bg: "rgba(255,255,255,0.07)",
       backdropFilter: "blur(50px)",
       color: "#ffffff",
       borderRadius: 13,

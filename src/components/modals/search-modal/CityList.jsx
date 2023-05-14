@@ -134,7 +134,7 @@ const CityList = (data, isLoading) => {
             }
           >
             <Icon
-              fill={"red.500"}
+              fill={"gray.300"}
               w={7}
               h={7}
               as={checkIsAlreadyFavorite(city.id) ? MdFavorite : MdFavoriteBorder}

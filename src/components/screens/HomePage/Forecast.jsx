@@ -84,7 +84,7 @@ const Forecast = () => {
               py={3}
               px={2}
               pr={5}
-              boxShadow={"0px 3px 30px 0px rgba(255,255,255,0.15)"}
+              boxShadow={"0px 0px 30px 0px rgba(255,255,255,0.15)"}
             >
               <Image
                 mr={2}

@@ -112,8 +112,11 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
             right={-1}
             borderRadius={7}
             borderTopRightRadius={13}
+            bg={"transparent"}
+            _hover={{ bg: "transparent" }}
           >
-            <Icon fill={"red.500"} as={CiCircleRemove} w={7} h={7} />
+            <Icon fill={"gray.300"} as={CiCircleRemove} w={7} h={7} _hover={{ fill: "red.500" }}
+                  transition={"all 0.2s ease-in-out"} />
           </IconButton>
         )}
       </Flex>

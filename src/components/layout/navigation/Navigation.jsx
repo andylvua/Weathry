@@ -1,6 +1,6 @@
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
 import Menu from "./Menu";
-import { Text } from "@chakra-ui/react";
+import { Divider, Text } from "@chakra-ui/react";
 import { Center, Flex, Image } from "@chakra-ui/react";
 import logo from "../../../assets/logo.png";
 
@@ -14,7 +14,7 @@ const Navigation = () => {
         py={6}
         gap={4}
       >
-        <Center w={"full"} pb={5} borderBottomWidth={1} borderBottomColor={"text.100"} gap={2}>
+        <Center w={"full"} pb={2} gap={2}>
           <Flex
             display={"flex"}
             alignItems={"center"}
@@ -28,6 +28,7 @@ const Navigation = () => {
             </Text>
           </Flex>
         </Center>
+        <Divider orientation={"horizontal"} width={"100%"} />
         <Menu />
       </Flex>
     </GradientBlock>
