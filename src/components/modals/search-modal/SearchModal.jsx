@@ -73,4 +73,5 @@ const SearchModal = () => {
     </Modal>
   );
 };
+
 export default SearchModal;

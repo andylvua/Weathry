@@ -52,7 +52,8 @@ const CurrentWeather = () => {
           display={"flex"}
           alignItems={"center"}
           justifyContent={"center"}
-          bg={"gray.900"}
+          bg={"rgba(255,255,255,0.07)"}
+          _hover={{ bg: "rgba(255,255,255,0.15)" }}
           w={16}
           h={16}
           onClick={onOpen}

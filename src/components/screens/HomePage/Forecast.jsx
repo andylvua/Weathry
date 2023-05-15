@@ -38,6 +38,7 @@ const Forecast = () => {
     {
       select({ data }) {
         const days = [];
+
         for (let index = 0; index < 8; index++) {
           days.push({
             temperatureMax: data.daily["temperature_2m_max"][index],
@@ -47,7 +48,6 @@ const Forecast = () => {
             precipitationProbability: data.daily["precipitation_probability_max"][index]
           });
         }
-
         return days;
       }
     }
@@ -56,6 +56,7 @@ const Forecast = () => {
   if (!days) {
     return null;
   }
+
   const tomorrowDay = days[1];
   return (
     <Box position={"relative"} overflow={"hidden"}>

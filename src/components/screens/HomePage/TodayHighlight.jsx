@@ -46,7 +46,27 @@ const TodayHighlight = () => {
     borderRadius: 13,
     p: 3,
     bg: "rgba(29,31,32,0.24)"
-  }
+  };
+
+  const generateGridItem = (icon, title, value, unit) => {
+    return (
+      <GridItem {...gridItemProps}>
+        <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>{title}</Text>
+        <Flex mt={5} alignItems={"end"}>
+          <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
+            <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
+              {value}
+            </Text>
+            <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
+              {unit}
+            </Text>
+          </Flex>
+          <Spacer />
+          <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={icon} />
+        </Flex>
+      </GridItem>
+    );
+  };
 
   return (
     <GradientBlock h={"full"} withoutPaddings={true}>
@@ -61,94 +81,43 @@ const TodayHighlight = () => {
           gridTemplateColumns={{ lg: "1fr 1fr 1fr", usm: "1fr 1fr" }}
           w={"full"}
         >
-          <GridItem {...gridItemProps}>
-            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Wind Status</Text>
-            <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
-                  {hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()]}
-                </Text>
-                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
-                  {hourlyWeatherData["hourly_units"]["windspeed_10m"]}
-                </Text>
-              </Flex>
-              <Spacer />
-              <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdAir} />
-            </Flex>
-          </GridItem>
-          <GridItem {...gridItemProps}>
-            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>UV Index</Text>
-            <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
-                  {dailyWeatherData.daily["uv_index_max"][0]}
-                </Text>
-                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
-                  uv
-                </Text>
-              </Flex>
-              <Spacer />
-              <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdLightMode} />
-            </Flex>
-          </GridItem>
-          <GridItem {...gridItemProps}>
-            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Humidity</Text>
-            <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
-                  {hourlyWeatherData.hourly["relativehumidity_2m"][getCurrentHour()]}
-                </Text>
-                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
-                  %
-                </Text>
-              </Flex>
-              <Spacer />
-              <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdOpacity} />
-            </Flex>
-          </GridItem>
-          <GridItem {...gridItemProps}>
-            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Visibility</Text>
-            <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
-                  {(hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1)}
-                </Text>
-                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
-                  km
-                </Text>
-              </Flex>
-              <Spacer />
-              <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdVisibility} />
-            </Flex>
-          </GridItem>
-          <GridItem {...gridItemProps}>
-            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Feels like</Text>
-            <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
-                  {hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()]}
-                  {hourlyWeatherData["hourly_units"]["apparent_temperature"]}
-                </Text>
-              </Flex>
-              <Spacer />
-              <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdThermostat} />
-            </Flex>
-          </GridItem>
-          <GridItem {...gridItemProps}>
-            <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>Pressure</Text>
-            <Flex mt={5} alignItems={"end"}>
-              <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-                <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
-                  {hourlyWeatherData.hourly["pressure_msl"][getCurrentHour()]}
-                </Text>
-                <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
-                  hPa
-                </Text>
-              </Flex>
-              <Spacer />
-              <Icon w={{ sm: 6, usm: 3 }} h={{ sm: 6, usm: 3 }} as={MdCompress} />
-            </Flex>
-          </GridItem>
+          {generateGridItem(
+            MdAir,
+            "Wind Status",
+            hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()],
+            hourlyWeatherData["hourly_units"]["windspeed_10m"]
+          )}
+          {generateGridItem(
+            MdLightMode,
+            "UV Index",
+            dailyWeatherData.daily["uv_index_max"][0],
+            "uv"
+          )}
+          {generateGridItem(
+            MdOpacity,
+            "Humidity",
+            hourlyWeatherData.hourly["relativehumidity_2m"][getCurrentHour()],
+            "%"
+          )}
+          {generateGridItem(
+            MdVisibility,
+            "Visibility",
+            (hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1),
+            "km"
+          )}
+          {generateGridItem(
+            MdThermostat,
+            "Feels like",
+            hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()] +
+              hourlyWeatherData["hourly_units"]["apparent_temperature"],
+            ""
+          )}
+          {generateGridItem(
+            MdCompress,
+            "Pressure",
+            hourlyWeatherData.hourly["pressure_msl"][getCurrentHour()],
+            "hPa"
+          )}
         </Grid>
       </Box>
     </GradientBlock>

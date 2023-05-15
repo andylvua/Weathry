@@ -117,7 +117,7 @@ const SettingsPage = () => {
                   transition: "all ease .3s",
                   left: temperatureUnit === "celsius" ? 0 : "50%",
                   display: "block",
-                  bg: "gray.700",
+                  bg: "rgba(255,255,255,0.15)",
                   w: "49%",
                   height: "80%",
                   mt: 1,
@@ -129,7 +129,7 @@ const SettingsPage = () => {
                 position={"relative"}
                 mt={4}
                 borderRadius={10}
-                bg={"rgba(29,31,32,1)"}
+                bg={"rgba(255,255,255,0.07)"}
               >
                 <Center
                   onClick={() => setTemperatureUnit("celsius")}
@@ -182,7 +182,7 @@ const SettingsPage = () => {
                   transition: "all ease .3s",
                   left: getWindSpeedPosition(),
                   display: "block",
-                  bg: "gray.700",
+                  bg: "rgba(255,255,255,0.15)",
                   w: "24%",
                   height: "80%",
                   mt: 1,
@@ -194,7 +194,7 @@ const SettingsPage = () => {
                 position={"relative"}
                 mt={4}
                 borderRadius={10}
-                bg={"rgba(29,31,32,1)"}
+                bg={"rgba(255,255,255,0.07)"}
               >
                 <Center
                   onClick={() => setWindSpeedUnit("km")}

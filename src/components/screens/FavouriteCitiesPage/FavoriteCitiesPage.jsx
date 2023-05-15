@@ -18,7 +18,9 @@ const FavoriteCitiesPage = () => {
       setFavoriteCities([]);
     }
   }, []);
+
   const { autoGps } = useSelector((state) => state.units);
+
   useEffect(() => {
     if (favoriteCities) {
       localStorage.setItem("favoriteCities", JSON.stringify(favoriteCities));

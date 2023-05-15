@@ -8,6 +8,7 @@ import { weatherCodes } from "../../../utils/weatherCodes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
+import { swiperProps } from "./SlideNavigationButton"
 import { MdAir, MdGrain } from "react-icons/md";
 import { useState } from "react";
 
@@ -44,13 +45,6 @@ const HourlyForecast = () => {
     return null;
   }
 
-  const gridItemProps = {
-    borderRadius: 13,
-    p: 3,
-    bg: "rgba(29,31,32,0.24)",
-    boxShadow: "0 0 30px 0px rgba(255,255,255,0.05)"
-  }
-
   return (
     <Box maxW={"full"} postion={"relative"}>
       <Flex alignItems={"center"} justifyContent={"space-between"} mx={2}>
@@ -66,34 +60,7 @@ const HourlyForecast = () => {
         <Swiper
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           modules={[Navigation, Pagination, Scrollbar]}
-          spaceBetween={5}
-          slidesPerView={8}
-          breakpoints={{
-            0: {
-              slidesPerView: 3
-            },
-            540: {
-              slidesPerView: 4
-            },
-            768: {
-              slidesPerView: 3
-            },
-            1200: {
-              slidesPerView: 5
-            },
-            1300: {
-              slidesPerView: 6
-            },
-            1500: {
-              slidesPerView: 7
-            },
-            1700: {
-              slidesPerView: 9
-            },
-            1900: {
-              slidesPerView: 10
-            }
-          }}
+          {...swiperProps}
         >
           {hourlyWeatherData.map((el) => (
             <SwiperSlide key={el.time} style={{ height: "auto" }}>

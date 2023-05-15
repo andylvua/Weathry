@@ -29,6 +29,7 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
       }
     }
   );
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = () => {
@@ -115,8 +116,14 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
             bg={"transparent"}
             _hover={{ bg: "transparent" }}
           >
-            <Icon fill={"gray.300"} as={CiCircleRemove} w={7} h={7} _hover={{ fill: "red.500" }}
-                  transition={"all 0.2s ease-in-out"} />
+            <Icon
+              fill={"gray.300"}
+              as={CiCircleRemove}
+              w={7}
+              h={7}
+              _hover={{ fill: "red.500" }}
+              transition={"all 0.2s ease-in-out"}
+            />
           </IconButton>
         )}
       </Flex>

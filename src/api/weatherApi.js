@@ -10,18 +10,11 @@ export const instanceReverseGeocoding = axios.create({
   baseURL: "https://api.bigdatacloud.net/data/reverse-geocode-client"
 });
 
-const getUnitsString = (
-  temperatureUnit = "celsius",
-  windSpeedUnit = "km",
-  precipitationUnit = "millimeter"
-) => {
-  const temperatureUnitString = `temperature_unit=${temperatureUnit ? temperatureUnit : "celsius"}`;
-  const windSpeedUnitString =
-    windSpeedUnit !== "km" && windSpeedUnit ? `&windspeed_unit=${windSpeedUnit}` : "";
+const getUnitsString = (tempUnit = "celsius", windUnit = "km", precipUnit = "millimeter") => {
+  const temperatureUnitString = `temperature_unit=${tempUnit ? tempUnit : "celsius"}`;
+  const windSpeedUnitString = windUnit !== "km" && windUnit ? `&windspeed_unit=${windUnit}` : "";
   const precipitationUnitString =
-    precipitationUnit !== "millimeter" && precipitationUnit
-      ? `&precipitation_unit=${precipitationUnit}`
-      : "";
+    precipUnit !== "millimeter" && precipUnit ? `&precipitation_unit=${precipUnit}` : "";
 
   return temperatureUnitString + windSpeedUnitString + precipitationUnitString;
 };

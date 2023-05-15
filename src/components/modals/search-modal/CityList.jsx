@@ -106,9 +106,7 @@ const CityList = (data, isLoading) => {
           borderRadius={8}
           display={"flex"}
           transition={"all .2s ease"}
-          _hover={{
-            bg: "rgba(255,255,255,0.07)"
-          }}
+          _hover={{ bg: "rgba(255,255,255,0.07)" }}
         >
           <Icon color={"white"} w={6} h={6} as={CiShare1} />
           <Text color={"white"} fontSize={"md"} fontWeight={"bold"}>
@@ -128,10 +126,7 @@ const CityList = (data, isLoading) => {
             zIndex={10}
             aria-label={""}
             bg={"transparent"}
-            _hover={{
-              bg: "rgba(255,255,255,0.07)"
-              }
-            }
+            _hover={{ bg: "rgba(255,255,255,0.07)" }}
           >
             <Icon
               fill={"gray.300"}

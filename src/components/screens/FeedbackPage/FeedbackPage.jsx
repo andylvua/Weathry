@@ -95,18 +95,25 @@ const FeedbackPage = () => {
           Feedback
         </Heading>
 
-        <GradientBlock withoutPaddings={true} p={{ sm: 7, usm: 3 }} maxW={800} mt={5} mx={"auto"} overflow={"hidden"}>
+        <GradientBlock
+          withoutPaddings={true}
+          p={{ sm: 7, usm: 3 }}
+          maxW={800}
+          mt={5}
+          mx={"auto"}
+          overflow={"hidden"}
+        >
           <Flex gap={8} flexDirection={"column"}>
             <FormControl>
               <FormLabel as="legend">
                 <Flex>
-                  <Text fontSize={"xl"} color={"white"}>
+                  <Text fontSize={"xl"} color={"white"} fontWeight={"bold"} ml={2}>
                     Type of feedback
                   </Text>
                   <Text color={"red"}>*</Text>
                 </Flex>
               </FormLabel>
-              <RadioGroup defaultValue={feedbackForm.mailType}>
+              <RadioGroup defaultValue={feedbackForm.mailType} ml={2}>
                 <Flex flexDirection={{ md: "row", usm: "column" }} gap="24px">
                   <Radio
                     name={"mailType"}
@@ -130,7 +137,7 @@ const FeedbackPage = () => {
             <FormControl isInvalid={feedbackFormErrors.email}>
               <FormLabel>
                 <Flex>
-                  <Text fontSize={"xl"} color={"white"}>
+                  <Text fontSize={"xl"} color={"white"} fontWeight={"bold"} ml={2}>
                     Email
                   </Text>
                   <Text color={"red"}>*</Text>
@@ -148,7 +155,7 @@ const FeedbackPage = () => {
             <FormControl isInvalid={feedbackFormErrors.text}>
               <FormLabel>
                 <Flex>
-                  <Text fontSize={"xl"} color={"white"}>
+                  <Text fontSize={"xl"} color={"white"} fontWeight={"bold"} ml={2}>
                     Message
                   </Text>
                   <Text color={"red"}>*</Text>
