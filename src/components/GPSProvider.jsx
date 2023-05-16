@@ -25,6 +25,23 @@ const GPSProvider = ({ children }) => {
       }
     }
   );
+
+  useEffect(() => {
+    const queryString = window.location.href.split("?")[1];
+    const params = new URLSearchParams(queryString);
+
+    if (params.get("latitude") && params.get("longitude")) {
+      setLatitudeGps(Number(params.get("latitude")));
+      setLongitudeGps(Number(params.get("longitude")));
+    } else {
+      const lastCityData = JSON.parse(localStorage.getItem("lastCity"));
+      if (lastCityData?.latitude && lastCityData?.longitude) {
+        setLatitudeGps(lastCityData?.latitude);
+        setLongitudeGps(lastCityData?.longitude);
+      }
+    }
+  }, []);
+
   useEffect(() => {
     if (autoGps === "on") {
       navigator.geolocation.getCurrentPosition(

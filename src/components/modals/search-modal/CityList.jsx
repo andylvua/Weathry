@@ -22,11 +22,16 @@ import {
 } from "../../../store/location/LocationSlice";
 import { useDispatch } from "react-redux";
 import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
+import { useNavigate } from "react-router-dom";
 
 const CityList = (data, isLoading) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cities = data?.cities?.results;
   const onChoseCity = (city) => {
+    setLastCity(city);
+
     dispatch(setCityName(city.name));
     dispatch(setCountryName(city.country));
     dispatch(setCountryCode(city.country_code));
@@ -40,6 +45,14 @@ const CityList = (data, isLoading) => {
 
   const checkIsAlreadyFavorite = (cityId) => {
     return !!favoriteCities.find((el) => el.id === cityId);
+  };
+
+  const setLastCity = (city) => {
+    localStorage.setItem(
+        "lastCity",
+        JSON.stringify({ latitude: city.latitude, longitude: city.longitude })
+    );
+    navigate(`?latitude=${city.latitude}&longitude=${city.longitude}`);
   };
 
   const addToFavoriteList = (city) => {
