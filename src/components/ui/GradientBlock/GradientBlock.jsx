@@ -9,7 +9,7 @@ const GradientBlock = ({ children, withoutPaddings, ...rest }) => {
       </Box>
 
       <Box
-        borderRadius={20}
+        borderRadius={{ sm: 20, usm: 12 }}
         position={"absolute"}
         w={"full"}
         h={"full"}
@@ -18,7 +18,6 @@ const GradientBlock = ({ children, withoutPaddings, ...rest }) => {
         opacity={0.2}
         className={styles.canvas}
       >
-        <div className={styles.circles}></div>
       </Box>
     </Box>
   );
