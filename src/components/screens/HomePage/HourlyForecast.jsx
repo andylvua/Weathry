@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
 import { swiperProps } from "./SlideNavigationButton"
-import { MdAir } from "react-icons/md";
+import { WiStrongWind } from "react-icons/wi"
 import { WiRain } from "react-icons/wi";
 import { useState } from "react";
 
@@ -96,7 +96,7 @@ const HourlyForecast = () => {
                 </Text>
                 <Divider mt={{ lg: 7, usm: 5 }} />
                 <Flex gap={2} mt={{ lg: 8, usm: 4 }} flexDirection={"column"} alignItems={"center"}>
-                  <Icon w={5} h={5} as={MdAir} />
+                  <Icon w={5} h={5} as={WiStrongWind} />
                   <Flex alignItems={"end"} gap={1}>
                     <Text lineHeight={1} color={"white"} fontSize={{ lg: "xl", usm: "md" }}>
                       {el.windSpeed}

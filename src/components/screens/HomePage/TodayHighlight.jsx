@@ -4,14 +4,8 @@ import { useQuery } from "react-query";
 import { weatherApi } from "../../../api/weatherApi";
 import { Box, Flex, Grid, GridItem, Icon, Spacer, Text } from "@chakra-ui/react";
 import { getCurrentHour } from "../../../utils/time";
-import {
-  MdAir,
-  MdCompress,
-  MdLightMode,
-  MdOpacity,
-  MdThermostat,
-  MdVisibility
-} from "react-icons/md";
+import { CiDroplet, CiRead, CiLight, CiTempHigh, CiMinimize1 } from "react-icons/ci";
+import { WiStrongWind } from "react-icons/wi";
 
 const TodayHighlight = () => {
   const { latitude, longitude, timezone } = useSelector((state) => state.location);
@@ -54,7 +48,11 @@ const TodayHighlight = () => {
         <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>{title}</Text>
         <Flex mt={5} alignItems={"end"}>
           <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-            <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl", usm: "lg" }}>
+            <Text
+              lineHeight={1}
+              color={"white"}
+              fontSize={{ xl: "4xl", lg: "2xl", md: "xl", usm: "lg" }}
+            >
               {value}
             </Text>
             <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>
@@ -81,31 +79,31 @@ const TodayHighlight = () => {
           w={"full"}
         >
           <HighlightItem
-            icon={MdAir}
+            icon={WiStrongWind}
             title={"Wind Status"}
             value={hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()]}
             unit={hourlyWeatherData["hourly_units"]["windspeed_10m"]}
           />
           <HighlightItem
-            icon={MdLightMode}
+            icon={CiLight}
             title={"UV Index"}
             value={dailyWeatherData.daily["uv_index_max"][0]}
             unit={"uv"}
           />
           <HighlightItem
-            icon={MdOpacity}
+            icon={CiDroplet}
             title={"Humidity"}
             value={hourlyWeatherData.hourly["relativehumidity_2m"][getCurrentHour()]}
             unit={"%"}
           />
           <HighlightItem
-            icon={MdVisibility}
+            icon={CiRead}
             title={"Visibility"}
             value={(hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1)}
             unit={"km"}
           />
           <HighlightItem
-            icon={MdThermostat}
+            icon={CiTempHigh}
             title={"Feels like"}
             value={
               hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()] +
@@ -114,7 +112,7 @@ const TodayHighlight = () => {
             unit={""}
           />
           <HighlightItem
-            icon={MdCompress}
+            icon={CiMinimize1}
             title={"Pressure"}
             value={hourlyWeatherData.hourly["pressure_msl"][getCurrentHour()]}
             unit={"hPa"}
