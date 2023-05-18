@@ -54,7 +54,7 @@ const TodayHighlight = () => {
         <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>{title}</Text>
         <Flex mt={5} alignItems={"end"}>
           <Flex alignItems={"end"} gap={{ xl: 3, usm: 1 }}>
-            <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl" }}>
+            <Text lineHeight={1} color={"white"} fontSize={{ xl: "4xl", lg: "2xl", md: "xl", usm: "lg" }}>
               {value}
             </Text>
             <Text lineHeight={{ xl: 1.5, sm: 1 }} fontSize={{ sm: "lg", usm: "xs" }}>

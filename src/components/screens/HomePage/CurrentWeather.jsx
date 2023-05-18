@@ -54,15 +54,15 @@ const CurrentWeather = () => {
           justifyContent={"center"}
           bg={"rgba(255,255,255,0.07)"}
           _hover={{ bg: "rgba(255,255,255,0.15)" }}
-          w={16}
-          h={16}
+          w={{ sm: 16, usm: 12 }}
+          h={{ sm: 16, usm: 12 }}
           onClick={onOpen}
         >
-          <Icon color={"white"} w={35} h={35} as={CiSearch} />
+          <Icon color={"white"} w={{ sm: 35, usm: 6 }} h={{ sm: 35, usm: 6 }} as={CiSearch} />
         </IconButton>
         <Image
           display={"block"}
-          mt={{ sm: -7, usm: -10 }}
+          mt={-7}
           w={{ sm: 32, usm: 24 }}
           h={{ sm: 32, usm: 24 }}
           src={weatherCodes[data.weathercode].imgSrc}

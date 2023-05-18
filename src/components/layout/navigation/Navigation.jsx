@@ -28,7 +28,7 @@ const Navigation = () => {
             gap={1}
           >
             <Image w={6} h={6} src={logo} />
-            <Text fontSize={12} color={"white"} fontWeight={"medium"}>
+            <Text color={"white"} fontWeight={"medium"} fontSize={{ sm: 12, usm: 9 }}>
               Weathry
             </Text>
           </Flex>

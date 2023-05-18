@@ -100,7 +100,7 @@ const Forecast = () => {
                 <Text lineHeight={1.2} color={"white"} fontSize={{ usm: "xl", xl: "2xl" }}>
                   {tomorrowDay.temperatureMax}°
                 </Text>
-                <Text fontSize={{ usm: "x-sm", xl: "sm" }}>
+                <Text fontSize={{ usm: "xs", xl: "sm" }}>
                   {weatherCodes[tomorrowDay.weatherCode].title}
                 </Text>
               </Box>
@@ -120,7 +120,7 @@ const Forecast = () => {
             <ListItem
               key={day.time}
               pr={{ lg: 4, usm: 0 }}
-              gap={4}
+              gap={{ lg: 5, usm: 0 }}
               display={{ lg: "grid", md: "flex", usm: "grid" }}
               gridTemplateColumns={"5fr 2fr 2fr"}
               alignItems={"center"}
@@ -132,8 +132,8 @@ const Forecast = () => {
                   src={weatherCodes[day.weatherCode].imgSrc}
                 />
                 <Flex
-                  flexDirection={{ sm: "row", usm: "column" }}
-                  alignItems={{ "2xl": "end", "xl": "center" }}
+                  flexDirection={"row"}
+                  alignItems={"center"}
                 >
                   <Text
                     lineHeight={1}

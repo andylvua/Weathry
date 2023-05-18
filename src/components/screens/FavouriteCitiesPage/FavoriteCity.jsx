@@ -67,14 +67,13 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
         />
         <Box>
           <Flex
-            flexDirection={{ sm: "row", usm: "column" }}
             alignItems={{ sm: "center", usm: "start" }}
             gap={{ sm: 3, usm: 1 }}
           >
-            <Text color={"white"} fontSize={{ md: "3xl", usm: "xl" }} fontWeight={"medium"}>
+            <Text color={"white"} fontSize={{ md: "3xl", usm: "lg" }} fontWeight={"medium"}>
               {favoriteCity.cityName}
             </Text>
-            <Flex alignItems={"center"} gap={1}>
+            <Flex alignItems={"center"} gap={1} mt={{ sm: 0, usm: 1 }}>
               {isGeolocated && (
                 <Icon
                   color={"white"}
@@ -87,17 +86,19 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
               {!isGeolocated && (
                 <Image
                   mt={1}
-                  w={6}
-                  h={6}
+                  w={{ sm: 6, usm: 4 }}
+                  h={{ sm: 6, usm: 4 }}
                   src={`https://flagsapi.com/${favoriteCity.countryCode}/flat/32.png`}
                 />
               )}
             </Flex>
           </Flex>
-          <Text>{getCurrentTime(favoriteCity.timezone)}</Text>
+          <Text fontSize={{ md: "2xl", usm: "xs" }}>
+            {getCurrentTime(favoriteCity.timezone)}
+          </Text>
         </Box>
         <Spacer />
-        <Text mr={20} color={"white"} fontWeight={"medium"} fontSize={{ lg: "3xl", usm: "xl" }}>
+        <Text mr={{sm: 20, usm: 10}} color={"white"} fontWeight={"medium"} fontSize={{ lg: "3xl", usm: "lg" }}>
           {favoriteCityCurrentWeather.temperature}
           {temperatureUnit === "fahrenheit" ? "°F" : "°С"}
         </Text>
@@ -119,8 +120,8 @@ const FavoriteCity = ({ favoriteCity, deleteFromFavoriteList, isGeolocated = fal
             <Icon
               fill={"gray.300"}
               as={CiCircleRemove}
-              w={7}
-              h={7}
+              w={{ sm: 7, usm: 5 }}
+              h={{ sm: 7, usm: 5 }}
               _hover={{ fill: "red.500" }}
               transition={"all 0.2s ease-in-out"}
             />
