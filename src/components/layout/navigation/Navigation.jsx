@@ -6,7 +6,12 @@ import logo from "../../../assets/logo.png";
 
 const Navigation = () => {
   return (
-    <GradientBlock withoutPaddings={true} my={3} ml={{ sm: 3, usm: 1 }}>
+    <GradientBlock withoutPaddings={true} my={3} ml={{ sm: 3, usm: 1 }}
+                   position={"sticky"}
+                   top={3}
+                   alignSelf={"flex-start"}
+                   height={"97vh"}
+                   >
       <Flex
         flexDirection={"column"}
         alignItems={"center"}
