@@ -48,7 +48,7 @@ const TodayHighlight = () => {
     bg: "rgba(29,31,32,0.24)"
   };
 
-  const generateGridItem = (icon, title, value, unit) => {
+  const HighlightItem = ({ icon, title, value, unit }) => {
     return (
       <GridItem {...gridItemProps}>
         <Text fontSize={{ sm: "xm", usm: "xs", lg: "sm" }}>{title}</Text>
@@ -67,7 +67,6 @@ const TodayHighlight = () => {
       </GridItem>
     );
   };
-
   return (
     <GradientBlock h={"full"} withoutPaddings={true}>
       <Box p={{ sm: 5, usm: 3 }}>
@@ -81,43 +80,45 @@ const TodayHighlight = () => {
           gridTemplateColumns={{ lg: "1fr 1fr 1fr", usm: "1fr 1fr" }}
           w={"full"}
         >
-          {generateGridItem(
-            MdAir,
-            "Wind Status",
-            hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()],
-            hourlyWeatherData["hourly_units"]["windspeed_10m"]
-          )}
-          {generateGridItem(
-            MdLightMode,
-            "UV Index",
-            dailyWeatherData.daily["uv_index_max"][0],
-            "uv"
-          )}
-          {generateGridItem(
-            MdOpacity,
-            "Humidity",
-            hourlyWeatherData.hourly["relativehumidity_2m"][getCurrentHour()],
-            "%"
-          )}
-          {generateGridItem(
-            MdVisibility,
-            "Visibility",
-            (hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1),
-            "km"
-          )}
-          {generateGridItem(
-            MdThermostat,
-            "Feels like",
-            hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()] +
-              hourlyWeatherData["hourly_units"]["apparent_temperature"],
-            ""
-          )}
-          {generateGridItem(
-            MdCompress,
-            "Pressure",
-            hourlyWeatherData.hourly["pressure_msl"][getCurrentHour()],
-            "hPa"
-          )}
+          <HighlightItem
+            icon={MdAir}
+            title={"Wind Status"}
+            value={hourlyWeatherData.hourly["windspeed_10m"][getCurrentHour()]}
+            unit={hourlyWeatherData["hourly_units"]["windspeed_10m"]}
+          />
+          <HighlightItem
+            icon={MdLightMode}
+            title={"UV Index"}
+            value={dailyWeatherData.daily["uv_index_max"][0]}
+            unit={"uv"}
+          />
+          <HighlightItem
+            icon={MdOpacity}
+            title={"Humidity"}
+            value={hourlyWeatherData.hourly["relativehumidity_2m"][getCurrentHour()]}
+            unit={"%"}
+          />
+          <HighlightItem
+            icon={MdVisibility}
+            title={"Visibility"}
+            value={(hourlyWeatherData.hourly["visibility"][getCurrentHour()] / 1000).toFixed(1)}
+            unit={"km"}
+          />
+          <HighlightItem
+            icon={MdThermostat}
+            title={"Feels like"}
+            value={
+              hourlyWeatherData.hourly["apparent_temperature"][getCurrentHour()] +
+              hourlyWeatherData["hourly_units"]["apparent_temperature"]
+            }
+            unit={""}
+          />
+          <HighlightItem
+            icon={MdCompress}
+            title={"Pressure"}
+            value={hourlyWeatherData.hourly["pressure_msl"][getCurrentHour()]}
+            unit={"hPa"}
+          />
         </Grid>
       </Box>
     </GradientBlock>
