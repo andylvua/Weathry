@@ -9,7 +9,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 import SlideNavigationButton from "./SlideNavigationButton";
 import { swiperProps } from "./SlideNavigationButton"
-import { MdAir, MdGrain } from "react-icons/md";
+import { MdAir } from "react-icons/md";
+import { WiRain } from "react-icons/wi";
 import { useState } from "react";
 
 const HourlyForecast = () => {
@@ -104,7 +105,7 @@ const HourlyForecast = () => {
                   </Flex>
                 </Flex>
                 <Flex gap={2} mt={5} flexDirection={"column"} alignItems={"center"}>
-                  <Icon w={5} h={5} as={MdGrain} />
+                  <Icon w={6} h={6} as={WiRain} />
                   <Flex alignItems={"end"} gap={1}>
                     <Text fontSize={{ lg: "xl", usm: "md" }} lineHeight={1} color={"white"}>
                       {el.precipitationProbability}

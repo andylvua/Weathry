@@ -25,7 +25,7 @@ import {
   getMonthNameFromString
 } from "../../../utils/time";
 import { weatherCodes } from "../../../utils/weatherCodes";
-import { MdGrain } from "react-icons/md";
+import { WiRain } from "react-icons/wi";
 
 const Forecast = () => {
   const [daysCount, setDaysCount] = useState(5);
@@ -106,7 +106,7 @@ const Forecast = () => {
               </Box>
               <Spacer />
               <Flex gap={2} flexDirection={"column"} alignItems={"center"}>
-                <Icon w={5} h={5} fill="white" as={MdGrain} />
+                <Icon w={6} h={6} fill="white" as={WiRain} />
                 <Flex alignItems={"start"} gap={1}>
                   <Text lineHeight={1} color={"white"} fontSize={"xl"}>
                     {tomorrowDay.precipitationProbability}

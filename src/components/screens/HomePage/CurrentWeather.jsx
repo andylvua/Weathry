@@ -1,6 +1,6 @@
 import { Divider, Flex, Icon, IconButton, Image, Text } from "@chakra-ui/react";
 import GradientBlock from "../../ui/GradientBlock/GradientBlock";
-import { MdGrain } from "react-icons/md";
+import { WiRain } from "react-icons/wi";
 import { CiCalendar, CiLocationOn, CiSearch } from "react-icons/ci";
 import { setIsOpen } from "../../../store/search-modal/SearchModalSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -78,7 +78,7 @@ const CurrentWeather = () => {
               {weatherCodes[data.weathercode].title}
             </Text>
             |
-            <Icon w={5} h={5} as={MdGrain} />{" "}
+            <Icon w={6} h={6} as={WiRain} />{" "}
             <Text color={"white"} fontWeight={"medium"}>
               {dailyForecast.daily["precipitation_probability_max"][0]}
             </Text>
