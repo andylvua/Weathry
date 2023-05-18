@@ -43,42 +43,6 @@
     background: #86e1ef;
     right: -195px;
     top: 50%;
-    -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-}
-
-.canvas > .circles,
-.canvas > .circles::before,
-.canvas > .circles::after {
-    border-radius: 100%;
-    position: absolute;
-}
-
-.canvas > .circles::before,
-.canvas > .circles::after {
-    content: "";
-    width: 140px;
-    height: 140px;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-.canvas > .circles {
-    width: 230px;
-    height: 230px;
-    background: #1c83af;
-    bottom: -60px;
-    left: 75px;
-}
-
-.canvas > .circles::before {
-    background: #839bfa;
-    left: -40%;
-}
-
-.canvas > .circles::after {
-    background: #0090ff;
-    right: -20%;
 }

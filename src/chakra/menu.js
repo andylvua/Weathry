@@ -1,4 +1,5 @@
 import { defineStyleConfig } from "@chakra-ui/react";
+import {bg_transparent} from "../components/ui/Global/globals"
 
 export const Menu = defineStyleConfig({
   baseStyle: {
@@ -8,11 +9,11 @@ export const Menu = defineStyleConfig({
     item: {
       bg: "transparent",
       _focus: {
-        bg: "rgba(255,255,255,0.07)"
+        bg: bg_transparent
       }
     },
     list: {
-      bg: "rgba(255,255,255,0.07)",
+      bg: bg_transparent,
       backdropFilter: "blur(20px)"
     }
   }

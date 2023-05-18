@@ -88,6 +88,26 @@ const FeedbackPage = () => {
     setErrorDialogOpen(false);
   };
 
+  const FormAlert = ({ isOpen, onClose, title, description, color }) => {
+    return (
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={undefined} onClose={onClose}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold" color={color}>
+              {title}
+            </AlertDialogHeader>
+
+            <AlertDialogBody>{description}</AlertDialogBody>
+
+            <AlertDialogFooter>
+              <Button onClick={onClose}>Close</Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
+    );
+  };
+
   return (
     <Layout>
       <form ref={form} onSubmit={handleSubmit}>
@@ -183,50 +203,20 @@ const FeedbackPage = () => {
             </Button>
           </Flex>
         </GradientBlock>
-
-        <AlertDialog
+        <FormAlert
           isOpen={successDialogOpen}
-          leastDestructiveRef={undefined}
           onClose={closeSuccessDialog}
-        >
-          <AlertDialogOverlay>
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold" color={"green.500"}>
-                Message sent
-              </AlertDialogHeader>
-
-              <AlertDialogBody>
-                Your feedback has been successfully sent. Thank you for your help!
-              </AlertDialogBody>
-
-              <AlertDialogFooter>
-                <Button onClick={closeSuccessDialog}>Close</Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
-
-        <AlertDialog
+          title={"Message sent"}
+          description={"Feedback has been successfully sent. Thank you for your help!"}
+          color={"green.500"}
+        />
+        <FormAlert
           isOpen={errorDialogOpen}
-          leastDestructiveRef={undefined}
           onClose={closeErrorDialog}
-        >
-          <AlertDialogOverlay>
-            <AlertDialogContent>
-              <AlertDialogHeader fontSize="lg" fontWeight="bold" color={"red.500"}>
-                Error sending
-              </AlertDialogHeader>
-
-              <AlertDialogBody>
-                There was an error while sending your feedback. Please try again later.
-              </AlertDialogBody>
-
-              <AlertDialogFooter>
-                <Button onClick={closeErrorDialog}>Close</Button>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialogOverlay>
-        </AlertDialog>
+          title={"Error sending"}
+          description={"Error occurred while sending feedback. Please try again later."}
+          color={"red.500"}
+        />
       </form>
     </Layout>
   );

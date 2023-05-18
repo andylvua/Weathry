@@ -9,6 +9,7 @@ import {
   Skeleton,
   IconButton
 } from "@chakra-ui/react";
+import { bg_transparent } from "../../ui/Global/globals"
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 import { CiShare1 } from "react-icons/ci";
 import React, { useEffect, useState } from "react";
@@ -119,7 +120,7 @@ const CityList = (data, isLoading) => {
           borderRadius={8}
           display={"flex"}
           transition={"all .2s ease"}
-          _hover={{ bg: "rgba(255,255,255,0.07)" }}
+          _hover={{ bg: bg_transparent }}
         >
           <Icon color={"white"} w={6} h={6} as={CiShare1} />
           <Text color={"white"} fontSize={"md"} fontWeight={"bold"}>
